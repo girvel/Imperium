@@ -1,0 +1,5 @@
+E:\projects\Imperium\Imperium.Ecs\obj\Debug\Imperium.Ecs.csprojResolveAssemblyReference.cache
+E:\projects\Imperium\Imperium.Ecs\bin\Debug\Imperium.Ecs.dll
+E:\projects\Imperium\Imperium.Ecs\bin\Debug\Imperium.Ecs.pdb
+E:\projects\Imperium\Imperium.Ecs\obj\Debug\Imperium.Ecs.dll
+E:\projects\Imperium\Imperium.Ecs\obj\Debug\Imperium.Ecs.pdb
