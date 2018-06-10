@@ -10,7 +10,7 @@ namespace Imperium.Core.Systems.Placing
 
         public override void Start()
         {
-            Ecs.SystemManager.GetSystem<AreaSystem>();
+            Ecs.SystemManager.GetSystem<AreaSystem>().Move(this, Position);
         }
     }
 }

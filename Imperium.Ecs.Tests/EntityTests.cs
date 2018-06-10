@@ -31,7 +31,7 @@ namespace Imperium.Ecs.Tests
             component.Verify(c => c.Start());
             
             Assert.Equal(entity.Ecs, component.Object.Ecs);
-            Assert.Equal(entity, component.Object.Owner);
+            Assert.Equal(entity, component.Object.Parent);
         }
 
         [Fact]

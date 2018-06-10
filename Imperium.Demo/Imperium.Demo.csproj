@@ -45,6 +45,10 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Imperium.Core\Imperium.Core.csproj">
+      <Project>{521ED1BE-B540-4D2C-8DA9-87EC22CF9F91}</Project>
+      <Name>Imperium.Core</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Imperium.Ecs\Imperium.Ecs.csproj">
       <Project>{942FC477-CDFA-4C06-B01C-2B29C9B30B01}</Project>
       <Name>Imperium.Ecs</Name>

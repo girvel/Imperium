@@ -9,16 +9,18 @@ namespace Imperium.Ecs
     {
         public string Name { get; set; }
 
-        public List<Component> Components { get; } = new List<Component>();
+        public List<Component> Components { get; set; } = new List<Component>();
         
         public EcsManager Ecs { get; set; }
+        
+        public Entity Original { get; set; }
 
 
 
         public void AddComponent(Component component)
         {
             component.Ecs = Ecs;
-            component.Owner = this;
+            component.Parent = this;
             
             Components.Add(component);
             Ecs.ComponentManager.Register(component);

@@ -12,7 +12,7 @@ namespace Imperium.Ecs.Managers
             }
         }
 
-        public T GetSystem<T>()
+        public virtual T GetSystem<T>()
         {
             return Subjects.OfType<T>().First();
         }

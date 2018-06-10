@@ -1,14 +1,12 @@
-﻿using System;
-using System.ComponentModel;
-using System.Linq;
+﻿using System.Linq;
 using Imperium.Core.Common;
 using Imperium.Core.Systems.Placing;
 using Moq;
 using Xunit;
 
-namespace Imperium.Core.Tests
+namespace Imperium.Core.Tests.Systems.Placing
 {
-    public class Tests
+    public class AreaSystemTests
     {
         [Fact]
         public void Move_MovesComponentToNewPosition()
@@ -23,7 +21,7 @@ namespace Imperium.Core.Tests
             
             // assert
             Assert.False(system.Area[0, 0].Any());
-            Assert.True(system.Area[0, 1].Contains(component));
+            Assert.True(system.Area[1, 0].Contains(component));
             Assert.Equal(new Vector(1, 0), component.Position);
         }
     }

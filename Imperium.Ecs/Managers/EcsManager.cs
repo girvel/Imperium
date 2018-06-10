@@ -5,7 +5,7 @@ namespace Imperium.Ecs.Managers
 {
     public class EcsManager
     {
-        public ComponentManager ComponentManager { get; set; }
+        public virtual ComponentManager ComponentManager { get; set; }
         
         public EntityManager EntityManager { get; set; }
         

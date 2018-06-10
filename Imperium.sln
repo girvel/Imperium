@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Imperium.Core", "Imperium.C
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Imperium.Core.Tests", "Imperium.Core.Tests\Imperium.Core.Tests.csproj", "{2D79E6C3-8DCB-4C00-95FF-C2D82E73B0F2}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Imperium.Game", "Imperium.Game\Imperium.Game.csproj", "{4CAF52CC-8169-4DF9-B01C-56A2EF0D2C23}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{2D79E6C3-8DCB-4C00-95FF-C2D82E73B0F2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2D79E6C3-8DCB-4C00-95FF-C2D82E73B0F2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2D79E6C3-8DCB-4C00-95FF-C2D82E73B0F2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4CAF52CC-8169-4DF9-B01C-56A2EF0D2C23}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4CAF52CC-8169-4DF9-B01C-56A2EF0D2C23}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4CAF52CC-8169-4DF9-B01C-56A2EF0D2C23}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4CAF52CC-8169-4DF9-B01C-56A2EF0D2C23}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
