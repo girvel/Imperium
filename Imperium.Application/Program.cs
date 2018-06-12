@@ -11,17 +11,13 @@ namespace Imperium.Application
 {
     internal class Program
     {
+        public static EcsManager Ecs;
+        
         public static void Main(string[] args)
         {
-            var game = EcsManager.CreateNew();
-            
-            var area = new Area(new Vector(5, 5));
-            new TestWorldFactory().Generate(area, game);
-            
-            game.SystemManager.Register(new AreaSystem(area));
-            game.SystemManager.Register(new PlayerSystem());
-            
-            game.Start();
+            Ecs = new EcsFactory().Generate();
+
+            Ecs.Start();
         }
     }
 }

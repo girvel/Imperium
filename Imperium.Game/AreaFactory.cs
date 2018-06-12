@@ -6,7 +6,7 @@ using Imperium.Ecs.Managers;
 
 namespace Imperium.Game
 {
-    public class TestWorldFactory
+    public class AreaFactory
     {
         public void Generate(Area area, EcsManager ecs)
         {
