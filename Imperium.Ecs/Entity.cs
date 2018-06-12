@@ -10,7 +10,9 @@ namespace Imperium.Ecs
         public string Name { get; set; }
 
         public List<Component> Components { get; set; } = new List<Component>();
-        
+
+
+
         public EcsManager Ecs { get; set; }
         
         public Entity Original { get; set; }

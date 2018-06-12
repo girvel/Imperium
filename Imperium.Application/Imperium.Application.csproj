@@ -4,12 +4,12 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{942FC477-CDFA-4C06-B01C-2B29C9B30B01}</ProjectGuid>
+    <ProjectGuid>{423E9F1A-8126-4936-A49E-17D2F9746190}</ProjectGuid>
     <ProjectTypeGuids>{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
-    <OutputType>Library</OutputType>
+    <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Imperium.Ecs</RootNamespace>
-    <AssemblyName>Imperium.Ecs</AssemblyName>
+    <RootNamespace>Imperium.Application</RootNamespace>
+    <AssemblyName>Imperium.Application</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -35,19 +35,28 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Component.cs" />
-    <Compile Include="Entity.cs" />
-    <Compile Include="Managers\ComponentManager.cs" />
-    <Compile Include="Managers\EntityManager.cs" />
-    <Compile Include="Managers\EcsManager.cs" />
-    <Compile Include="Managers\Manager.cs" />
-    <Compile Include="Managers\SystemManager.cs" />
+    <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="System.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Imperium.Core\Imperium.Core.csproj">
+      <Project>{521ED1BE-B540-4D2C-8DA9-87EC22CF9F91}</Project>
+      <Name>Imperium.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Imperium.Ecs\Imperium.Ecs.csproj">
+      <Project>{942FC477-CDFA-4C06-B01C-2B29C9B30B01}</Project>
+      <Name>Imperium.Ecs</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Imperium.Game\Imperium.Game.csproj">
+      <Project>{4CAF52CC-8169-4DF9-B01C-56A2EF0D2C23}</Project>
+      <Name>Imperium.Game</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

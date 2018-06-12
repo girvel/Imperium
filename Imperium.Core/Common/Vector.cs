@@ -1,8 +1,11 @@
 ﻿using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace Imperium.Core.Common
 {
-    public struct Vector
+    public struct Vector : IEnumerable<Vector>
     {
         public readonly int X, Y;
 
@@ -29,6 +32,8 @@ namespace Imperium.Core.Common
         public static Vector operator *(Vector v, float k) => new Vector((int) (v.X * k), (int) (v.Y * k));
 
         public static Vector operator *(float k, Vector v) => v * k;
+
+        public static Vector operator /(Vector v, float d) => v * (1 / d);
 
 
 
@@ -69,5 +74,22 @@ namespace Imperium.Core.Common
         }
 
         public override string ToString() => $"{{{X}; {Y}}}";
+
+        
+        
+        IEnumerator IEnumerable.GetEnumerator()
+        {
+            return GetEnumerator();
+        }
+
+        public IEnumerator<Vector> GetEnumerator()
+        {
+            var X = this.X;
+            return 
+                Enumerable
+                    .Range(0, Y)
+                    .SelectMany(y => Enumerable.Range(0, X).Select(x => new Vector(x, y)))
+                    .GetEnumerator();
+        }
     }
 }

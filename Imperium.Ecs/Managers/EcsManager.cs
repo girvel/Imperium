@@ -31,12 +31,15 @@ namespace Imperium.Ecs.Managers
 
         public static EcsManager CreateNew()
         {
-            return new EcsManager
+            var result = new EcsManager
             {
                 ComponentManager = new ComponentManager(),
                 EntityManager = new EntityManager(),
-                SystemManager = new SystemManager(),
             };
+            
+            result.SystemManager = new SystemManager {Ecs = result};
+
+            return result;
         }
     }
 }

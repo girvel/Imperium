@@ -47,6 +47,10 @@
       <Project>{521ED1BE-B540-4D2C-8DA9-87EC22CF9F91}</Project>
       <Name>Imperium.Core</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Imperium.Ecs\Imperium.Ecs.csproj">
+      <Project>{942fc477-cdfa-4c06-b01c-2b29c9b30b01}</Project>
+      <Name>Imperium.Ecs</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

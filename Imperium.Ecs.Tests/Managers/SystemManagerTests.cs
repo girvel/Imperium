@@ -13,9 +13,9 @@ namespace Imperium.Ecs.Tests.Managers
             // arrange
             var systems = new[]
             {
-                new Mock<ISystem>(),
-                new Mock<ISystem>(),
-                new Mock<ISystem>(),
+                new Mock<System>(),
+                new Mock<System>(),
+                new Mock<System>(),
             };
 
             var manager = new SystemManager
@@ -40,7 +40,7 @@ namespace Imperium.Ecs.Tests.Managers
             var system = new TestSystem();
             var manager = new SystemManager
             {
-                Subjects = {system, Mock.Of<ISystem>()}
+                Subjects = {system, Mock.Of<System>()}
             };
             
             // act
@@ -50,7 +50,7 @@ namespace Imperium.Ecs.Tests.Managers
             Assert.Equal(system, result);
         }
 
-        class TestSystem : ISystem
+        class TestSystem : System
         {
             public void Update()
             {

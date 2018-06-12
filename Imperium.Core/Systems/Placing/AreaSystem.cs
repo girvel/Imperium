@@ -4,8 +4,10 @@ using Imperium.Ecs;
 
 namespace Imperium.Core.Systems.Placing
 {
-    public class AreaSystem : ISystem
+    public class AreaSystem : Ecs.System
     {
+        public Vector Size { get; set; }
+        
         public List<PositionComponent>[,] Area { get; set; }
 
         public List<PositionComponent> this[Vector p] => Area[p.X, p.Y];
@@ -14,6 +16,7 @@ namespace Imperium.Core.Systems.Placing
 
         public AreaSystem(Vector size)
         {
+            Size = size;
             Area = new List<PositionComponent>[size.X, size.Y];
             for (var x = 0; x < size.X; x++)
             {

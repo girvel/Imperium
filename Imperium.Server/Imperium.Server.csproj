@@ -4,12 +4,12 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{8902C43A-F437-4E2C-A3BC-3CBF4D4DFA25}</ProjectGuid>
+    <ProjectGuid>{4F2FA629-6D86-4B25-8999-4152FD596CE2}</ProjectGuid>
     <ProjectTypeGuids>{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
-    <OutputType>Exe</OutputType>
+    <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Imperium.Demo</RootNamespace>
-    <AssemblyName>Imperium.Demo</AssemblyName>
+    <RootNamespace>Imperium.Server</RootNamespace>
+    <AssemblyName>Imperium.Server</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -35,24 +35,21 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
-    <Reference Include="System.Xml.Linq" />
-    <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Program.cs" />
+    <Compile Include="Account.cs" />
+    <Compile Include="Common\LogHelper.cs" />
+    <Compile Include="Connection.cs" />
+    <Compile Include="Log.cs" />
+    <Compile Include="News.cs" />
+    <Compile Include="NewsManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Imperium.Core\Imperium.Core.csproj">
-      <Project>{521ED1BE-B540-4D2C-8DA9-87EC22CF9F91}</Project>
-      <Name>Imperium.Core</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Imperium.Ecs\Imperium.Ecs.csproj">
-      <Project>{942FC477-CDFA-4C06-B01C-2B29C9B30B01}</Project>
-      <Name>Imperium.Ecs</Name>
-    </ProjectReference>
+    <Compile Include="RequestManager.cs" />
+    <Compile Include="ResponsePair.cs" />
+    <Compile Include="Serializer.cs" />
+    <Compile Include="Server.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

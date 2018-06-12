@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("Imperium.Demo")]
+[assembly: AssemblyTitle("Imperium.Server")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("Imperium.Demo")]
+[assembly: AssemblyProduct("Imperium.Server")]
 [assembly: AssemblyCopyright("Copyright ©  2018")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("8902C43A-F437-4E2C-A3BC-3CBF4D4DFA25")]
+[assembly: Guid("4F2FA629-6D86-4B25-8999-4152FD596CE2")]
 
 // Version information for an assembly consists of the following four values:
 //

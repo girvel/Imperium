@@ -17,9 +17,7 @@ namespace Imperium.Ecs
 
         public virtual object Clone()
         {
-            var clone = (Component) MemberwiseClone();
-            Ecs.ComponentManager.Register(clone);
-            return clone;
+            return (Component) MemberwiseClone();
         }
     }
 }
