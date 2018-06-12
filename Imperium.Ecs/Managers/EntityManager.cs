@@ -22,7 +22,7 @@ namespace Imperium.Ecs.Managers
 
             if (original != null)
             {
-                newEntity.Components = original.Components.Select(Ecs.ComponentManager.CreateClone).ToList();
+                newEntity.Components = original.Components.Select(c => Ecs.ComponentManager.CreateClone(c)).ToList();
             }
             
             Entities.Add(newEntity);

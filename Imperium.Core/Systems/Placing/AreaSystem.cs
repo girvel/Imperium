@@ -1,44 +1,23 @@
-﻿using System.Collections.Generic;
-using Imperium.Core.Common;
-using Imperium.Ecs;
+﻿using Imperium.Core.Common;
 
 namespace Imperium.Core.Systems.Placing
 {
     public class AreaSystem : Ecs.System
     {
-        public Vector Size { get; set; }
-        
-        public List<PositionComponent>[,] Area { get; set; }
-
-        public List<PositionComponent> this[Vector p] => Area[p.X, p.Y];
+        public Area Area { get; set; }
 
         
 
-        public AreaSystem(Vector size)
+        public AreaSystem(Area area)
         {
-            Size = size;
-            Area = new List<PositionComponent>[size.X, size.Y];
-            for (var x = 0; x < size.X; x++)
-            {
-                for (var y = 0; y < size.Y; y++)
-                {
-                    Area[x, y] = new List<PositionComponent>();
-                }
-            }
+            Area = area;
         }
         
         public void Move(PositionComponent component, Vector newPosition)
         {
-            this[component.Position].Remove(component);
+            Area[component.Position].Remove(component);
             component.Position = newPosition;
-            this[component.Position].Add(component);
-        }
-        
-        
-        
-        public void Update()
-        {
-            
+            Area[component.Position].Add(component);
         }
     }
 }

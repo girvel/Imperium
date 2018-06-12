@@ -39,6 +39,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Area.cs" />
     <Compile Include="Common\Vector.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Systems\Placing\AreaSystem.cs" />
@@ -46,6 +47,8 @@
     <Compile Include="Systems\Owning\OwnedComponent.cs" />
     <Compile Include="Systems\Owning\Player.cs" />
     <Compile Include="Systems\Owning\PlayerSystem.cs" />
+    <Compile Include="Systems\Vision\ObserverComponent.cs" />
+    <Compile Include="Systems\Vision\VisionSystem.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Imperium.Ecs\Imperium.Ecs.csproj">

@@ -31,6 +31,13 @@ namespace Imperium.Ecs.Tests.Managers
             {
                 Ecs = Mock.Of<EcsManager>(),
             };
+
+            var componentManagerMock = new Mock<ComponentManager>();
+            componentManagerMock
+                .Setup(c => c.CreateClone(It.IsAny<Component>()))
+                .Returns<Component>(c => (Component) c.Clone());
+
+            manager.Ecs.ComponentManager = componentManagerMock.Object;
             
             var original = Mock.Of<Entity>();
             original.Name = "Original";

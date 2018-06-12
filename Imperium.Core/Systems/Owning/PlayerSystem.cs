@@ -6,10 +6,5 @@ namespace Imperium.Core.Systems.Owning
     public class PlayerSystem : Ecs.System
     {
         public List<Player> Players { get; set; } = new List<Player>();
-        
-        public void Update()
-        {
-            
-        }
     }
 }

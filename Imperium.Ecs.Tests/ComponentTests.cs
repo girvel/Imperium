@@ -7,16 +7,12 @@ namespace Imperium.Ecs.Tests
     public class ComponentTests
     {
         [Fact]
-        public void Clone_ReturnsCloneOfComponentAndRegistersIt()
+        public void Clone_ReturnsCloneOfComponent()
         {
             // arrange
-            var componentManager = new Mock<ComponentManager>();
-            var ecs = Mock.Of<EcsManager>();
-            ecs.ComponentManager = componentManager.Object;
-
             var component = new Component
             {
-                Ecs = ecs,
+                Ecs = Mock.Of<EcsManager>(),
             };
             
             // act
@@ -24,7 +20,6 @@ namespace Imperium.Ecs.Tests
             
             // assert
             Assert.Equal(component.Ecs, clone.Ecs);
-            componentManager.Verify(c => c.Register(clone), Times.Once);
         }
     }
 }

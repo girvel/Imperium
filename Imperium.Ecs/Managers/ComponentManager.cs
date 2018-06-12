@@ -2,7 +2,7 @@
 {
     public class ComponentManager : Manager<Component>
     {
-        public Component CreateClone(Component original)
+        public virtual Component CreateClone(Component original)
         {
             var clone = (Component) original.Clone();
             Register(clone);
