@@ -43,6 +43,7 @@
   <ItemGroup>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ServerFactory.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Imperium.Core\Imperium.Core.csproj">
@@ -56,6 +57,10 @@
     <ProjectReference Include="..\Imperium.Game\Imperium.Game.csproj">
       <Project>{4CAF52CC-8169-4DF9-B01C-56A2EF0D2C23}</Project>
       <Name>Imperium.Game</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Imperium.Server\Imperium.Server.csproj">
+      <Project>{4F2FA629-6D86-4B25-8999-4152FD596CE2}</Project>
+      <Name>Imperium.Server</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

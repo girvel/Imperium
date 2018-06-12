@@ -34,10 +34,10 @@ namespace Imperium.Ecs.Managers
             var result = new EcsManager
             {
                 ComponentManager = new ComponentManager(),
-                EntityManager = new EntityManager(),
             };
             
             result.SystemManager = new SystemManager {Ecs = result};
+            result.EntityManager = new EntityManager {Ecs = result};
 
             return result;
         }

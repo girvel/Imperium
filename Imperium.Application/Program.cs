@@ -1,11 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
-using Imperium.Core;
-using Imperium.Core.Common;
+using System.Net;
+using System.Threading;
 using Imperium.Core.Systems.Owning;
-using Imperium.Core.Systems.Placing;
 using Imperium.Ecs.Managers;
 using Imperium.Game;
+using Imperium.Server;
 
 namespace Imperium.Application
 {
@@ -13,10 +13,16 @@ namespace Imperium.Application
     {
         public static EcsManager Ecs;
         
-        public static void Main(string[] args)
+        public static Server<Player> Server;
+        
+        
+        
+        public static void Main(string[] consoleArgs)
         {
             Ecs = new EcsFactory().Generate();
+            Server = new ServerFactory().Generate();
 
+            new Thread(Server.Start).Start();
             Ecs.Start();
         }
     }
