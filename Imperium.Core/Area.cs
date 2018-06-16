@@ -1,5 +1,5 @@
 ﻿using System.Collections.Generic;
-using Imperium.Core.Common;
+using Imperium.CommonData;
 using Imperium.Core.Systems.Placing;
 
 namespace Imperium.Core

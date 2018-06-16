@@ -4,12 +4,12 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{4CAF52CC-8169-4DF9-B01C-56A2EF0D2C23}</ProjectGuid>
+    <ProjectGuid>{A0504B8A-ECBB-4F93-AD2E-48DC7BCEF77A}</ProjectGuid>
     <ProjectTypeGuids>{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Imperium.Game</RootNamespace>
-    <AssemblyName>Imperium.Game</AssemblyName>
+    <RootNamespace>Imperium.CommonData</RootNamespace>
+    <AssemblyName>Imperium.CommonData</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -39,24 +39,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="GameData.cs" />
-    <Compile Include="GameFactory.cs" />
-    <Compile Include="AreaFactory.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Imperium.CommonData\Imperium.CommonData.csproj">
-      <Project>{A0504B8A-ECBB-4F93-AD2E-48DC7BCEF77A}</Project>
-      <Name>Imperium.CommonData</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Imperium.Core\Imperium.Core.csproj">
-      <Project>{521ED1BE-B540-4D2C-8DA9-87EC22CF9F91}</Project>
-      <Name>Imperium.Core</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Imperium.Ecs\Imperium.Ecs.csproj">
-      <Project>{942fc477-cdfa-4c06-b01c-2b29c9b30b01}</Project>
-      <Name>Imperium.Ecs</Name>
-    </ProjectReference>
+    <Compile Include="Vector.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

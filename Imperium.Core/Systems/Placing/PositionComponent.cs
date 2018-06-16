@@ -1,4 +1,4 @@
-﻿using Imperium.Core.Common;
+﻿using Imperium.CommonData;
 using Imperium.Ecs;
 
 namespace Imperium.Core.Systems.Placing

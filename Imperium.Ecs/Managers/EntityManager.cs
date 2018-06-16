@@ -22,7 +22,10 @@ namespace Imperium.Ecs.Managers
 
             if (original != null)
             {
-                newEntity.Components = original.Components.Select(c => Ecs.ComponentManager.CreateClone(c)).ToList();
+                foreach (var c in original.Components.Select(c => Ecs.ComponentManager.CreateClone(c)))
+                {
+                    newEntity.AddComponent(c);
+                }
             }
             
             Entities.Add(newEntity);

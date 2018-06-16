@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace Imperium.Core.Common
+namespace Imperium.CommonData
 {
     public struct Vector : IEnumerable<Vector>
     {

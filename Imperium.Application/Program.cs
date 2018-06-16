@@ -11,7 +11,7 @@ namespace Imperium.Application
 {
     internal class Program
     {
-        public static EcsManager Ecs;
+        public static GameData Game;
         
         public static Server<Player> Server;
         
@@ -19,11 +19,11 @@ namespace Imperium.Application
         
         public static void Main(string[] consoleArgs)
         {
-            Ecs = new EcsFactory().Generate();
-            Server = new ServerFactory().Generate();
+            Game = new GameFactory().Generate();
+            Server = new ServerFactory().Generate(Game);
 
             new Thread(Server.Start).Start();
-            Ecs.Start();
+            Game.Ecs.Start();
         }
     }
 }
