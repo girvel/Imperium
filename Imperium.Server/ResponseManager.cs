@@ -7,9 +7,9 @@ using Newtonsoft.Json.Linq;
 
 namespace Imperium.Server
 {
-    public class RequestManager<T>
+    public class ResponseManager<T>
     {
-        public delegate Dictionary<string, dynamic> ResponseGenerator(Dictionary<string, dynamic> args, Connection<T> connection);
+        public delegate Dictionary<string, dynamic> ResponseGenerator(Connection<T> connection, Dictionary<string, dynamic> args);
 
         public delegate ResponseGenerator ExceptionResponseGenerator(Exception ex);
 
@@ -24,9 +24,9 @@ namespace Imperium.Server
 
 
         [Obsolete("Testing ctor")]
-        public RequestManager() { }
+        public ResponseManager() { }
 
-        public RequestManager(
+        public ResponseManager(
             Dictionary<string, ResponsePair<T>> responses, 
             ResponseGenerator permissionErrorResponse, 
             ExceptionResponseGenerator requestErrorResponse)
@@ -72,7 +72,7 @@ namespace Imperium.Server
             }
             
             return JToken.FromObject(
-                generator(args, connection) ?? new Dictionary<string, dynamic>(),
+                generator(connection, args) ?? new Dictionary<string, dynamic>(),
                 Serializer.Current)
                 .ToString();
         }

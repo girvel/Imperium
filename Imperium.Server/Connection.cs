@@ -64,7 +64,7 @@ namespace Imperium.Server
                     try
                     {
                         string response;
-                        Send(response = Server.RequestManager.GetResponse(receivedData = Receive(), this));
+                        Send(response = Server.ResponseManager.GetResponse(receivedData = Receive(), this));
                         _log.Message(">> " + response);
                     }
                     catch (SocketException)

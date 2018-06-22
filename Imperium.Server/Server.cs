@@ -17,7 +17,7 @@ namespace Imperium.Server
 
         public Log Log { get; set; }
 
-        public RequestManager<T> RequestManager { get; set; }
+        public ResponseManager<T> ResponseManager { get; set; }
 
         public List<Account<T>> Accounts { get; set; } = new List<Account<T>>();
 
@@ -36,17 +36,17 @@ namespace Imperium.Server
 
 
 
-        public Server(EndPoint endPoint, RequestManager<T> requestManager, Log log)
+        public Server(EndPoint endPoint, ResponseManager<T> responseManager, Log log)
         {
             Log = log;
-            RequestManager = requestManager;
+            ResponseManager = responseManager;
 
             _socket = new Socket(SocketType.Stream, ProtocolType.Tcp);
             try
             {
                 _socket.Bind(EndPoint = endPoint);
             }
-            catch (SocketException ex)
+            catch (SocketException)
             {
                 Log.Message("Server can not be launched");
                 throw;
