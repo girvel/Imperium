@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Imperium.Server.Requesting.Exceptions
+namespace Imperium.Server.Generation.Exceptions
 {
     public class ResponseSearchException : Exception
     {

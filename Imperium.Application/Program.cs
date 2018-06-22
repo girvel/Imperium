@@ -7,6 +7,7 @@ using Imperium.Core.Systems.Owning;
 using Imperium.Ecs.Managers;
 using Imperium.Game;
 using Imperium.Server;
+using Imperium.Server.Generation;
 
 namespace Imperium.Application
 {
@@ -21,7 +22,8 @@ namespace Imperium.Application
         public static void Main(string[] consoleArgs)
         {
             Game = new GameFactory().Generate();
-            Server = new ServerFactory().Generate(Game);
+            Server = new ServerFactory<Player, GameData>().Generate(Game, typeof(Program).Assembly);
+            Server.Accounts.Add(new Account<Player>("", "", new[] {Permission.User, Permission.Admin}, new Player()));
 
             new Thread(Server.Start).Start();
             Game.Ecs.Start();

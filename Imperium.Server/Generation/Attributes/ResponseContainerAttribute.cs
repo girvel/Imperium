@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Imperium.Server.Requesting
+namespace Imperium.Server.Generation.Attributes
 {
     public class ResponseContainerAttribute : Attribute
     {

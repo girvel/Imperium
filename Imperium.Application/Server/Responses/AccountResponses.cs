@@ -2,15 +2,16 @@
 using Imperium.Core.Systems.Owning;
 using Imperium.Game;
 using Imperium.Server;
-using Imperium.Server.Requesting;
+using Imperium.Server.Generation;
+using Imperium.Server.Generation.Attributes;
 using NetData = System.Collections.Generic.Dictionary<string, dynamic>;
 
 namespace Imperium.Application.Server.Responses
 {
     [ResponseContainer]
-    public class AccountResponses : IRequestContainer
+    public class AccountResponses : IRequestContainer<GameData>
     {
-        public GameData GameData { get; set; }
+        public GameData GlobalData { get; set; }
 
 
 
@@ -36,10 +37,10 @@ namespace Imperium.Application.Server.Responses
         [Response(Permission.User)]
         public NetData GetArea(Connection<Player> connection, NetData arguments)
         {
-            var result = new string[GameData.Area.Size.X, GameData.Area.Size.Y];
-            foreach (var v in GameData.Area.Size)
+            var result = new string[GlobalData.Area.Size.X, GlobalData.Area.Size.Y];
+            foreach (var v in GlobalData.Area.Size)
             {
-                result[v.X, v.Y] = GameData.Area[v].First().Parent.Name;
+                result[v.X, v.Y] = GlobalData.Area[v].First().Parent.Name;
             }
                                 
             return new NetData
