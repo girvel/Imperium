@@ -1,5 +1,5 @@
 ﻿using System.Linq;
-using Imperium.Core.Common;
+using Imperium.CommonData;
 using Imperium.Core.Systems.Placing;
 using Moq;
 using Xunit;

@@ -42,7 +42,15 @@ namespace Imperium.Server
             RequestManager = requestManager;
 
             _socket = new Socket(SocketType.Stream, ProtocolType.Tcp);
-            _socket.Bind(EndPoint = endPoint);
+            try
+            {
+                _socket.Bind(EndPoint = endPoint);
+            }
+            catch (SocketException ex)
+            {
+                Log.Message("Server can not be launched");
+                throw;
+            }
         }
 
 

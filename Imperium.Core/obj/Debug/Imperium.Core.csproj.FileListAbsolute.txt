@@ -5,3 +5,5 @@ E:\projects\Imperium\Imperium.Core\bin\Debug\Imperium.Ecs.pdb
 E:\projects\Imperium\Imperium.Core\obj\Debug\Imperium.Core.csprojResolveAssemblyReference.cache
 E:\projects\Imperium\Imperium.Core\obj\Debug\Imperium.Core.dll
 E:\projects\Imperium\Imperium.Core\obj\Debug\Imperium.Core.pdb
+E:\projects\Imperium\Imperium.Core\bin\Debug\Imperium.CommonData.dll
+E:\projects\Imperium\Imperium.Core\bin\Debug\Imperium.CommonData.pdb

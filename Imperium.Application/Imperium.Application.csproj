@@ -33,6 +33,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Microsoft.CSharp" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -46,6 +47,10 @@
     <Compile Include="ServerFactory.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Imperium.CommonData\Imperium.CommonData.csproj">
+      <Project>{a0504b8a-ecbb-4f93-ad2e-48dc7bcef77a}</Project>
+      <Name>Imperium.CommonData</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Imperium.Core\Imperium.Core.csproj">
       <Project>{521ED1BE-B540-4D2C-8DA9-87EC22CF9F91}</Project>
       <Name>Imperium.Core</Name>

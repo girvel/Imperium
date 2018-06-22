@@ -65,6 +65,10 @@
     <Compile Include="Systems\Owning\PlayerComponentTests.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Imperium.CommonData\Imperium.CommonData.csproj">
+      <Project>{A0504B8A-ECBB-4F93-AD2E-48DC7BCEF77A}</Project>
+      <Name>Imperium.CommonData</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Imperium.Core\Imperium.Core.csproj">
       <Project>{521ED1BE-B540-4D2C-8DA9-87EC22CF9F91}</Project>
       <Name>Imperium.Core</Name>
