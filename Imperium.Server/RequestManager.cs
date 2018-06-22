@@ -52,9 +52,11 @@ namespace Imperium.Server
                 {
                     var pair = _responses[jrequest["type"].ToString()];
 
-                    generator = pair.Groups.Any(g => connection.Account?.Groups.Contains(g) ?? g == "")
-                        ? _responses[jrequest["type"].ToString()].ResponseGenerator
-                        : _permissionErrorResponse;
+                    generator =
+                        !pair.Groups.Any()
+                        || (connection.Account?.Groups.Any(g => pair.Groups.Contains(g)) ?? false)
+                            ? _responses[jrequest["type"].ToString()].ResponseGenerator
+                            : _permissionErrorResponse;
 
                     args = jrequest["args"]?.ToObject<Dictionary<string, dynamic>>(Serializer.Current)
                            ?? new Dictionary<string, dynamic>();

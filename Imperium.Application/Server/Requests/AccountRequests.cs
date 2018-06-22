@@ -13,7 +13,7 @@ namespace Imperium.Application.Server.Requests
 
 
 
-        [Request("")]
+        [Request]
         public NetData Login(NetData arguments, Connection<Player> connection)
         {
             var account = connection.Server.Accounts.FirstOrDefault(a =>
@@ -28,12 +28,11 @@ namespace Imperium.Application.Server.Requests
             {
                 ["success"] = account != null,
             };
-            
         }
 
         
         
-        [Request("user")]
+        [Request(Permission.User)]
         public NetData GetArea(NetData arguments, Connection<Player> connection)
         {
             var result = new string[GameData.Area.Size.X, GameData.Area.Size.Y];
