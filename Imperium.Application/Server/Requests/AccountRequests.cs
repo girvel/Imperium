@@ -6,6 +6,7 @@ using NetData = System.Collections.Generic.Dictionary<string, dynamic>;
 
 namespace Imperium.Application.Server.Requests
 {
+    [Container]
     public class AccountRequests : IRequestContainer
     {
         public GameData GameData { get; set; }

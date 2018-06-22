@@ -46,6 +46,7 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ServerFactory.cs" />
+    <Compile Include="Server\ContainerAttribute.cs" />
     <Compile Include="Server\RequestAttribute.cs" />
     <Compile Include="Server\Requests\AccountRequests.cs" />
   </ItemGroup>
