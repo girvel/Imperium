@@ -48,7 +48,9 @@ namespace Imperium.Server.Generation
                         => c.GetType()
                             .GetMethods()
                             .Where(m => m.GetCustomAttributes(false).Any(a => a is PermissionResponseAttribute))
-                            .Select(r => (ResponseManager<TAccountData>.ResponseGenerator) r.CreateDelegate(typeof(ResponseManager<TAccountData>.ResponseGenerator), c)))
+                            .Select(r => 
+                                (ResponseManager<TAccountData>.ResponseGenerator) 
+                                r.CreateDelegate(typeof(ResponseManager<TAccountData>.ResponseGenerator), c)))
                     .ToArray();
 
             if (permissionResponses.Length != 1)

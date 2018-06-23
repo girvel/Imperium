@@ -19,6 +19,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Imperium.Server", "Imperium
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Imperium.CommonData", "Imperium.CommonData\Imperium.CommonData.csproj", "{A0504B8A-ECBB-4F93-AD2E-48DC7BCEF77A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Imperium.Server.Tests", "Imperium.Server.Tests\Imperium.Server.Tests.csproj", "{7EEC85FE-870F-44DD-93EC-36EC407DD49C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -57,6 +59,10 @@ Global
 		{A0504B8A-ECBB-4F93-AD2E-48DC7BCEF77A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A0504B8A-ECBB-4F93-AD2E-48DC7BCEF77A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A0504B8A-ECBB-4F93-AD2E-48DC7BCEF77A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7EEC85FE-870F-44DD-93EC-36EC407DD49C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7EEC85FE-870F-44DD-93EC-36EC407DD49C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7EEC85FE-870F-44DD-93EC-36EC407DD49C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7EEC85FE-870F-44DD-93EC-36EC407DD49C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

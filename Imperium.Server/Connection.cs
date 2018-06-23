@@ -60,7 +60,7 @@ namespace Imperium.Server
             {
                 while (true)
                 {
-                    string receivedData = "-";
+                    var receivedData = "-";
                     try
                     {
                         string response;
