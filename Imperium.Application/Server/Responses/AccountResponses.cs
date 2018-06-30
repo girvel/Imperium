@@ -16,10 +16,10 @@ namespace Imperium.Application.Server.Responses
 
 
         [Response]
-        public NetData Login(Connection<Player> connection, NetData arguments)
+        public NetData Login(Connection<Player> connection, string login, string password)
         {
             var account = connection.Server.Accounts.FirstOrDefault(a =>
-                a.Login == arguments["login"] && a.Password == arguments["password"]);
+                a.Login == login && a.Password == password);
 
             if (connection.Server.Connections.All(c => c.Account != account))
             {
@@ -35,7 +35,7 @@ namespace Imperium.Application.Server.Responses
         
         
         [Response(Permission.User)]
-        public NetData GetArea(Connection<Player> connection, NetData arguments)
+        public NetData GetArea(Connection<Player> connection)
         {
             var result = new string[GlobalData.Area.Size.X, GlobalData.Area.Size.Y];
             foreach (var v in GlobalData.Area.Size)

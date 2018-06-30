@@ -37,8 +37,7 @@ namespace Imperium.Server.Generation
                             .Select(m => new KeyValuePair<string, ResponsePair<TAccountData>>(
                                 m.Name,
                                 new ResponsePair<TAccountData>(
-                                    (ResponseManager<TAccountData>.ResponseGenerator)
-                                    m.CreateDelegate(typeof(ResponseManager<TAccountData>.ResponseGenerator), c),
+                                    MethodToDelegate(m, c),
                                     m.GetCustomAttributes(false).OfType<ResponseAttribute>().First().Groups))))
                     .ToDictionary(
                         p => p.Key,
@@ -79,6 +78,26 @@ namespace Imperium.Server.Generation
                     permissionResponses[0],
                     ex => (args, c) => exceptionResponses[0](ex, args, c)),
                 new Log(Console.Out));
+        }
+        
+        
+        
+        private static ResponseManager<TAccountData>.ResponseGenerator MethodToDelegate(
+            MethodInfo method, IRequestContainer<TGlobalData> container)
+        {
+            //m.CreateDelegate(typeof(ResponseManager<TAccountData>.ResponseGenerator), c)
+            return (connection, args) =>
+            {
+                var methodArgs = new object[method.GetParameters().Length];
+                methodArgs[0] = connection;
+
+                for (var i = 1; i < methodArgs.Length; i++)
+                {
+                    methodArgs[i] = args[method.GetParameters()[i].Name];
+                }
+
+                return (NetData) method.Invoke(container, methodArgs);
+            };
         }
     }
 }
