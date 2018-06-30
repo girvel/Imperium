@@ -24,9 +24,9 @@ namespace Imperium.Client
             }.ToString();
         }
 
-        public NetData DecodeResponse(string response)
+        public T DecodeResponse<T>(string response)
         {
-            return JObject.Parse(response).ToObject<NetData>(Serializer);
+            return JToken.Parse(response)["result"].ToObject<T>(Serializer);
         }
     }
 }

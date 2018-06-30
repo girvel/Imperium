@@ -96,7 +96,10 @@ namespace Imperium.Server.Generation
                     methodArgs[i] = args[method.GetParameters()[i].Name];
                 }
 
-                return (NetData) method.Invoke(container, methodArgs);
+                return new NetData
+                {
+                    ["result"] = method.Invoke(container, methodArgs),
+                };
             };
         }
     }

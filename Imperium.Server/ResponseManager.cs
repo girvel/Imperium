@@ -4,12 +4,13 @@ using System.Linq;
 using System.Runtime.Serialization;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
+using NetData = System.Collections.Generic.Dictionary<string, object>;
 
 namespace Imperium.Server
 {
     public class ResponseManager<T>
     {
-        public delegate Dictionary<string, dynamic> ResponseGenerator(Connection<T> connection, Dictionary<string, dynamic> args);
+        public delegate NetData ResponseGenerator(Connection<T> connection, Dictionary<string, dynamic> args);
 
         public delegate ResponseGenerator ExceptionResponseGenerator(Exception ex);
 

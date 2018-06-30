@@ -17,8 +17,8 @@ namespace Imperium.Client
             Connection.Connect(remoteEndPoint);
         }
 
-        protected NetData Request(string type, NetData args) =>
-            RequestManager.DecodeResponse(
+        protected T Request<T>(string type, NetData args) =>
+            RequestManager.DecodeResponse<T>(
                 Connection.Request(
                     RequestManager.CreateRequest(
                         type,

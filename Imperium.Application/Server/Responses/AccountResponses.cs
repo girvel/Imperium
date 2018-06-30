@@ -16,37 +16,37 @@ namespace Imperium.Application.Server.Responses
 
 
         [Response]
-        public NetData Login(Connection<Player> connection, string login, string password)
+        public bool Login(Connection<Player> connection, string login, string password)
         {
             var account = connection.Server.Accounts.FirstOrDefault(a =>
                 a.Login == login && a.Password == password);
 
+            if (account == null)
+            {
+                return false;
+            }
+
             if (connection.Server.Connections.All(c => c.Account != account))
             {
                 connection.Account = account;
+                return true;
             }
 
-            return new NetData
-            {
-                ["success"] = account != null,
-            };
+            return false;
         }
 
         
         
         [Response(Permission.User)]
-        public NetData GetArea(Connection<Player> connection)
+        public string[,] GetArea(Connection<Player> connection)
         {
             var result = new string[GlobalData.Area.Size.X, GlobalData.Area.Size.Y];
             foreach (var v in GlobalData.Area.Size)
             {
                 result[v.X, v.Y] = GlobalData.Area[v].First().Parent.Name;
             }
-                                
-            return new NetData
-            {
-                ["area"] = result,
-            };
+
+            return result;
         }
     }
 }

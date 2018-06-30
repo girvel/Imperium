@@ -17,7 +17,7 @@ namespace Imperium.Escape
         {
             Log.Message("Imperium.Escape started");
             
-            var assembly = typeof()
+            //var assembly = typeof()
         }
     }
 }
