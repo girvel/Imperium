@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 
-namespace Imperium.Server
+namespace Province.Log
 {
     public class Log
     {

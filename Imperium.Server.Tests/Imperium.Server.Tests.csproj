@@ -81,6 +81,10 @@
       <Project>{4f2fa629-6d86-4b25-8999-4152fd596ce2}</Project>
       <Name>Imperium.Server</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Province.Log\Province.Log.csproj">
+      <Project>{8ed77d14-9639-4b55-88c9-77d478d63b9a}</Project>
+      <Name>Province.Log</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

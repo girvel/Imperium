@@ -1,6 +1,7 @@
 ﻿using System.IO;
 using System.Linq;
 using Moq;
+using Province.Log;
 using Xunit;
 
 namespace Imperium.Server.Tests

@@ -4,12 +4,12 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{4F2FA629-6D86-4B25-8999-4152FD596CE2}</ProjectGuid>
+    <ProjectGuid>{8ED77D14-9639-4B55-88C9-77D478D63B9A}</ProjectGuid>
     <ProjectTypeGuids>{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Imperium.Server</RootNamespace>
-    <AssemblyName>Imperium.Server</AssemblyName>
+    <RootNamespace>Province.Log</RootNamespace>
+    <AssemblyName>Province.Log</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -33,41 +33,14 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Newtonsoft.Json, Version=11.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed">
-      <HintPath>..\packages\Newtonsoft.Json.11.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Account.cs" />
-    <Compile Include="Common\LogHelper.cs" />
-    <Compile Include="Connection.cs" />
-    <Compile Include="Generation\IRequestContainer.cs" />
-    <Compile Include="Generation\ServerFactory.cs" />
-    <Compile Include="News.cs" />
-    <Compile Include="NewsManager.cs" />
+    <Compile Include="Log.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Generation\Attributes\ExceptionResponseAttribute.cs" />
-    <Compile Include="Generation\Attributes\PermissionResponseAttribute.cs" />
-    <Compile Include="Generation\Attributes\ResponseAttribute.cs" />
-    <Compile Include="Generation\Attributes\ResponseContainerAttribute.cs" />
-    <Compile Include="Generation\Exceptions\ResponseSearchException.cs" />
-    <Compile Include="ResponseManager.cs" />
-    <Compile Include="ResponsePair.cs" />
-    <Compile Include="Serializer.cs" />
-    <Compile Include="Server.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Province.Log\Province.Log.csproj">
-      <Project>{8ed77d14-9639-4b55-88c9-77d478d63b9a}</Project>
-      <Name>Province.Log</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

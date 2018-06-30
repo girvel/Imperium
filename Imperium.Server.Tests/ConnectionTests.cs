@@ -2,6 +2,7 @@
 using System.Threading;
 using Moq;
 using Newtonsoft.Json.Linq;
+using Province.Log;
 using Xunit;
 
 namespace Imperium.Server.Tests

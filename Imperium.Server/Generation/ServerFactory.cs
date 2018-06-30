@@ -5,6 +5,7 @@ using System.Net;
 using System.Reflection;
 using Imperium.Server.Generation.Attributes;
 using Imperium.Server.Generation.Exceptions;
+using Province.Log;
 using NetData = System.Collections.Generic.Dictionary<string, dynamic>;
 
 namespace Imperium.Server.Generation
