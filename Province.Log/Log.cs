@@ -18,7 +18,7 @@ namespace Province.Log
 
         public virtual void Message(string text)
         {
-            var str = $"{DateTime.Now:hh:mm:ss}\t {text}\n\n";
+            var str = $"{DateTime.Now:hh:mm:ss}\t {text}\n";
             foreach (var w in Writers)
             {
                 w.Write(str);
