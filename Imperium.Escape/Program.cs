@@ -22,7 +22,7 @@ namespace Imperium.Escape
             Log = new Log(Console.Out);
         }
         
-        public static void Main(string[] args)
+        public static void Main(string[] consoleArgs)
         {
             Log.Message("Imperium.Escape started");
 
@@ -87,8 +87,8 @@ namespace Imperium.Escape
                             ? ""
                             : m.GetParameters()
                                 .Skip(1)
-                                .Aggregate("", (sum, p) => $"{sum},\n{{\"{p.Name}\", {p.Name}}}")
-                                .Substring(2)))
+                                .Aggregate("", (sum, p) => $"{sum},\n\t\t\t\t\t{{\"{p.Name}\", {p.Name}}}")
+                                .Substring(7)))
                     .Aggregate("", (sum, str) => sum + "\n\n" + str));
             
             Log.Message("Generated code:\n\n" + code);
@@ -101,11 +101,9 @@ namespace Imperium.Escape
             
             Log.Message("Compilation is starting");
             
-            var process = Process.Start(
-                "C:/Windows/Microsoft.NET/Framework/v3.5/csc.exe", 
-                "-target:library -out:Caesar.Net.dll -debug NetManager.cs " 
-                + "-reference:Imperium.Client.dll -reference:Imperium.Server.dll "
-                + "-reference:Imperium.CommonData.dll -reference:Province.Vector");
+            var process = Process.Start("compile.bat");
+
+            process.WaitForExit();
             
             Log.Message("Finished generation");
         }

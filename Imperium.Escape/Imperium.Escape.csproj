@@ -119,6 +119,10 @@
       <Project>{119FDE39-2B95-44F8-A4B4-555E8C70337E}</Project>
       <Name>Imperium.Client</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Imperium.CommonData\Imperium.CommonData.csproj">
+      <Project>{a0504b8a-ecbb-4f93-ad2e-48dc7bcef77a}</Project>
+      <Name>Imperium.CommonData</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Imperium.Server\Imperium.Server.csproj">
       <Project>{4F2FA629-6D86-4B25-8999-4152FD596CE2}</Project>
       <Name>Imperium.Server</Name>

@@ -5,7 +5,7 @@ using System.Linq;
 
 namespace Province.Vector
 {
-    public struct Vector : IEnumerable<Vector>
+    public struct Vector
     {
         public readonly int X, Y;
 
@@ -77,19 +77,13 @@ namespace Province.Vector
 
         
         
-        IEnumerator IEnumerable.GetEnumerator()
-        {
-            return GetEnumerator();
-        }
-
-        public IEnumerator<Vector> GetEnumerator()
+        public IEnumerable<Vector> Range()
         {
             var X = this.X;
             return 
                 Enumerable
                     .Range(0, Y)
-                    .SelectMany(y => Enumerable.Range(0, X).Select(x => new Vector(x, y)))
-                    .GetEnumerator();
+                    .SelectMany(y => Enumerable.Range(0, X).Select(x => new Vector(x, y)));
         }
     }
 }

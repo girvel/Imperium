@@ -1,5 +1,6 @@
 ﻿using System.Linq;
 using Imperium.Core.Systems.Owning;
+using Imperium.Core.Systems.Placing;
 using Imperium.Game;
 using Imperium.Server;
 using Imperium.Server.Generation;
@@ -41,7 +42,7 @@ namespace Imperium.Application.Server.Responses
         public string[,] GetArea(Connection<Player> connection)
         {
             var result = new string[GlobalData.Area.Size.X, GlobalData.Area.Size.Y];
-            foreach (var v in GlobalData.Area.Size)
+            foreach (var v in GlobalData.Area.Size.Range())
             {
                 result[v.X, v.Y] = GlobalData.Area[v].First().Parent.Name;
             }

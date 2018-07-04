@@ -28,7 +28,7 @@ namespace Imperium.Game
                 }
             };
 
-            foreach (var position in area.Size)
+            foreach (var position in area.Size.Range())
             {
                 var clone = ecs.EntityManager.CreateNew(position == area.Size / 2 ? house : field);
                 area[position].Add(clone.GetComponent<PositionComponent>());
