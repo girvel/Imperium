@@ -108,8 +108,6 @@ namespace Imperium.Escape
                 + "-reference:Imperium.CommonData.dll -reference:Province.Vector");
             
             Log.Message("Finished generation");
-            
-            Console.ReadKey();
         }
 
         private static string ReadFile(string path)
