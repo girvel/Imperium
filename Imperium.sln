@@ -27,6 +27,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Imperium.Escape", "Imperium
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Province.Log", "Province.Log\Province.Log.csproj", "{8ED77D14-9639-4B55-88C9-77D478D63B9A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Province.Vector", "Province.Vector\Province.Vector.csproj", "{60EB862E-9925-4184-B7FE-355D79DA8FE9}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -81,6 +83,10 @@ Global
 		{8ED77D14-9639-4B55-88C9-77D478D63B9A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8ED77D14-9639-4B55-88C9-77D478D63B9A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8ED77D14-9639-4B55-88C9-77D478D63B9A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{60EB862E-9925-4184-B7FE-355D79DA8FE9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{60EB862E-9925-4184-B7FE-355D79DA8FE9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{60EB862E-9925-4184-B7FE-355D79DA8FE9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{60EB862E-9925-4184-B7FE-355D79DA8FE9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

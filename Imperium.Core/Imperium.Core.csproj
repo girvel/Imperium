@@ -58,6 +58,10 @@
       <Project>{942FC477-CDFA-4C06-B01C-2B29C9B30B01}</Project>
       <Name>Imperium.Ecs</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Province.Vector\Province.Vector.csproj">
+      <Project>{60EB862E-9925-4184-B7FE-355D79DA8FE9}</Project>
+      <Name>Province.Vector</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

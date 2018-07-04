@@ -69,6 +69,10 @@
       <Project>{4F2FA629-6D86-4B25-8999-4152FD596CE2}</Project>
       <Name>Imperium.Server</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Province.Vector\Province.Vector.csproj">
+      <Project>{60eb862e-9925-4184-b7fe-355d79da8fe9}</Project>
+      <Name>Province.Vector</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

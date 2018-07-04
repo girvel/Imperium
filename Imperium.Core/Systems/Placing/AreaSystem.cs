@@ -1,4 +1,5 @@
 ﻿using Imperium.CommonData;
+using Province.Vector;
 
 namespace Imperium.Core.Systems.Placing
 {

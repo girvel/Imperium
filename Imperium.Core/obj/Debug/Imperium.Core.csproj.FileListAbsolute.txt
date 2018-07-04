@@ -7,3 +7,5 @@ E:\projects\Imperium\Imperium.Core\obj\Debug\Imperium.Core.dll
 E:\projects\Imperium\Imperium.Core\obj\Debug\Imperium.Core.pdb
 E:\projects\Imperium\Imperium.Core\bin\Debug\Imperium.CommonData.dll
 E:\projects\Imperium\Imperium.Core\bin\Debug\Imperium.CommonData.pdb
+E:\projects\Imperium\Imperium.Core\bin\Debug\Province.Vector.dll
+E:\projects\Imperium\Imperium.Core\bin\Debug\Province.Vector.pdb

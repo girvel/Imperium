@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using Imperium.CommonData;
 using Imperium.Core.Systems.Placing;
+using Province.Vector;
 
 namespace Imperium.Core
 {

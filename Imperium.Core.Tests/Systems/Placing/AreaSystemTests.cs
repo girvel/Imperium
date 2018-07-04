@@ -2,6 +2,7 @@
 using Imperium.CommonData;
 using Imperium.Core.Systems.Placing;
 using Moq;
+using Province.Vector;
 using Xunit;
 
 namespace Imperium.Core.Tests.Systems.Placing

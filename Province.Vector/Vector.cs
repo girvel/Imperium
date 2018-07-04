@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace Imperium.CommonData
+namespace Province.Vector
 {
     public struct Vector : IEnumerable<Vector>
     {

@@ -3,6 +3,7 @@ using Imperium.Core;
 using Imperium.Core.Systems.Owning;
 using Imperium.Core.Systems.Placing;
 using Imperium.Ecs.Managers;
+using Province.Vector;
 
 namespace Imperium.Game
 {
