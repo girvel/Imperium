@@ -93,22 +93,6 @@ namespace Imperium.Escape
             
             Log.Message("Generated code:\n\n" + code);
             
-            /*var results = new CSharpCodeProvider().CompileAssemblyFromSource(new CompilerParameters
-            {
-                ReferencedAssemblies =
-                {
-                    "Imperium.Client.dll",
-                },
-                OutputAssembly = "Caesar.Net.dll",
-                GenerateExecutable = false,
-            }, code);
-            
-            Log.Message("Errors: " + results.Errors.Count);
-            foreach (CompilerError err in results.Errors)
-            {
-                Log.Message($"ERROR {err.ErrorText}");
-            }*/
-            
             using (var file = File.Open("NetManager.cs", FileMode.Create))
             using (var writer = new StreamWriter(file))
             {
