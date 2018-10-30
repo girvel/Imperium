@@ -37,35 +37,6 @@ namespace Imperium.Escape
                     .SelectMany(t
                         => t.GetMethods()
                             .Where(m => m.GetCustomAttributes(false).Any(a => a is ResponseAttribute)));
-            
-            /*var generator = SyntaxGenerator.GetGenerator(new AdhocWorkspace(), LanguageNames.CSharp);
-
-            var code = generator.CompilationUnit(
-                generator.NamespaceImportDeclaration("Imperium.Client"),
-                generator.ClassDeclaration(
-                    "NetManager",
-                    accessibility: Accessibility.Public,
-                    baseType: generator.DottedName(typeof(AbstractNetManager).FullName),
-                    members: responseMethods
-                        .Select(m => generator.MethodDeclaration(
-                            m.Name, 
-                            accessibility: Accessibility.Public,
-                            parameters: m.GetParameters()
-                                .Select(p => generator.ParameterDeclaration(
-                                    p.Name, 
-                                    generator.DottedName(p.ParameterType.FullName))),
-                            statements: new[]
-                            {
-                                generator.InvocationExpression(
-                                    generator.GenericName(
-                                        "Request", 
-                                        generator.DottedName(m.ReturnType.FullName)),
-                                    generator.ObjectCreationExpression(
-                                        generator.GenericName(
-                                            typeof(Dictionary<string, object>).FullName, 
-                                            generator.DottedName(typeof(string).FullName),
-                                            generator.DottedName(typeof(object).FullName))))
-                            }))));*/
 
             var fileTemplate = ReadFile("templates/NetManager.cs");
             var methodTemplate = ReadFile("templates/RequestMethod.cs");

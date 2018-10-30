@@ -19,8 +19,7 @@ namespace Imperium.Application.Server.Responses
         [Response]
         public bool Login(Connection<Player> connection, string login, string password)
         {
-            var account = connection.Server.Accounts.FirstOrDefault(a =>
-                a.Login == login && a.Password == password);
+            var account = connection.Server.Accounts.FirstOrDefault(a => a.Login == login && a.Password == password);
 
             if (account == null)
             {

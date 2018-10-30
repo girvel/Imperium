@@ -14,16 +14,20 @@ namespace Imperium.Application.Server.Responses
         public GameData GlobalData { get; set; }
         
         [ExceptionResponse]
-        public NetData Exception(Exception ex, Connection<Player> connection, NetData arguments) => new NetData
-        {
-            ["error type"] = "request",
-            ["exception"] = ex,
-        };
+        public NetData Exception(Exception ex, Connection<Player> connection, NetData arguments) 
+            => new NetData
+            {
+                ["error type"] = "request",
+                ["exception"] = ex,
+            };
 
+        
+        
         [PermissionResponse]
-        public NetData PermissionException(Connection<Player> connection, NetData arguments) => new NetData
-        {
-            ["error type"] = "permission",
-        };
+        public NetData PermissionException(Connection<Player> connection, NetData arguments) 
+            => new NetData
+            {
+                ["error type"] = "permission",
+            };
     }
 }
