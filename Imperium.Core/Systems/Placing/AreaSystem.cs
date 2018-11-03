@@ -16,9 +16,14 @@ namespace Imperium.Core.Systems.Placing
         
         public void Move(PositionComponent component, Vector newPosition)
         {
-            Area[component.Position].Remove(component);
+            Remove(component);
             component.Position = newPosition;
             Area[component.Position].Add(component);
+        }
+
+        public void Remove(PositionComponent component)
+        {
+            Area[component.Position].Remove(component);
         }
     }
 }

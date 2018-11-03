@@ -8,7 +8,7 @@ namespace Imperium.Ecs.Tests
     public class EntityTests
     {
         [Fact]
-        public void AddComponent_ShouldAddComponentToListsAndGiveHimReferencesAndStartIt()
+        public void AddComponent_AddsComponentToListsAndGivesHimReferencesAndStartIt()
         {
             // arrange
             var component = new Mock<Component>();
@@ -35,7 +35,7 @@ namespace Imperium.Ecs.Tests
         }
 
         [Fact]
-        public void GetComponent_ShouldReturnComponentOfType()
+        public void GetComponent_ReturnsComponentOfType()
         {
             // arrange
             var component = new TestComponent();
@@ -51,7 +51,20 @@ namespace Imperium.Ecs.Tests
             Assert.Equal(component, result);
         }
 
-        class TestComponent : Component
+        [Fact]
+        public void GetComponent_ReturnsNullWhenThereIsNoComponentOfType()
+        {
+            // arrange
+            var entity = new Entity();
+            
+            // act
+            var result = entity.GetComponent<TestComponent>();
+            
+            // assert
+            Assert.Null(result);
+        }
+
+        private class TestComponent : Component
         {
             
         }

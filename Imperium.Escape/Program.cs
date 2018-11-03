@@ -16,6 +16,14 @@ namespace Imperium.Escape
     internal class Program
     {
         public static Log Log;
+        
+        public static readonly string[] CommonLibraries =
+        {
+            "Imperium.Client.dll", 
+            "Imperium.Server.dll",
+            "Imperium.CommonData.dll",
+            "Province.Vector.dll",
+        };
 
         static Program()
         {
@@ -71,6 +79,16 @@ namespace Imperium.Escape
             }
             
             Log.Message("Compilation is starting");
+
+            using (var stream = File.OpenWrite("compile.bat"))
+            using (var writer = new StreamWriter(stream))
+            {
+                writer.WriteLine(
+                    "C:/Windows/Microsoft.NET/Framework/v3.5/csc.exe " +
+                    "-target:library -out:Caesar.Net.dll -debug NetManager.cs" +
+                    CommonLibraries.Aggregate("", (sum, l) => sum + " -reference:" + l));
+                writer.WriteLine("pause");
+            }
             
             var process = Process.Start("compile.bat");
 

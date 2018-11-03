@@ -16,7 +16,7 @@ namespace Imperium.Ecs.Tests.Managers
             };
             
             // act
-            var entity = manager.CreateNew();
+            var entity = manager.Create();
             
             // assert
             Assert.Equal(manager.Ecs, entity.Ecs);
@@ -48,7 +48,7 @@ namespace Imperium.Ecs.Tests.Managers
             original.Components.Add(component.Object);
             
             // act
-            var copy = manager.CreateNew(original);
+            var copy = manager.Create(original);
             
             // assert
             Assert.Equal(original.Ecs, copy.Ecs);

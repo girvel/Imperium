@@ -12,5 +12,10 @@ namespace Imperium.Ecs.Managers
         {
             Subjects.Add(subject);
         }
+
+        public virtual void Unregister(T subject)
+        {
+            Subjects.Remove(subject);
+        }
     }
 }

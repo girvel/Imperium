@@ -11,7 +11,7 @@ namespace Imperium.Client
                 new JsonSerializerSettings
                 {
                     PreserveReferencesHandling = PreserveReferencesHandling.Objects,
-                    TypeNameHandling = TypeNameHandling.Objects,
+                    TypeNameHandling = TypeNameHandling.All,
                     FloatParseHandling = FloatParseHandling.Decimal,
                 });
         
@@ -20,7 +20,7 @@ namespace Imperium.Client
             return new JObject
             {
                 {"type", type},
-                {"args", JToken.FromObject(args)}
+                {"args", JToken.FromObject(args, Serializer)}
             }.ToString();
         }
 

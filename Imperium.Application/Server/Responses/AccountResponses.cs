@@ -1,10 +1,12 @@
 ﻿using System.Linq;
 using Imperium.Core.Systems.Owning;
 using Imperium.Core.Systems.Placing;
+using Imperium.Core.Systems.Upgrading;
 using Imperium.Game;
 using Imperium.Server;
 using Imperium.Server.Generation;
 using Imperium.Server.Generation.Attributes;
+using Province.Vector;
 using NetData = System.Collections.Generic.Dictionary<string, dynamic>;
 
 namespace Imperium.Application.Server.Responses
@@ -47,6 +49,18 @@ namespace Imperium.Application.Server.Responses
             }
 
             return result;
+        }
+        
+        
+        
+        [Response(Permission.User)]
+        public bool UpgradeBuilding(Connection<Player> connection, Vector position, string name)
+        {
+            return GlobalData
+                .Area[position]
+                .Select(c => c.Parent.GetComponent<UpgradableComponent>())
+                .FirstOrDefault(c => c != null)
+                ?.Upgrade() ?? false;
         }
     }
 }

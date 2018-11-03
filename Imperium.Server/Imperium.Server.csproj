@@ -68,6 +68,10 @@
       <Project>{8ed77d14-9639-4b55-88c9-77d478d63b9a}</Project>
       <Name>Province.Log</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Province.Vector\Province.Vector.csproj">
+      <Project>{60EB862E-9925-4184-B7FE-355D79DA8FE9}</Project>
+      <Name>Province.Vector</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

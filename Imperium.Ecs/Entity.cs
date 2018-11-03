@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using Imperium.Ecs.Managers;
 
@@ -30,9 +29,20 @@ namespace Imperium.Ecs
             component.Start();
         }
         
+        public void RemoveComponent(Component component)
+        {
+            component.Ecs = null;
+            component.Parent = null;
+            
+            Components.Remove(component);
+            Ecs.ComponentManager.Unregister(component);
+            
+            component.Destroy();
+        }
+        
         public T GetComponent<T>()
         {
-            return Components.OfType<T>().First();
+            return Components.OfType<T>().FirstOrDefault();
         }
     }
 }

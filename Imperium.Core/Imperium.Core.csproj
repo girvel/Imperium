@@ -46,6 +46,7 @@
     <Compile Include="Systems\Owning\OwnedComponent.cs" />
     <Compile Include="Systems\Owning\Player.cs" />
     <Compile Include="Systems\Owning\PlayerSystem.cs" />
+    <Compile Include="Systems\Upgrading\UpgradableComponent.cs" />
     <Compile Include="Systems\Vision\ObserverComponent.cs" />
     <Compile Include="Systems\Vision\VisionSystem.cs" />
   </ItemGroup>

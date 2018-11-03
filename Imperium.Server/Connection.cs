@@ -61,11 +61,14 @@ namespace Imperium.Server
             {
                 while (true)
                 {
-                    var receivedData = "-";
                     try
                     {
                         string response;
-                        Send(response = Server.ResponseManager.GetResponse(receivedData = Receive(), this));
+                        
+                        var receivedData = Receive();
+                        _log.Message("<< " + receivedData);
+                        
+                        Send(response = Server.ResponseManager.GetResponse(receivedData, this));
                         _log.Message(">> " + response);
                     }
                     catch (SocketException)

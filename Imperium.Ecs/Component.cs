@@ -15,6 +15,10 @@ namespace Imperium.Ecs
         {
         }
 
+        public virtual void Destroy()
+        {
+        }
+
         public virtual object Clone()
         {
             return (Component) MemberwiseClone();

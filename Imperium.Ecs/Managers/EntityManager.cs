@@ -11,7 +11,7 @@ namespace Imperium.Ecs.Managers
 
 
 
-        public Entity CreateNew(Entity original = null)
+        public Entity Create(Entity original = null, Entity previous = null)
         {
             var newEntity = new Entity
             {
@@ -22,14 +22,33 @@ namespace Imperium.Ecs.Managers
 
             if (original != null)
             {
-                foreach (var c in original.Components.Select(c => Ecs.ComponentManager.CreateClone(c)))
+                foreach (var c in original.Components)
                 {
-                    newEntity.AddComponent(c);
+                    newEntity.AddComponent(
+                        (Component) previous?.Components.FirstOrDefault(pc => c.GetType() == pc.GetType())?.Clone() 
+                        ?? Ecs.ComponentManager.CreateClone(c));
                 }
             }
+
+            Destroy(previous);
             
             Entities.Add(newEntity);
             return newEntity;
+        }
+
+
+
+        public void Destroy(Entity target)
+        {
+            if (target != null)
+            {
+                foreach (var component in target.Components)
+                {
+                    Ecs.ComponentManager.Unregister(component);
+                }
+                
+                Entities.Remove(target);
+            }
         }
     }
 }

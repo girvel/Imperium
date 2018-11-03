@@ -21,6 +21,8 @@ namespace Imperium.Application
         
         public static void Main(string[] consoleArgs)
         {
+            
+            
             Game = new GameFactory().Generate();
             Server = new ServerFactory<Player, GameData>().Generate(Game, typeof(Program).Assembly);
             Server.Accounts.Add(new Account<Player>("", "", new[] {Permission.User, Permission.Admin}, new Player()));
