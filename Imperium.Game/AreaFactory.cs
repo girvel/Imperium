@@ -38,11 +38,11 @@ namespace Imperium.Game
                     new PositionComponent(), 
                 },
             };
-
+            
             foreach (var position in area.Size.Range())
             {
                 var clone = ecs.EntityManager.Create(position == area.Size / 2 ? house : field);
-                area[position].Add(clone.GetComponent<PositionComponent>());
+                area.Move(clone.GetComponent<PositionComponent>(), position);
             }
         }
     }

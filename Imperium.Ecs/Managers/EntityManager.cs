@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace Imperium.Ecs.Managers
@@ -8,6 +9,8 @@ namespace Imperium.Ecs.Managers
         public List<Entity> Entities { get; } = new List<Entity>();
         
         public EcsManager Ecs { get; set; }
+
+        public event Action<Entity> OnEntityCreate, OnEntityDestroy;
 
 
 
@@ -24,15 +27,24 @@ namespace Imperium.Ecs.Managers
             {
                 foreach (var c in original.Components)
                 {
-                    newEntity.AddComponent(
-                        (Component) previous?.Components.FirstOrDefault(pc => c.GetType() == pc.GetType())?.Clone() 
-                        ?? Ecs.ComponentManager.CreateClone(c));
+                    var previousComponent = previous?.Components.FirstOrDefault(pc => c.GetType() == pc.GetType());
+                    if (previousComponent != null)
+                    {
+                        previous.RemoveComponent(previousComponent);
+                        newEntity.AddComponent(previousComponent);
+                    }
+                    else
+                    {
+                        newEntity.AddComponent(Ecs.ComponentManager.CreateClone(c));
+                    }
                 }
             }
 
             Destroy(previous);
             
             Entities.Add(newEntity);
+            OnEntityCreate?.Invoke(newEntity);
+
             return newEntity;
         }
 
@@ -48,6 +60,7 @@ namespace Imperium.Ecs.Managers
                 }
                 
                 Entities.Remove(target);
+                OnEntityDestroy?.Invoke(target);
             }
         }
     }

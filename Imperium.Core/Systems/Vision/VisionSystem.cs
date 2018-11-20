@@ -1,5 +1,4 @@
 ﻿using System;
-using Imperium.CommonData;
 using Province.Vector;
 
 namespace Imperium.Core.Systems.Vision

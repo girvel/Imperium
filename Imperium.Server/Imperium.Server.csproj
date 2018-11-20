@@ -46,7 +46,7 @@
     <Compile Include="Common\LogHelper.cs" />
     <Compile Include="Connection.cs" />
     <Compile Include="Generation\IRequestContainer.cs" />
-    <Compile Include="Generation\ServerFactory.cs" />
+    <Compile Include="Generation\ResponseServerFactory.cs" />
     <Compile Include="News.cs" />
     <Compile Include="NewsManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

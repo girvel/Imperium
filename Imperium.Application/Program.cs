@@ -13,7 +13,7 @@ namespace Imperium.Application
 {
     internal class Program
     {
-        public static GameData Game;
+        public static EcsManager Ecs;
         
         public static Server<Player> Server;
         
@@ -21,14 +21,15 @@ namespace Imperium.Application
         
         public static void Main(string[] consoleArgs)
         {
+            Ecs = new EcsFactory().Generate();
             
-            
-            Game = new GameFactory().Generate();
-            Server = new ServerFactory<Player, GameData>().Generate(Game, typeof(Program).Assembly);
+            Server = new ResponseServerFactory<Player, EcsManager>().Generate(Ecs, typeof(Program).Assembly);
             Server.Accounts.Add(new Account<Player>("", "", new[] {Permission.User, Permission.Admin}, new Player()));
 
+            EventRegistrator.Register(Server, Ecs);
+
             new Thread(Server.Start).Start();
-            Game.Ecs.Start();
+            Ecs.Start();
         }
     }
 }

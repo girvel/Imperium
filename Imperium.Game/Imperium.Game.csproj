@@ -39,8 +39,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="GameData.cs" />
-    <Compile Include="GameFactory.cs" />
+    <Compile Include="EcsFactory.cs" />
     <Compile Include="AreaFactory.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

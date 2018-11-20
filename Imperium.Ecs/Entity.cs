@@ -44,5 +44,9 @@ namespace Imperium.Ecs
         {
             return Components.OfType<T>().FirstOrDefault();
         }
+        
+        public override string ToString()
+            => $"[Entity \"{Name}\": " +
+               $"{{{Components.Aggregate("", (sum, c) => sum + ", " + c.ToString()).Substring(2)}}}]";
     }
 }

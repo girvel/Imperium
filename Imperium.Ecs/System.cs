@@ -6,6 +6,8 @@ namespace Imperium.Ecs
     {
         public EcsManager Ecs { get; set; }
         
+        
+        
         public virtual void Update()
         {
             

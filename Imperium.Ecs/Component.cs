@@ -23,5 +23,7 @@ namespace Imperium.Ecs
         {
             return (Component) MemberwiseClone();
         }
+
+        public override string ToString() => $"[{GetType().Name}]";
     }
 }

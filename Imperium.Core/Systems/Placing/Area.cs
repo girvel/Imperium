@@ -1,11 +1,9 @@
 ﻿using System.Collections.Generic;
-using Imperium.CommonData;
-using Imperium.Core.Systems.Placing;
 using Province.Vector;
 
-namespace Imperium.Core
+namespace Imperium.Core.Systems.Placing
 {
-    public class Area
+    public class Area : Ecs.System
     {
         public Vector Size { get; set; }
         
@@ -26,6 +24,23 @@ namespace Imperium.Core
                     Grid[x, y] = new List<PositionComponent>();
                 }
             }
+        }
+        
+        public void Move(PositionComponent component, Vector newPosition)
+        {
+            Remove(component);
+            component.Position = newPosition;
+            Register(component);
+        }
+
+        public void Remove(PositionComponent component)
+        {
+            this[component.Position].Remove(component);
+        }
+
+        public void Register(PositionComponent component)
+        {
+            this[component.Position].Add(component);
         }
     }
 }

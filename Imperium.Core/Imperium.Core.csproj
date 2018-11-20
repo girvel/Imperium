@@ -39,9 +39,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Area.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Systems\Placing\AreaSystem.cs" />
+    <Compile Include="Spy.cs" />
+    <Compile Include="Systems\Placing\Area.cs" />
     <Compile Include="Systems\Placing\PositionComponent.cs" />
     <Compile Include="Systems\Owning\OwnedComponent.cs" />
     <Compile Include="Systems\Owning\Player.cs" />

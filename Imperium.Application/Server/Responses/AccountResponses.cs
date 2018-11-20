@@ -2,6 +2,7 @@
 using Imperium.Core.Systems.Owning;
 using Imperium.Core.Systems.Placing;
 using Imperium.Core.Systems.Upgrading;
+using Imperium.Ecs.Managers;
 using Imperium.Game;
 using Imperium.Server;
 using Imperium.Server.Generation;
@@ -12,9 +13,9 @@ using NetData = System.Collections.Generic.Dictionary<string, dynamic>;
 namespace Imperium.Application.Server.Responses
 {
     [ResponseContainer]
-    public class AccountResponses : IRequestContainer<GameData>
+    public class AccountResponses : IRequestContainer<EcsManager>
     {
-        public GameData GlobalData { get; set; }
+        public EcsManager GlobalData { get; set; }
 
 
 
@@ -42,10 +43,11 @@ namespace Imperium.Application.Server.Responses
         [Response(Permission.User)]
         public string[,] GetArea(Connection<Player> connection)
         {
-            var result = new string[GlobalData.Area.Size.X, GlobalData.Area.Size.Y];
-            foreach (var v in GlobalData.Area.Size.Range())
+            var area = GlobalData.SystemManager.GetSystem<Area>();
+            var result = new string[area.Size.X, area.Size.Y];
+            foreach (var v in area.Size.Range())
             {
-                result[v.X, v.Y] = GlobalData.Area[v].First().Parent.Name;
+                result[v.X, v.Y] = area[v].First().Parent.Name;
             }
 
             return result;
@@ -57,10 +59,26 @@ namespace Imperium.Application.Server.Responses
         public bool UpgradeBuilding(Connection<Player> connection, Vector position, string name)
         {
             return GlobalData
-                .Area[position]
+                .SystemManager.GetSystem<Area>()[position]
                 .Select(c => c.Parent.GetComponent<UpgradableComponent>())
                 .FirstOrDefault(c => c != null)
                 ?.Upgrade() ?? false;
+        }
+        
+        
+        
+        [Response(Permission.User)]
+        public NetData[] GetNews(Connection<Player> connection)
+        {
+            return connection.Server.NewsManager
+                .GetNews(connection.Account.ExternalData)
+                .Select(n => 
+                    new NetData
+                    {
+                        ["type"] = n.Type,
+                        ["info"] = n.Info,
+                    })
+                .ToArray();
         }
     }
 }

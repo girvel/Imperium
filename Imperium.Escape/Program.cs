@@ -54,7 +54,7 @@ namespace Imperium.Escape
                 responseMethods
                     .Select(m => string.Format(
                         methodTemplate,
-                        m.ReturnType.FullName,
+                        TypeToString(m.ReturnType),
                         m.Name,
                         m.GetParameters().Length == 1
                             ? ""
@@ -110,10 +110,12 @@ namespace Imperium.Escape
 
         private static string TypeToString(Type type)
         {
-            return type.IsGenericType
-                ? type.FullName.Split('`')[0] +
-                  $"<{type.GetGenericArguments().Aggregate("", (sum, p) => $"{sum}, {TypeToString(p)}".Substring(2))}>"
-                : type.FullName;
+            return type.IsArray
+                ? $"{TypeToString(type.GetElementType())}[{new string(',', type.GetArrayRank() - 1)}]"
+                : type.IsGenericType
+                    ? type.FullName.Split('`')[0] +
+                      $"<{type.GetGenericArguments().Aggregate("", (sum, p) => $"{sum}, {TypeToString(p)}").Substring(2)}>"
+                    : type.FullName;
         }
     }
 }

@@ -10,11 +10,11 @@ using NetData = System.Collections.Generic.Dictionary<string, dynamic>;
 
 namespace Imperium.Server.Generation
 {
-    public class ServerFactory<TAccountData, TGlobalData>
+    public class ResponseServerFactory<TAccountData, TGlobalData>
     {
         private delegate NetData ExceptionResponse(Exception ex, Connection<TAccountData> connection, NetData arguments);
         
-        public Server<TAccountData> Generate(TGlobalData globalData, Assembly assembly)
+        public virtual Server<TAccountData> Generate(TGlobalData globalData, Assembly assembly)
         {
             var containers
                 = assembly

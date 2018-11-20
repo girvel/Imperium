@@ -1,5 +1,6 @@
 ﻿using System;
 using Imperium.Core.Systems.Owning;
+using Imperium.Ecs.Managers;
 using Imperium.Game;
 using Imperium.Server;
 using Imperium.Server.Generation;
@@ -9,9 +10,9 @@ using NetData = System.Collections.Generic.Dictionary<string, dynamic>;
 namespace Imperium.Application.Server.Responses
 {
     [ResponseContainer]
-    public class ExceptionResponses : IRequestContainer<GameData>
+    public class ExceptionResponses : IRequestContainer<EcsManager>
     {
-        public GameData GlobalData { get; set; }
+        public EcsManager GlobalData { get; set; }
         
         [ExceptionResponse]
         public NetData Exception(Exception ex, Connection<Player> connection, NetData arguments) 

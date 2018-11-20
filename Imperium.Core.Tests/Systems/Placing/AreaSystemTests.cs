@@ -1,5 +1,4 @@
 ﻿using System.Linq;
-using Imperium.CommonData;
 using Imperium.Core.Systems.Placing;
 using Moq;
 using Province.Vector;
@@ -13,16 +12,16 @@ namespace Imperium.Core.Tests.Systems.Placing
         public void Move_MovesComponentToNewPosition()
         {
             // arrange
-            var system = new AreaSystem(new Area(new Vector(2, 1)));
+            var system = new Area(new Vector(2, 1));
             var component = Mock.Of<PositionComponent>();
-            system.Area.Grid[0, 0].Add(component);
+            system.Grid[0, 0].Add(component);
             
             // act
             system.Move(component, new Vector(1, 0));
             
             // assert
-            Assert.False(system.Area.Grid[0, 0].Any());
-            Assert.True(system.Area.Grid[1, 0].Contains(component));
+            Assert.False(system.Grid[0, 0].Any());
+            Assert.True(system.Grid[1, 0].Contains(component));
             Assert.Equal(new Vector(1, 0), component.Position);
         }
     }
