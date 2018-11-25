@@ -49,6 +49,20 @@ namespace Imperium.Application.Server
                         });
                 }
             };
+
+            gameData.SystemManager.GetSystem<PlayerSystem>().OnPlayerCreated += player =>
+            {
+                player.OnResourcesChanged += resources =>
+                {
+                    server.NewsManager.AddNews(
+                        player,
+                        "OnResourcesChanged",
+                        new NetData
+                        {
+                            ["value"] = resources.ResourcesArray,
+                        });
+                };
+            };
         }
     }
 }

@@ -24,9 +24,12 @@ namespace Imperium.Application
             Ecs = new EcsFactory().Generate();
             
             Server = new ResponseServerFactory<Player, EcsManager>().Generate(Ecs, typeof(Program).Assembly);
-            Server.Accounts.Add(new Account<Player>("", "", new[] {Permission.User, Permission.Admin}, new Player()));
 
             EventRegistrator.Register(Server, Ecs);
+
+            var player = new Player();
+            Server.Accounts.Add(new Account<Player>("", "", new[] {Permission.User, Permission.Admin}, player));
+            Ecs.SystemManager.GetSystem<PlayerSystem>().Register(player);
 
             new Thread(Server.Start).Start();
             Ecs.Start();

@@ -15,7 +15,7 @@ namespace Imperium.Game
             var area = new Area(new Vector(5, 5));
             
             ecs.SystemManager.Register(area);
-            ecs.SystemManager.Register(new PlayerSystem());
+            ecs.SystemManager.Register(new PlayerSystem(Resources.Zero));
             
             new AreaFactory().Generate(area, ecs);
 

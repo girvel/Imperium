@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using Imperium.Core.Systems.Owning;
 using Imperium.Core.Systems.Placing;
 using Imperium.Core.Systems.Upgrading;
@@ -79,6 +80,15 @@ namespace Imperium.Application.Server.Responses
                         ["info"] = n.Info,
                     })
                 .ToArray();
+        }
+        
+        
+        
+        [Response(Permission.User)]
+        public bool AddResources(Connection<Player> connection)
+        {
+            connection.Account.ExternalData.Resources += new Resources {Wood = 100};
+            return true;
         }
     }
 }

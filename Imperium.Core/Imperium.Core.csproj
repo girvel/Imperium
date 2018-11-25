@@ -39,6 +39,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Common\IResources.cs" />
+    <Compile Include="Common\ResourcesHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Spy.cs" />
     <Compile Include="Systems\Placing\Area.cs" />
