@@ -1,5 +1,4 @@
-﻿using System;
-using System.Linq;
+﻿using System.Linq;
 using Imperium.Core.Systems.Owning;
 using Imperium.Core.Systems.Placing;
 using Imperium.Core.Systems.Upgrading;
@@ -63,7 +62,7 @@ namespace Imperium.Application.Server.Responses
                 .SystemManager.GetSystem<Area>()[position]
                 .Select(c => c.Parent.GetComponent<UpgradableComponent>())
                 .FirstOrDefault(c => c != null)
-                ?.Upgrade() ?? false;
+                ?.Upgrade(connection.Account.ExternalData) ?? false;
         }
         
         

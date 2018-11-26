@@ -1,5 +1,4 @@
-﻿using System;
-using System.Net;
+﻿using System.Net;
 using NetData = System.Collections.Generic.Dictionary<string, object>;
 
 namespace Imperium.Client

@@ -6,6 +6,8 @@ namespace Imperium.Ecs.Managers
     {
         public EcsManager Ecs { get; set; }
         
+        
+        
         public void Update()
         {
             foreach (var subject in Subjects)

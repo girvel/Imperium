@@ -2,11 +2,10 @@
 using Imperium.Core.Systems.Owning;
 using Imperium.Core.Systems.Placing;
 using Imperium.Ecs.Managers;
-using Imperium.Game;
 using Imperium.Server;
 using NetData = System.Collections.Generic.Dictionary<string, object>;
 
-namespace Imperium.Application.Server
+namespace Imperium.Application.Server.Synchronization
 {
     public static class EventRegistrator
     {

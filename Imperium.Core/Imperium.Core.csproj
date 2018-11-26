@@ -41,6 +41,7 @@
   <ItemGroup>
     <Compile Include="Common\IResources.cs" />
     <Compile Include="Common\ResourcesHelper.cs" />
+    <Compile Include="Common\Time.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Spy.cs" />
     <Compile Include="Systems\Placing\Area.cs" />
@@ -48,6 +49,8 @@
     <Compile Include="Systems\Owning\OwnedComponent.cs" />
     <Compile Include="Systems\Owning\Player.cs" />
     <Compile Include="Systems\Owning\PlayerSystem.cs" />
+    <Compile Include="Systems\Income\Incomer.cs" />
+    <Compile Include="Systems\Income\IncomeSystem.cs" />
     <Compile Include="Systems\Upgrading\UpgradableComponent.cs" />
     <Compile Include="Systems\Vision\ObserverComponent.cs" />
     <Compile Include="Systems\Vision\VisionSystem.cs" />

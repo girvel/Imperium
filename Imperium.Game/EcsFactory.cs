@@ -1,4 +1,4 @@
-﻿using Imperium.Core;
+﻿using Imperium.Core.Systems.Income;
 using Imperium.Core.Systems.Owning;
 using Imperium.Core.Systems.Placing;
 using Imperium.Ecs.Managers;
@@ -13,9 +13,18 @@ namespace Imperium.Game
             var ecs = EcsManager.CreateNew();
             
             var area = new Area(new Vector(5, 5));
+
+            var systems = new Ecs.System[]
+            {
+                area,
+                new PlayerSystem(Resources.Zero),
+                new IncomeSystem(),
+            };
             
-            ecs.SystemManager.Register(area);
-            ecs.SystemManager.Register(new PlayerSystem(Resources.Zero));
+            foreach (var system in systems)
+            {
+                ecs.SystemManager.Register(system);
+            }
             
             new AreaFactory().Generate(area, ecs);
 

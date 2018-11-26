@@ -1,5 +1,5 @@
-﻿using System;
-using Imperium.Core;
+﻿using Imperium.Core.Systems.Income;
+using Imperium.Core.Systems.Owning;
 using Imperium.Core.Systems.Placing;
 using Imperium.Core.Systems.Upgrading;
 using Imperium.Ecs;
@@ -17,6 +17,8 @@ namespace Imperium.Game
                 Components =
                 {
                     new PositionComponent(),
+                    new Incomer{Income = new Resources{Food=3600}},
+                    new OwnedComponent(),
                 }
             };
             

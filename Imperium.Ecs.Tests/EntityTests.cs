@@ -1,5 +1,4 @@
-﻿using System;
-using Imperium.Ecs.Managers;
+﻿using Imperium.Ecs.Managers;
 using Moq;
 using Xunit;
 

@@ -1,4 +1,5 @@
 ﻿using System.Linq;
+using Imperium.Core.Systems.Owning;
 using Imperium.Ecs;
 
 namespace Imperium.Core.Systems.Upgrading
@@ -14,13 +15,19 @@ namespace Imperium.Core.Systems.Upgrading
             Upgrades = upgrades;
         }
 
-        public bool Upgrade(Entity upgrade = null)
+        public bool Upgrade(Player owner = null, Entity upgrade = null)
         {
             upgrade = upgrade ?? Upgrades[0];
             
             if (Upgrades.Contains(upgrade))
             {
-                Ecs.EntityManager.Create(upgrade, Parent);
+                var ownedComponent = Ecs.EntityManager.Create(upgrade, Parent).GetComponent<OwnedComponent>();
+
+                if (ownedComponent != null)
+                {
+                    ownedComponent.Owner = owner;
+                }
+                
                 return true;
             }
 

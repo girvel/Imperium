@@ -1,7 +1,6 @@
 ﻿using System;
 using Imperium.Core.Systems.Owning;
 using Imperium.Ecs.Managers;
-using Imperium.Game;
 using Imperium.Server;
 using Imperium.Server.Generation;
 using Imperium.Server.Generation.Attributes;
