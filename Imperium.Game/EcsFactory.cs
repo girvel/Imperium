@@ -1,7 +1,9 @@
-﻿using Imperium.Core.Systems.Income;
+﻿using System;
+using Imperium.Core.Systems.Income;
 using Imperium.Core.Systems.Owning;
 using Imperium.Core.Systems.Placing;
 using Imperium.Ecs.Managers;
+using Imperium.Game.Generation;
 using Province.Vector;
 
 namespace Imperium.Game
@@ -12,7 +14,7 @@ namespace Imperium.Game
         {
             var ecs = EcsManager.CreateNew();
             
-            var area = new Area(new Vector(5, 5));
+            var area = new Area(new Vector(100, 100));
 
             var systems = new Ecs.System[]
             {
@@ -26,7 +28,7 @@ namespace Imperium.Game
                 ecs.SystemManager.Register(system);
             }
             
-            new AreaFactory().Generate(area, ecs);
+            new AreaBasicGenerator().Generate(area, ecs, new Random());
 
             return ecs;
         }

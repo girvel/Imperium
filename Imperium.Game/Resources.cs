@@ -10,7 +10,11 @@ namespace Imperium.Game
 
         private float[] _resourceArray;
 
-        public float[] ResourcesArray => _resourceArray ?? (_resourceArray = new float[ResourceTypesNumber]);
+        public float[] ResourcesArray
+        {
+            get => _resourceArray ?? (_resourceArray = new float[ResourceTypesNumber]);
+            private set => _resourceArray = value;
+        }
 
         public float this[int index]
         {
@@ -143,5 +147,13 @@ namespace Imperium.Game
         public static bool operator !=(IResources r1, Resources r2) => (Resources) r1 != r2;
 
         public static bool operator !=(Resources r1, IResources r2) => r2 != r1;
+
+
+
+        public static implicit operator InternalResources(Resources r) 
+            => new InternalResources{ResourcesArray = (float[]) r.ResourcesArray.Clone()};
+
+        public static implicit operator Resources(InternalResources r) 
+            => new Resources{ResourcesArray = (float[]) r.ResourcesArray.Clone()};
     }
 }

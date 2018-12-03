@@ -14,18 +14,18 @@ namespace Imperium.Ecs.Managers
 
 
 
-        public Entity Create(Entity original = null, Entity previous = null)
+        public Entity Create(Entity prototype = null, Entity previous = null)
         {
             var newEntity = new Entity
             {
                 Ecs = Ecs,
-                Original = original,
-                Name = original?.Name,
+                Prototype = prototype,
+                Name = prototype?.Name,
             };
 
-            if (original != null)
+            if (prototype != null)
             {
-                foreach (var c in original.Components)
+                foreach (var c in prototype.Components)
                 {
                     var previousComponent = previous?.Components.FirstOrDefault(pc => c.GetType() == pc.GetType());
                     if (previousComponent != null)

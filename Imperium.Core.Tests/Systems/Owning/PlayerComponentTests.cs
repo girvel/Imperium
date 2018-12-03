@@ -19,7 +19,7 @@ namespace Imperium.Core.Tests.Systems.Owning
             ecs.SystemManager = Mock.Of<SystemManager>(s => s.GetSystem<PlayerSystem>() == system);
             
             // ReSharper disable once UseObjectOrCollectionInitializer
-            var component = new OwnedComponent{Ecs = ecs};
+            var component = new Owned{Ecs = ecs};
             
             // act
             component.Owner = newPlayer;
@@ -35,7 +35,7 @@ namespace Imperium.Core.Tests.Systems.Owning
             var system = Mock.Of<PlayerSystem>();
             
             // ReSharper disable once UseObjectOrCollectionInitializer
-            var component = new OwnedComponent();
+            var component = new Owned();
             
             // act
             component.Owner = null;

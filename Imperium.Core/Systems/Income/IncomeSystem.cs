@@ -19,14 +19,14 @@ namespace Imperium.Core.Systems.Income
 
             foreach (var resourceBuilding in Subjects)
             {
-                var owner = resourceBuilding.Parent.GetComponent<OwnedComponent>()?.Owner;
+                var owner = resourceBuilding.Parent.GetComponent<Owned>()?.Owner;
 
                 if (owner != null)
                 {
                     owner.Resources 
                         = owner.Resources.Added(
                             resourceBuilding.Income.Multiplied(
-                                Time.UpdateGameTimeCoefficient(Ecs)));
+                                Time.GameSecondToUpdateCoefficient(Ecs) / 3600 / 24));
                 }
             }
         }

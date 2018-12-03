@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 
 namespace Imperium.Core.Common
 {
@@ -6,11 +7,12 @@ namespace Imperium.Core.Common
     {
         public static T Added<T>(this T r1, T r2) where T : IResources
         {
-            var result = (T) r1.Clone();
+            var chooseR = r1.ResourceTypesNumber > r2.ResourceTypesNumber;
+            var result = chooseR ? (T) r1.Clone() : (T) r2.Clone();
 
-            for (var i = 0; i < r1.ResourceTypesNumber; i++)
+            for (var i = 0; i < result.ResourceTypesNumber; i++)
             {
-                result[i] += r2[i];
+                result[i] += (chooseR ? r2 : r1)[i];
             }
 
             return result;
@@ -47,9 +49,21 @@ namespace Imperium.Core.Common
 
         public static bool Equals<T>(this T r1, T r2) where T : IResources
         {
-            for (var i = 0; i < r1.ResourceTypesNumber; i++)
+            int max = Math.Max(r1.ResourceTypesNumber, r2.ResourceTypesNumber),
+                min = Math.Min(r1.ResourceTypesNumber, r2.ResourceTypesNumber);
+            
+            for (var i = 0; i < min; i++)
             {
                 if (r1[i] != r2[i])
+                {
+                    return false;
+                }
+            }
+
+            for (var i = min; i < max; i++)
+            {
+                if (!(r1.ResourceTypesNumber > r2.ResourceTypesNumber && r1[i] == 0 
+                      || r1.ResourceTypesNumber < r2.ResourceTypesNumber && r2[i] == 0))
                 {
                     return false;
                 }

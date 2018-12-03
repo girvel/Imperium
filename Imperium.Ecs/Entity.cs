@@ -14,9 +14,20 @@ namespace Imperium.Ecs
 
         public EcsManager Ecs { get; set; }
         
-        public Entity Original { get; set; }
+        public Entity Prototype { get; set; }
 
 
+
+        public Entity()
+        {
+        }
+        
+        public Entity(string name)
+        {
+            Name = name;
+        }
+        
+        
 
         public void AddComponent(Component component)
         {
@@ -31,13 +42,11 @@ namespace Imperium.Ecs
         
         public void RemoveComponent(Component component)
         {
-            component.Ecs = null;
-            component.Parent = null;
-            
             Components.Remove(component);
             Ecs.ComponentManager.Unregister(component);
             
-            component.Destroy();
+            component.Ecs = null;
+            component.Parent = null;
         }
         
         public T GetComponent<T>()
@@ -48,5 +57,19 @@ namespace Imperium.Ecs
         public override string ToString()
             => $"[Entity \"{Name}\": " +
                $"{{{Components.Aggregate("", (sum, c) => sum + ", " + c.ToString()).Substring(2)}}}]";
+
+
+
+        /// <summary>
+        /// Adds component to a prototype 
+        /// </summary>
+        /// <param name="e">Prototype</param>
+        /// <param name="component">New component</param>
+        /// <returns>Given protype</returns>
+        public static Entity operator |(Entity e, Component component)
+        {
+            e.Components.Add(component);
+            return e;
+        }
     }
 }

@@ -22,10 +22,15 @@ namespace Imperium.Server
 
 
 
-        public void AddNews(T t, string type, Dictionary<string, dynamic> info)
+        public void AddNews(T t, string type, Dictionary<string, dynamic> info, bool unical = false)
         {
             if (_registeredNews.ContainsKey(t))
             {
+                if (unical)
+                {
+                    _registeredNews[t].RemoveAll(n => n.Type == type);
+                }
+                
                 _registeredNews[t].Add(new News {Type = type, Info = info,});
             }
         }

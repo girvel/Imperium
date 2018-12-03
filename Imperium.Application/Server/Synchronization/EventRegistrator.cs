@@ -13,7 +13,7 @@ namespace Imperium.Application.Server.Synchronization
         {
             gameData.EntityManager.OnEntityCreate += entity =>
             {
-                var positionComponent = entity.GetComponent<PositionComponent>();
+                var positionComponent = entity.GetComponent<Position>();
 
                 if (positionComponent == null) return;
                 
@@ -25,14 +25,14 @@ namespace Imperium.Application.Server.Synchronization
                         new NetData
                         {
                             ["name"] = entity.Name,
-                            ["position"] = positionComponent.Position,
+                            ["position"] = positionComponent.Coordinates,
                         });
                 }
             };
             
             gameData.EntityManager.OnEntityDestroy += entity =>
             {
-                var positionComponent = entity.GetComponent<PositionComponent>();
+                var positionComponent = entity.GetComponent<Position>();
 
                 if (positionComponent == null) return;
                 
@@ -44,7 +44,7 @@ namespace Imperium.Application.Server.Synchronization
                         new NetData
                         {
                             ["name"] = entity.Name,
-                            ["position"] = positionComponent.Position,
+                            ["position"] = positionComponent.Coordinates,
                         });
                 }
             };
@@ -59,7 +59,8 @@ namespace Imperium.Application.Server.Synchronization
                         new NetData
                         {
                             ["value"] = resources.ResourcesArray,
-                        });
+                        },
+                        unical: true);
                 };
             };
         }

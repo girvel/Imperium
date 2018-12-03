@@ -13,7 +13,7 @@ namespace Imperium.Core.Tests.Systems.Placing
         {
             // arrange
             var system = new Area(new Vector(2, 1));
-            var component = Mock.Of<PositionComponent>();
+            var component = Mock.Of<Position>();
             system.Grid[0, 0].Add(component);
             
             // act
@@ -22,7 +22,7 @@ namespace Imperium.Core.Tests.Systems.Placing
             // assert
             Assert.False(system.Grid[0, 0].Any());
             Assert.True(system.Grid[1, 0].Contains(component));
-            Assert.Equal(new Vector(1, 0), component.Position);
+            Assert.Equal(new Vector(1, 0), component.Coordinates);
         }
     }
 }

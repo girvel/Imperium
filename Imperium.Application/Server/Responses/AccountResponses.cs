@@ -58,11 +58,15 @@ namespace Imperium.Application.Server.Responses
         [Response(Permission.User)]
         public bool UpgradeBuilding(Connection<Player> connection, Vector position, string name)
         {
-            return GlobalData
-                .SystemManager.GetSystem<Area>()[position]
-                .Select(c => c.Parent.GetComponent<UpgradableComponent>())
-                .FirstOrDefault(c => c != null)
-                ?.Upgrade(connection.Account.ExternalData) ?? false;
+            var component
+                = GlobalData
+                    .SystemManager.GetSystem<Area>()[position]
+                    .Select(c => c.Parent.GetComponent<Upgradable>())
+                    .FirstOrDefault(c => c != null);
+
+            var upgrade = component?.Upgrades.FirstOrDefault(u => u.Result.Name == name);
+            
+            return upgrade != null && component.Upgrade(connection.Account.ExternalData, upgrade);
         }
         
         

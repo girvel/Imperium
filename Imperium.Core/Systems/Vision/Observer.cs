@@ -2,7 +2,7 @@
 
 namespace Imperium.Core.Systems.Vision
 {
-    public class ObserverComponent : Component
+    public class Observer : Component
     {
         public int VisionRange { get; set; }
     }

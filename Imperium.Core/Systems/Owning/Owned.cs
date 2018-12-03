@@ -2,7 +2,7 @@
 
 namespace Imperium.Core.Systems.Owning
 {
-    public class OwnedComponent : Component
+    public class Owned : Component
     {
         private Player _owner;
 

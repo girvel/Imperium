@@ -18,7 +18,7 @@ namespace Imperium.Core.Systems.Owning
             }
         }
 
-        public List<OwnedComponent> OwnedSubjects { get; set; } = new List<OwnedComponent>();
+        public List<Owned> OwnedSubjects { get; set; } = new List<Owned>();
 
         
         

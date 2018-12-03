@@ -8,5 +8,12 @@
             Register(clone);
             return clone;
         }
+
+        public override void Unregister(Component subject)
+        {
+            base.Unregister(subject);
+
+            subject.Destroy();
+        }
     }
 }
