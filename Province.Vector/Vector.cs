@@ -6,6 +6,8 @@ namespace Province.Vector
 {
     public struct Vector
     {
+        public static readonly Vector Zero = new Vector(0, 0), One = new Vector(1, 1);
+        
         public int X, Y;
 
         public int SquaredMagnitude => X * X + Y * Y;
@@ -73,6 +75,15 @@ namespace Province.Vector
         }
 
         public override string ToString() => $"{{{X}; {Y}}}";
+
+
+
+        public static Vector Clamp(Vector v, Vector min, Vector max)
+            => v.X < min.X || v.Y < min.Y
+                ? min
+                : v.X > max.X || v.Y > max.Y
+                    ? max
+                    : v;
 
         
         

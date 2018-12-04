@@ -10,7 +10,7 @@ namespace Imperium.Game.Generation.Subgenerators
         {
             foreach (var position in area.Size.Range())
             {
-                area.Move(ecs.EntityManager.Create(Building.Plain).GetComponent<Position>(), position);
+                area.Move(ecs.EntityManager.Create(Building.Water).GetComponent<Position>(), position);
             }
         }
     }

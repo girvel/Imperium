@@ -38,6 +38,9 @@ namespace Imperium.Game.Generation
                 = new Entity("Forest")
                   | new Position()
                   | new Upgradable(
-                      new Upgrade(Sawmill, new Resources {Wood = 100}));
+                      new Upgrade(Sawmill, new Resources {Wood = 100})),
+            
+            Water = new Entity("Water")
+                  | new Position();
     }
 }

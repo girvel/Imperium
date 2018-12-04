@@ -1,4 +1,5 @@
 ﻿using System;
+using Province.Vector;
 
 namespace Imperium.Game.Common
 {
@@ -7,6 +8,11 @@ namespace Imperium.Game.Common
         public static void Chance(this Random r, double chance, Action a)
         {
             if (r.NextDouble() < chance) a();
+        }
+
+        public static Vector NextPosition(this Random r, Vector size)
+        {
+            return new Vector(r.Next(size.X), r.Next(size.Y));
         }
     }
 }

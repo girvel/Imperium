@@ -14,7 +14,7 @@ namespace Imperium.Game
         {
             var ecs = EcsManager.CreateNew();
             
-            var area = new Area(new Vector(100, 100));
+            var area = new Area(new Vector(40, 40));
 
             var systems = new Ecs.System[]
             {

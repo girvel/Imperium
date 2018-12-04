@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Linq;
 using Imperium.Core.Systems.Placing;
+using Imperium.Ecs;
 using Imperium.Ecs.Managers;
 using Imperium.Game.Common;
+using Province.Vector;
 
 namespace Imperium.Game.Generation.Subgenerators
 {
@@ -12,6 +14,12 @@ namespace Imperium.Game.Generation.Subgenerators
         
         public void Generate(Area area, EcsManager ecs, Random random)
         {
+            void Replace(Entity old, Entity prototype, Vector position)
+            {
+                area.Move(ecs.EntityManager.Create(prototype).GetComponent<Position>(), position);
+                ecs.EntityManager.Destroy(old);
+            }
+            
             foreach (var vector in area.Size.Range())
             {
                 var plainPosition = area[vector].FirstOrDefault(p => p.Parent.Prototype == Building.Plain);
@@ -23,8 +31,7 @@ namespace Imperium.Game.Generation.Subgenerators
                                              Math.Abs(area.GetTemperature(vector) + MinimalTemperature)),
                         () =>
                         {
-                            ecs.EntityManager.Destroy(plainPosition.Parent);
-                            area.Move(ecs.EntityManager.Create(Building.Forest).GetComponent<Position>(), vector);
+                            Replace(plainPosition.Parent, Building.Forest, vector);
                         });
                 }
             }
