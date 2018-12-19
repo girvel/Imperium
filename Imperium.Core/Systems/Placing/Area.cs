@@ -1,5 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Reflection;
+using Imperium.Ecs;
 using Province.Vector;
 
 namespace Imperium.Core.Systems.Placing
@@ -8,21 +11,21 @@ namespace Imperium.Core.Systems.Placing
     {
         public Vector Size { get; set; }
         
-        public List<Position>[,] Grid { get; set; }
+        public List<Placer>[,] Grid { get; set; }
 
-        public List<Position> this[Vector p] => Grid[p.X, p.Y];
+        public List<Placer> this[Vector p] => Grid[p.X, p.Y];
 
         
 
         public Area(Vector size)
         {
             Size = size;
-            Grid = new List<Position>[size.X, size.Y];
+            Grid = new List<Placer>[size.X, size.Y];
             for (var x = 0; x < size.X; x++)
             {
                 for (var y = 0; y < size.Y; y++)
                 {
-                    Grid[x, y] = new List<Position>();
+                    Grid[x, y] = new List<Placer>();
                 }
             }
         }
@@ -35,21 +38,32 @@ namespace Imperium.Core.Systems.Placing
                 Math.Abs(2 * (position.Y + position.X) / (float) (Size.X + Size.Y - 2) - 1) + MaximalTemperature;
         }
         
-        public void Move(Position component, Vector newPosition)
+        public void Move(Placer component, Vector newPosition)
         {
             Remove(component);
             component.Coordinates = newPosition;
             Register(component);
         }
 
-        public void Remove(Position component)
+        public void Remove(Placer component)
         {
             this[component.Coordinates].Remove(component);
         }
 
-        public void Register(Position component)
+        public void Register(Placer component)
         {
             this[component.Coordinates].Add(component);
         }
+        
+        
+
+        public static AreaSlice operator &(Area area, IReflect container)
+            => new AreaSlice(
+                area,
+                container
+                    .GetFields(BindingFlags.Static | BindingFlags.Public)
+                    .Select(f => f.GetValue(null))
+                    .Cast<Entity>()
+                    .ToArray());
     }
 }

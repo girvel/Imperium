@@ -33,19 +33,26 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="MathNet.Numerics, Version=4.7.0.0, Culture=neutral, PublicKeyToken=null">
+      <HintPath>..\packages\MathNet.Numerics.4.7.0\lib\net40\MathNet.Numerics.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Common\Mathf.cs" />
+    <Compile Include="Common\VectorHelper.cs" />
     <Compile Include="Common\RandomHelper.cs" />
     <Compile Include="EcsFactory.cs" />
     <Compile Include="Generation\AreaBasicGenerator.cs" />
-    <Compile Include="Generation\Building.cs" />
-    <Compile Include="Generation\IAreaGenerator.cs" />
+    <Compile Include="Generation\Common\Building.cs" />
+    <Compile Include="Generation\Common\Landscape.cs" />
+    <Compile Include="Generation\IAreaSubgenerator.cs" />
     <Compile Include="Generation\Subgenerators\ForestGenerator.cs" />
     <Compile Include="Generation\Subgenerators\LandGenerator.cs" />
+    <Compile Include="Generation\Subgenerators\MountainsGenerator.cs" />
     <Compile Include="Generation\Subgenerators\Pregenerator.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Resources.cs" />
@@ -67,6 +74,9 @@
       <Project>{60EB862E-9925-4184-B7FE-355D79DA8FE9}</Project>
       <Name>Province.Vector</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

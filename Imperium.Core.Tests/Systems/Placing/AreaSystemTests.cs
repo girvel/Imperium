@@ -13,7 +13,7 @@ namespace Imperium.Core.Tests.Systems.Placing
         {
             // arrange
             var system = new Area(new Vector(2, 1));
-            var component = Mock.Of<Position>();
+            var component = Mock.Of<Placer>();
             system.Grid[0, 0].Add(component);
             
             // act

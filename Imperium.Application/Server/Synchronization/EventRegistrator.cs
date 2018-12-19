@@ -1,7 +1,10 @@
 ﻿using System.Linq;
+using Imperium.CommonData;
+using Imperium.Core.Systems.Landscape;
 using Imperium.Core.Systems.Owning;
 using Imperium.Core.Systems.Placing;
 using Imperium.Ecs.Managers;
+using Imperium.Game.Generation.Common;
 using Imperium.Server;
 using NetData = System.Collections.Generic.Dictionary<string, object>;
 
@@ -13,9 +16,11 @@ namespace Imperium.Application.Server.Synchronization
         {
             gameData.EntityManager.OnEntityCreate += entity =>
             {
-                var positionComponent = entity.GetComponent<Position>();
+                var placer = entity.GetComponent<Placer>();
 
-                if (positionComponent == null) return;
+                if (!(placer != null && entity ^ typeof(Building))) return;
+
+                var area = gameData.SystemManager.GetSystem<Area>();
                 
                 foreach (var player in server.Connections.Select(c => c.Account.ExternalData))
                 {
@@ -24,15 +29,20 @@ namespace Imperium.Application.Server.Synchronization
                         "OnEntityCreate", 
                         new NetData
                         {
-                            ["name"] = entity.Name,
-                            ["position"] = positionComponent.Coordinates,
+                            ["dto"] = new BuildingDto
+                            {
+                                BuildingName = entity.Name,
+                                TerrainName = (area & typeof(Landscape))[placer.Coordinates].Name,
+                                Temperature = area.GetTemperature(placer.Coordinates),
+                            },
+                            ["position"] = placer.Coordinates,
                         });
                 }
             };
             
             gameData.EntityManager.OnEntityDestroy += entity =>
             {
-                var positionComponent = entity.GetComponent<Position>();
+                var positionComponent = entity.GetComponent<Placer>();
 
                 if (positionComponent == null) return;
                 

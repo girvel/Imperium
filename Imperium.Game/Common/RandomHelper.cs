@@ -14,5 +14,10 @@ namespace Imperium.Game.Common
         {
             return new Vector(r.Next(size.X), r.Next(size.Y));
         }
+
+        public static Vector NextPosition(this Random r, Vector minimal, Vector size)
+        {
+            return new Vector(r.Next(minimal.X, size.X), r.Next(minimal.Y, size.Y));
+        }
     }
 }

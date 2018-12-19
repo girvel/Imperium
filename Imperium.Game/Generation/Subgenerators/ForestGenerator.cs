@@ -4,34 +4,27 @@ using Imperium.Core.Systems.Placing;
 using Imperium.Ecs;
 using Imperium.Ecs.Managers;
 using Imperium.Game.Common;
+using Imperium.Game.Generation.Common;
 using Province.Vector;
 
 namespace Imperium.Game.Generation.Subgenerators
 {
-    public class ForestGenerator : IAreaGenerator
+    public class ForestGenerator : IAreaSubgenerator
     {
         public float MinimalTemperature = -7, MaximalTemperature = 30, MaximalChance = 1, MinimalHumidity = 0.1f;
         
-        public void Generate(Area area, EcsManager ecs, Random random)
+        public void Generate(AreaSlice buildingSlice, AreaSlice landscapeSlice, Random random)
         {
-            void Replace(Entity old, Entity prototype, Vector position)
+            foreach (var vector in buildingSlice.Area.Size.Range())
             {
-                area.Move(ecs.EntityManager.Create(prototype).GetComponent<Position>(), position);
-                ecs.EntityManager.Destroy(old);
-            }
-            
-            foreach (var vector in area.Size.Range())
-            {
-                var plainPosition = area[vector].FirstOrDefault(p => p.Parent.Prototype == Building.Plain);
-
-                if (plainPosition != null)
+                if (!(landscapeSlice[vector] < Landscape.Water))
                 {
                     random.Chance(
                         MaximalChance * (1 - 2 / (MaximalTemperature - MinimalTemperature) *
-                                             Math.Abs(area.GetTemperature(vector) + MinimalTemperature)),
+                                         Math.Abs(buildingSlice.Area.GetTemperature(vector) + MinimalTemperature)),
                         () =>
                         {
-                            Replace(plainPosition.Parent, Building.Forest, vector);
+                            buildingSlice[vector] = Building.Forest;
                         });
                 }
             }

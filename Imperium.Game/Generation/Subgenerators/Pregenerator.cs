@@ -1,16 +1,18 @@
 ﻿using System;
 using Imperium.Core.Systems.Placing;
 using Imperium.Ecs.Managers;
+using Imperium.Game.Generation.Common;
 
 namespace Imperium.Game.Generation.Subgenerators
 {
-    public class Pregenerator : IAreaGenerator
+    public class Pregenerator : IAreaSubgenerator
     {
-        public void Generate(Area area, EcsManager ecs, Random random)
+        public void Generate(AreaSlice buildingSlice, AreaSlice landscapeSlice, Random random)
         {
-            foreach (var position in area.Size.Range())
+            foreach (var position in landscapeSlice.Size.Range())
             {
-                area.Move(ecs.EntityManager.Create(Building.Water).GetComponent<Position>(), position);
+                landscapeSlice[position] = Landscape.Water;
+                buildingSlice[position] = Building.None;
             }
         }
     }

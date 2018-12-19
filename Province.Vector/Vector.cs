@@ -21,6 +21,8 @@ namespace Province.Vector
             X = x;
             Y = y;
         }
+        
+        public Vector Rotate90() => new Vector(-Y, X);
 
 
 
@@ -30,11 +32,11 @@ namespace Province.Vector
 
         public static Vector operator -(Vector v1, Vector v2) => v1 + -v2;
 
-        public static Vector operator *(Vector v, float k) => new Vector((int) (v.X * k), (int) (v.Y * k));
+        public static Vector operator *(Vector v, int k) => new Vector(v.X * k, v.Y * k);
 
-        public static Vector operator *(float k, Vector v) => v * k;
+        public static Vector operator *(int k, Vector v) => v * k;
 
-        public static Vector operator /(Vector v, float d) => v * (1 / d);
+        public static Vector operator /(Vector v, int d) => v * (1 / d);
 
 
 
@@ -85,8 +87,6 @@ namespace Province.Vector
                     ? max
                     : v;
 
-        
-        
         public IEnumerable<Vector> Range()
         {
             var X = this.X;
@@ -95,5 +95,27 @@ namespace Province.Vector
                     .Range(0, Y)
                     .SelectMany(y => Enumerable.Range(0, X).Select(x => new Vector(x, y)));
         }
+
+        public bool IsInside(Vector maximal) => X <= maximal.X && Y <= maximal.Y;
+        
+        public bool IsInside(Vector minimal, Vector maximal) => IsInside(maximal) && X >= minimal.X && Y >= minimal.Y;
+
+
+
+        public static IEnumerable<Vector> Range(Vector from, Vector to) => (to - from).Range().Select(v => v + from);
+
+        public static Vector Max(Vector first, Vector second) => first.IsInside(second) ? second : first;
+
+        public static Vector Min(Vector first, Vector second) => second.IsInside(first) ? second : first;
+        
+        public static Vector PartialMax(Vector first, Vector second)
+            => new Vector(
+                Math.Max(first.X, second.X),
+                Math.Max(first.Y, second.Y));
+        
+        public static Vector PartialMin(Vector first, Vector second)
+            => new Vector(
+                Math.Min(first.X, second.X),
+                Math.Min(first.Y, second.Y));
     }
 }

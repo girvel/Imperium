@@ -3,7 +3,7 @@ using Province.Vector;
 
 namespace Imperium.Core.Systems.Placing
 {
-    public class Position : Component
+    public class Placer : Component
     {
         public Vector Coordinates { get; set; }
 
