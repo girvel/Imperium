@@ -7,12 +7,14 @@ namespace Imperium.Game.Prototypes
     public static class Landscape
     {
         public static Entity
-            Plain = new Entity("Plain")
-                | new Placer()
-                | new Terrain(TerrainType.Plain),
-            
-            Water = new Entity("Water")
-                | new Placer()
-                | new Terrain(TerrainType.Water)
+            Plain
+                = new Entity("Plain")
+                  | new Placer()
+                  | new Terrain(TerrainType.Plain),
+
+            Water
+                = new Entity("Water")
+                  | new Placer()
+                  | new Terrain(TerrainType.Water);
     }
 }

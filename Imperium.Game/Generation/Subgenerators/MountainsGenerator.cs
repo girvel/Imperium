@@ -19,8 +19,8 @@ namespace Imperium.Game.Generation.Subgenerators
         
         public void Generate(AreaSlice buildingSlice, AreaSlice landscapeSlice, Random random)
         {
-            var ridges
-                = Enumerable
+            var ridges = new[] {new[] {new Vector(1, 1), new Vector(10, 10)}};
+                /*= Enumerable
                     .Range(0, NumberOfRidges)
                     .Select(_ => random.NextPosition(landscapeSlice.Size))
                     .Select(p => 
@@ -31,7 +31,7 @@ namespace Imperium.Game.Generation.Subgenerators
                                 Vector.PartialMax(Vector.Zero, p - MaximalLength * Vector.One), 
                                 Vector.PartialMin(landscapeSlice.Size - Vector.One, p + MaximalLength * Vector.One))
                         })
-                    .ToArray();
+                    .ToArray();*/
 
             foreach (var ridge in ridges)
             {
@@ -39,7 +39,8 @@ namespace Imperium.Game.Generation.Subgenerators
             }
         }
 
-        protected virtual void GenerateRidge(Vector from, Vector to, AreaSlice buildingSlice, AreaSlice landscapeSlice, Random random)
+        protected virtual void GenerateRidge(
+            Vector from, Vector to, AreaSlice buildingSlice, AreaSlice landscapeSlice, Random random)
         {
             var delta = to - from;
             var generationHalfSize = Mathf.Max(Width, delta.X, delta.Y) * Vector.One;

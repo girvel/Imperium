@@ -19,22 +19,19 @@ namespace Imperium.Client
 
         protected T Request<T>(string type, NetData args)
         {
-            string response = string.Empty;
-            while (response == string.Empty)
+            while (true)
             {
                 try
                 {
-                    response = Connection.Request(
+                    return RequestManager.DecodeResponse<T>(Connection.Request(
                         RequestManager.CreateRequest(
                             type,
-                            args));
+                            args)));
                 }
                 catch (JsonReaderException)
                 {
                 }
             }
-            
-            return RequestManager.DecodeResponse<T>(response);
         }
     }
 }
