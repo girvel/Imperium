@@ -5,7 +5,7 @@ using Imperium.Core.Systems.Placing;
 using Imperium.Core.Systems.Upgrading;
 using Imperium.Ecs.Managers;
 using Imperium.Game;
-using Imperium.Game.Generation.Common;
+using Imperium.Game.Prototypes;
 using Imperium.Server;
 using Imperium.Server.Generation;
 using Imperium.Server.Generation.Attributes;

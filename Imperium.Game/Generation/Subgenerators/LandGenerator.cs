@@ -4,7 +4,7 @@ using Imperium.Core.Systems.Placing;
 using Imperium.Ecs;
 using Imperium.Ecs.Managers;
 using Imperium.Game.Common;
-using Imperium.Game.Generation.Common;
+using Imperium.Game.Prototypes;
 using Province.Vector;
 // ReSharper disable LoopVariableIsNeverChangedInsideLoop
 

@@ -2,7 +2,7 @@
 using Imperium.Core.Systems.Placing;
 using Imperium.Ecs;
 
-namespace Imperium.Game.Generation.Common
+namespace Imperium.Game.Prototypes
 {
     public static class Landscape
     {
@@ -13,10 +13,6 @@ namespace Imperium.Game.Generation.Common
             
             Water = new Entity("Water")
                 | new Placer()
-                | new Terrain(TerrainType.Water),
-            
-            Mountain = new Entity("Mountain")
-                | new Placer()
-                | new Terrain(TerrainType.Mountains);
+                | new Terrain(TerrainType.Water)
     }
 }

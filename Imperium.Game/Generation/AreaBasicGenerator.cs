@@ -4,8 +4,8 @@ using System.Reflection;
 using Imperium.Core.Systems.Placing;
 using Imperium.Ecs;
 using Imperium.Ecs.Managers;
-using Imperium.Game.Generation.Common;
 using Imperium.Game.Generation.Subgenerators;
+using Imperium.Game.Prototypes;
 
 namespace Imperium.Game.Generation
 {

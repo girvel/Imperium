@@ -1,7 +1,7 @@
 ﻿using System;
 using Imperium.Core.Systems.Placing;
 using Imperium.Ecs.Managers;
-using Imperium.Game.Generation.Common;
+using Imperium.Game.Prototypes;
 
 namespace Imperium.Game.Generation.Subgenerators
 {

@@ -47,14 +47,14 @@
     <Compile Include="Common\RandomHelper.cs" />
     <Compile Include="EcsFactory.cs" />
     <Compile Include="Generation\AreaBasicGenerator.cs" />
-    <Compile Include="Generation\Common\Building.cs" />
-    <Compile Include="Generation\Common\Landscape.cs" />
     <Compile Include="Generation\IAreaSubgenerator.cs" />
     <Compile Include="Generation\Subgenerators\ForestGenerator.cs" />
     <Compile Include="Generation\Subgenerators\LandGenerator.cs" />
     <Compile Include="Generation\Subgenerators\MountainsGenerator.cs" />
     <Compile Include="Generation\Subgenerators\Pregenerator.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Prototypes\Building.cs" />
+    <Compile Include="Prototypes\Landscape.cs" />
     <Compile Include="Resources.cs" />
   </ItemGroup>
   <ItemGroup>

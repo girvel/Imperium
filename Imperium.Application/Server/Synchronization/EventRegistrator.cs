@@ -4,7 +4,7 @@ using Imperium.Core.Systems.Landscape;
 using Imperium.Core.Systems.Owning;
 using Imperium.Core.Systems.Placing;
 using Imperium.Ecs.Managers;
-using Imperium.Game.Generation.Common;
+using Imperium.Game.Prototypes;
 using Imperium.Server;
 using NetData = System.Collections.Generic.Dictionary<string, object>;
 

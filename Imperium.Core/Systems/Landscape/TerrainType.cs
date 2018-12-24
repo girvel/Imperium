@@ -4,6 +4,5 @@
     {
         Water,
         Plain,
-        Mountains,
     }
 }

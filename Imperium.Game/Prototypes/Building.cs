@@ -4,7 +4,7 @@ using Imperium.Core.Systems.Placing;
 using Imperium.Core.Systems.Upgrading;
 using Imperium.Ecs;
 
-namespace Imperium.Game.Generation.Common
+namespace Imperium.Game.Prototypes
 {
     public static class Building
     {
@@ -34,6 +34,9 @@ namespace Imperium.Game.Generation.Common
                 = new Entity("Forest")
                   | new Placer()
                   | new Upgradable(
-                      new Upgrade(Sawmill, new Resources {Wood = 100}));
+                      new Upgrade(Sawmill, new Resources {Wood = 100})),
+            
+            Mountain = new Entity("Mountain")
+                       | new Placer();
     }
 }

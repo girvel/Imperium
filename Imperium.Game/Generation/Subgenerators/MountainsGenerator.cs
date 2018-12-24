@@ -2,7 +2,7 @@
 using System.Linq;
 using Imperium.Core.Systems.Placing;
 using Imperium.Game.Common;
-using Imperium.Game.Generation.Common;
+using Imperium.Game.Prototypes;
 using Province.Vector;
 
 namespace Imperium.Game.Generation.Subgenerators
@@ -35,20 +35,20 @@ namespace Imperium.Game.Generation.Subgenerators
 
             foreach (var ridge in ridges)
             {
-                GenerateRidge(ridge[0], ridge[1], landscapeSlice, random);
+                GenerateRidge(ridge[0], ridge[1], buildingSlice, landscapeSlice, random);
             }
         }
 
-        protected virtual void GenerateRidge(Vector from, Vector to, AreaSlice landscapeSlice, Random random)
+        protected virtual void GenerateRidge(Vector from, Vector to, AreaSlice buildingSlice, AreaSlice landscapeSlice, Random random)
         {
             var delta = to - from;
-            var generationRadius = Mathf.Max(Width, delta.X, delta.Y) * Vector.One;
+            var generationHalfSize = Mathf.Max(Width, delta.X, delta.Y) * Vector.One;
                 
             foreach (
                 var position 
                 in Vector.Range(
-                    Vector.Max(Vector.Zero, from - generationRadius), 
-                    Vector.Min(landscapeSlice.Size - Vector.One, from + generationRadius)))
+                    Vector.Max(Vector.Zero, from - generationHalfSize), 
+                    Vector.Min(landscapeSlice.Size - Vector.One, from + generationHalfSize)))
             {
                 var internalPosition = delta.TransitionMatrix() * (position - from).ToMatrix();
                     
@@ -61,10 +61,14 @@ namespace Imperium.Game.Generation.Subgenerators
                         1 - Math.Abs(internalY) * 2 / (1 - Math.Abs(2 * internalX - 1)),
                         () =>
                         {
-                            landscapeSlice[position] 
-                                = landscapeSlice[position] < Landscape.Water 
-                                    ? Landscape.Plain 
-                                    : Landscape.Mountain;
+                            if (landscapeSlice[position] < Landscape.Water)
+                            {
+                                landscapeSlice[position] = Landscape.Plain;
+                            }
+                            else
+                            {
+                                buildingSlice[position] = Building.Mountain;
+                            }
                         });
                 }
             }
