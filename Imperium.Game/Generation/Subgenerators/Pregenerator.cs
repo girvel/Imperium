@@ -7,12 +7,12 @@ namespace Imperium.Game.Generation.Subgenerators
 {
     public class Pregenerator : IAreaSubgenerator
     {
-        public void Generate(AreaSlice buildingSlice, AreaSlice landscapeSlice, Random random)
+        public void Generate(Area area, Random random)
         {
-            foreach (var position in landscapeSlice.Size.Range())
+            foreach (var position in area.Size.Range())
             {
-                landscapeSlice[position] = Landscape.Water;
-                buildingSlice[position] = Building.None;
+                (area & typeof(Landscape))[position] = Landscape.Water;
+                (area & typeof(Building))[position] = Building.None;
             }
         }
     }

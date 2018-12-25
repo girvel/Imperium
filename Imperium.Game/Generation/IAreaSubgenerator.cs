@@ -5,6 +5,6 @@ namespace Imperium.Game.Generation
 {
     public interface IAreaSubgenerator
     {
-        void Generate(AreaSlice buildingSlice, AreaSlice landscapeSlice, Random random);
+        void Generate(Area area, Random random);
     }
 }

@@ -14,15 +14,17 @@ namespace Imperium.Game.Generation.Subgenerators
     {
         public float LandFraction = 0.4f, SeasideBorder = 0.6f;
         
-        public void Generate(AreaSlice buildingSlice, AreaSlice landscapeSlice, Random random)
+        public void Generate(Area area, Random random)
         {
-            var maximalLandNumber = LandFraction * landscapeSlice.Size.X * landscapeSlice.Size.Y;
+            var landscapeSlice = area & typeof(Landscape);
+            
+            var maximalLandNumber = LandFraction * area.Size.X * area.Size.Y;
             var counter = 0;
 
             while (counter < maximalLandNumber - 1)
             {
                 var radius = random.NextDouble() * Math.Sqrt((maximalLandNumber - counter) / Math.PI) / 2;
-                var sourcePosition = random.NextPosition(landscapeSlice.Size);
+                var sourcePosition = random.NextPosition(area.Size);
 
                 var sizeVector = (int) radius * Vector.One;
                 foreach (var vector in (sizeVector * 2 + Vector.One).Range().Select(v => v - sizeVector))
@@ -36,7 +38,7 @@ namespace Imperium.Game.Generation.Subgenerators
                                 = Vector.Clamp(
                                     vector + sourcePosition, 
                                     Vector.Zero,
-                                    landscapeSlice.Size - Vector.One);
+                                    area.Size - Vector.One);
 
                             if (landscapeSlice[newPosition] < Landscape.Water)
                             {

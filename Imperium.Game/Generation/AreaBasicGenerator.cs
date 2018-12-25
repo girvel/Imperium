@@ -35,7 +35,7 @@ namespace Imperium.Game.Generation
         {
             foreach (var generator in Subgenerators)
             {
-                generator.Generate(area & typeof(Building), area & typeof(Landscape), random);
+                generator.Generate(area, random);
             }
         }
     }

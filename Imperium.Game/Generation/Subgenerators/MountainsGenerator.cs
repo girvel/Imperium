@@ -9,7 +9,7 @@ namespace Imperium.Game.Generation.Subgenerators
 {
     public class MountainsGenerator : IAreaSubgenerator
     {
-        public int Width = 5;
+        public int MinimalWidth = 2, MaximalWidth = 5;
 
         public int MaximalLength = 20;
 
@@ -17,62 +17,64 @@ namespace Imperium.Game.Generation.Subgenerators
         
         
         
-        public void Generate(AreaSlice buildingSlice, AreaSlice landscapeSlice, Random random)
+        public void Generate(Area area, Random random)
         {
-            var ridges = new[] {new[] {new Vector(1, 1), new Vector(10, 10)}};
-                /*= Enumerable
+            var ridges 
+                = Enumerable
                     .Range(0, NumberOfRidges)
-                    .Select(_ => random.NextPosition(landscapeSlice.Size))
+                    .Select(_ => random.NextPosition(area.Size))
                     .Select(p => 
-                        new[]
+                        new Ridge
                         {
-                            p, 
-                            random.NextPosition(
-                                Vector.PartialMax(Vector.Zero, p - MaximalLength * Vector.One), 
-                                Vector.PartialMin(landscapeSlice.Size - Vector.One, p + MaximalLength * Vector.One))
+                            From = p, 
+                            To = random.NextPosition(
+                                p - MaximalLength / 2 * Vector.One, 
+                                p + MaximalLength / 2 * Vector.One),
+                            Width = random.Next(MinimalWidth, MaximalWidth),
                         })
-                    .ToArray();*/
+                    .ToArray();
 
             foreach (var ridge in ridges)
             {
-                GenerateRidge(ridge[0], ridge[1], buildingSlice, landscapeSlice, random);
+                GenerateRidge(ridge, area, random);
             }
         }
 
-        protected virtual void GenerateRidge(
-            Vector from, Vector to, AreaSlice buildingSlice, AreaSlice landscapeSlice, Random random)
+        protected virtual void GenerateRidge(Ridge ridge, Area area, Random random)
         {
-            var delta = to - from;
-            var generationHalfSize = Mathf.Max(Width, delta.X, delta.Y) * Vector.One;
-                
-            foreach (
-                var position 
-                in Vector.Range(
-                    Vector.Max(Vector.Zero, from - generationHalfSize), 
-                    Vector.Min(landscapeSlice.Size - Vector.One, from + generationHalfSize)))
-            {
-                var internalPosition = delta.TransitionMatrix() * (position - from).ToMatrix();
-                    
-                var internalX = internalPosition[0, 0];
-                var internalY = internalPosition[1, 0] * delta.Magnitude / Width;
+            var delta = ridge.To - ridge.From;
 
-                if (Math.Abs(2 * internalX - 1) <= 1 && Math.Abs(internalY) <= 1)
-                {
-                    random.Chance(
-                        1 - Math.Abs(internalY) * 2 / (1 - Math.Abs(2 * internalX - 1)),
-                        () =>
-                        {
-                            if (landscapeSlice[position] < Landscape.Water)
-                            {
-                                landscapeSlice[position] = Landscape.Plain;
-                            }
-                            else
-                            {
-                                buildingSlice[position] = Building.Mountain;
-                            }
-                        });
-                }
+            for (var px = Math.Max(0, Math.Min(ridge.From.X, ridge.To.X) - ridge.Width);
+                px < Math.Min(area.Size.X - 1, Math.Max(ridge.From.X, ridge.To.X) + ridge.Width);
+                px++)
+            for (var py = Math.Max(0, Math.Min(ridge.From.Y, ridge.To.Y) - ridge.Width);
+                py < Math.Min(area.Size.Y - 1, Math.Max(ridge.From.Y, ridge.To.Y) + ridge.Width);
+                py++)
+            {
+                var position = new Vector(px, py);
+                
+                var internalPosition = delta.TransitionMatrix() * (2 * position - ridge.From - ridge.To).ToMatrix() / 2;
+                    
+                var x = internalPosition[0, 0];
+                var y = internalPosition[1, 0] * delta.Magnitude / ridge.Width * 2;
+
+                random.Chance(
+                    2 * (1 - Math.Sqrt(x * x + y * y)),
+                    () =>
+                    {
+                        (area & typeof(Landscape))[position] = Landscape.Plain;
+                        (area & typeof(Building))[position] = Building.Mountain;
+                    });
             }
+        }
+
+
+
+        protected class Ridge
+        {
+            public Vector From, To;
+
+            public int Width;
         }
     }
 }
