@@ -6,23 +6,26 @@ using Imperium.Ecs;
 
 namespace Imperium.Game.Prototypes
 {
-    public static class Building
+    public class Building
     {
         public static readonly Entity
-            None = new Entity("None")
-                | new Placer(),
-            
             WoodenHouse
                 = new Entity("Wooden house")
                   | new Placer()
                   | new Incomer {Income = new Resources {Food = 3600}}
                   | new Owned(),
-            
+
             Sawmill
                 = new Entity("Sawmill")
                   | new Placer()
                   | new Incomer {Income = new Resources {Wood = 3600}}
                   | new Owned(),
+
+            None
+                = new Entity("None")
+                  | new Placer()
+                  | new Upgradable(
+                      new Upgrade(WoodenHouse, new Resources {Wood = 100})),
 
             Field
                 = new Entity("Field")
@@ -35,8 +38,9 @@ namespace Imperium.Game.Prototypes
                   | new Placer()
                   | new Upgradable(
                       new Upgrade(Sawmill, new Resources {Wood = 100})),
-            
-            Mountain = new Entity("Mountain")
-                       | new Placer();
+
+            Mountain
+                = new Entity("Mountain")
+                  | new Placer();
     }
 }

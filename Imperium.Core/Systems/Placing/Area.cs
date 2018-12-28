@@ -41,26 +41,26 @@ namespace Imperium.Core.Systems.Placing
         public void Move(Placer component, Vector newPosition)
         {
             Remove(component);
-            component.Coordinates = newPosition;
+            component.Position = newPosition;
             Register(component);
         }
 
         public void Remove(Placer component)
         {
-            this[component.Coordinates].Remove(component);
+            this[component.Position].Remove(component);
         }
 
         public void Register(Placer component)
         {
-            this[component.Coordinates].Add(component);
+            this[component.Position].Add(component);
         }
         
         
 
-        public static AreaSlice operator &(Area area, IReflect container)
+        public AreaSlice Slice<T>()
             => new AreaSlice(
-                area,
-                container
+                this,
+                typeof(T)
                     .GetFields(BindingFlags.Static | BindingFlags.Public)
                     .Select(f => f.GetValue(null))
                     .Cast<Entity>()

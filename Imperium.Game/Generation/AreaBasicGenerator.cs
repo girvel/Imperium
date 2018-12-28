@@ -6,6 +6,7 @@ using Imperium.Ecs;
 using Imperium.Ecs.Managers;
 using Imperium.Game.Generation.Subgenerators;
 using Imperium.Game.Prototypes;
+using Province.Vector;
 
 namespace Imperium.Game.Generation
 {
@@ -37,6 +38,8 @@ namespace Imperium.Game.Generation
             {
                 generator.Generate(area, random);
             }
+
+            area.Slice<Squad>()[new Vector(1, 1)] = Squad.Test;
         }
     }
 }

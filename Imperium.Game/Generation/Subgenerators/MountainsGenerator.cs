@@ -62,8 +62,8 @@ namespace Imperium.Game.Generation.Subgenerators
                     2 * (1 - Math.Sqrt(x * x + y * y)),
                     () =>
                     {
-                        (area & typeof(Landscape))[position] = Landscape.Plain;
-                        (area & typeof(Building))[position] = Building.Mountain;
+                        area.Slice<Landscape>()[position] = Landscape.Plain;
+                        area.Slice<Building>()[position] = Building.Mountain;
                     });
             }
         }

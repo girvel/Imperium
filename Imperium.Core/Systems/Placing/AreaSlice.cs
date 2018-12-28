@@ -6,8 +6,6 @@ namespace Imperium.Core.Systems.Placing
 {
     public class AreaSlice
     {
-        public Vector Size => Area.Size;
-        
         public Entity this[Vector position]
         {
             get => Area[position].Select(p => p.Parent).FirstOrDefault(p => _buildings.Contains(p.Prototype));

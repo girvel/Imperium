@@ -44,7 +44,6 @@
     <Compile Include="Common\ResourcesHelper.cs" />
     <Compile Include="Common\Time.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Spy.cs" />
     <Compile Include="Systems\Landscape\Terrain.cs" />
     <Compile Include="Systems\Landscape\TerrainType.cs" />
     <Compile Include="Systems\Placing\Area.cs" />

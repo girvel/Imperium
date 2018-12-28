@@ -1,4 +1,5 @@
 ﻿using System.Linq;
+using Imperium.Application.Common;
 using Imperium.CommonData;
 using Imperium.Core.Systems.Owning;
 using Imperium.Core.Systems.Placing;
@@ -43,18 +44,13 @@ namespace Imperium.Application.Server.Responses
         
         
         [Response(Permission.User)]
-        public BuildingDto[,] GetArea(Connection<Player> connection)
+        public PlaceDto[,] GetArea(Connection<Player> connection)
         {
             var area = GlobalData.SystemManager.GetSystem<Area>();
-            var result = new BuildingDto[area.Size.X, area.Size.Y];
+            var result = new PlaceDto[area.Size.X, area.Size.Y];
             foreach (var v in area.Size.Range())
             {
-                result[v.X, v.Y] = new BuildingDto
-                {
-                    BuildingName = (area & typeof(Building))[v].Name,
-                    TerrainName = (area & typeof(Landscape))[v].Name,
-                    Temperature = area.GetTemperature(v),
-                };
+                result[v.X, v.Y] = area.GetPlaceDto(v);
             }
 
             return result;

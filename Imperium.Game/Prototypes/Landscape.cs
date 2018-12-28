@@ -4,7 +4,7 @@ using Imperium.Ecs;
 
 namespace Imperium.Game.Prototypes
 {
-    public static class Landscape
+    public class Landscape
     {
         public static Entity
             Plain

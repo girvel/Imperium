@@ -22,7 +22,7 @@ namespace Imperium.Core.Tests.Systems.Placing
             // assert
             Assert.False(system.Grid[0, 0].Any());
             Assert.True(system.Grid[1, 0].Contains(component));
-            Assert.Equal(new Vector(1, 0), component.Coordinates);
+            Assert.Equal(new Vector(1, 0), component.Position);
         }
     }
 }

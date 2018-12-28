@@ -55,6 +55,8 @@ namespace Imperium.Server
         private readonly object _connectionLock = new object();
         private Account<T> _account;
 
+        private string _lastResponse;
+
         public void Start()
         {
             lock (_connectionLock)
@@ -63,13 +65,16 @@ namespace Imperium.Server
                 {
                     try
                     {
-                        string response;
-                        
                         var receivedData = Receive();
                         _log.Message("<< " + receivedData);
+
+                        _lastResponse
+                            = receivedData == "@resend"
+                                ? _lastResponse
+                                : Server.ResponseManager.GetResponse(receivedData, this);
                         
-                        Send(response = Server.ResponseManager.GetResponse(receivedData, this));
-                        _log.Message(">> " + response);
+                        Send(_lastResponse);
+                        _log.Message(">> " + _lastResponse);
                     }
                     catch (SocketException)
                     {

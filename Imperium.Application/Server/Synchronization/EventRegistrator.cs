@@ -1,4 +1,5 @@
 ﻿using System.Linq;
+using Imperium.Application.Common;
 using Imperium.CommonData;
 using Imperium.Core.Systems.Landscape;
 using Imperium.Core.Systems.Owning;
@@ -29,13 +30,8 @@ namespace Imperium.Application.Server.Synchronization
                         "OnEntityCreate", 
                         new NetData
                         {
-                            ["dto"] = new BuildingDto
-                            {
-                                BuildingName = entity.Name,
-                                TerrainName = (area & typeof(Landscape))[placer.Coordinates].Name,
-                                Temperature = area.GetTemperature(placer.Coordinates),
-                            },
-                            ["position"] = placer.Coordinates,
+                            ["dto"] = area.GetPlaceDto(placer.Position),
+                            ["position"] = placer.Position,
                         });
                 }
             };
@@ -54,7 +50,7 @@ namespace Imperium.Application.Server.Synchronization
                         new NetData
                         {
                             ["name"] = entity.Name,
-                            ["position"] = positionComponent.Coordinates,
+                            ["position"] = positionComponent.Position,
                         });
                 }
             };
