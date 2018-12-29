@@ -2,6 +2,7 @@
 using Imperium.Core.Systems.Owning;
 using Imperium.Core.Systems.Placing;
 using Imperium.Core.Systems.Upgrading;
+using Imperium.Core.Systems.Vision;
 using Imperium.Ecs;
 
 namespace Imperium.Game.Prototypes
@@ -13,7 +14,8 @@ namespace Imperium.Game.Prototypes
                 = new Entity("Wooden house")
                   | new Placer()
                   | new Incomer {Income = new Resources {Food = 3600}}
-                  | new Owned(),
+                  | new Owned()
+                  | new Observer(),
 
             Sawmill
                 = new Entity("Sawmill")

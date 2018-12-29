@@ -12,6 +12,11 @@ namespace Imperium.Core.Systems.Owning
 
 
 
+        [Obsolete("testing ctor")]
+        public PlayerSystem()
+        {
+        }
+
         public PlayerSystem(IResources playerStartingResources)
         {
             PlayerStartingResources = playerStartingResources;

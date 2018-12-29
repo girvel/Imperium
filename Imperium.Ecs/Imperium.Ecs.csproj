@@ -39,6 +39,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Attributes\BasedOnAttribute.cs" />
     <Compile Include="Component.cs" />
     <Compile Include="Entity.cs" />
     <Compile Include="Managers\ComponentManager.cs" />

@@ -39,7 +39,8 @@ namespace Imperium.Game.Generation
                 generator.Generate(area, random);
             }
 
-            area.Slice<Squad>()[new Vector(1, 1)] = Squad.Test;
+            area.Slice<Landscape>()[new Vector(20, 20)] = Landscape.Plain;
+            area.Slice<Squad>()[new Vector(20, 20)] = Squad.Test;
         }
     }
 }

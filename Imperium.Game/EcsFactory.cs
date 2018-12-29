@@ -2,8 +2,10 @@
 using Imperium.Core.Systems.Income;
 using Imperium.Core.Systems.Owning;
 using Imperium.Core.Systems.Placing;
+using Imperium.Core.Systems.Vision;
 using Imperium.Ecs.Managers;
 using Imperium.Game.Generation;
+using Imperium.Game.Systems.Vision;
 using Province.Vector;
 
 namespace Imperium.Game
@@ -21,6 +23,7 @@ namespace Imperium.Game
                 area,
                 new PlayerSystem(Resources.Zero),
                 new IncomeSystem(),
+                new ClientVision(), 
             };
             
             foreach (var system in systems)

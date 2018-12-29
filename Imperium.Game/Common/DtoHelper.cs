@@ -13,7 +13,7 @@ namespace Imperium.Application.Common
             {
                 BuildingName = area.Slice<Building>()[position].Name,
                 TerrainName = area.Slice<Landscape>()[position].Name,
-                SquadName = area.Slice<Squad>()[position].Name,
+                SquadName = area.Slice<Squad>()[position]?.Name ?? "",
                 Temperature = area.GetTemperature(position),
             };
         }

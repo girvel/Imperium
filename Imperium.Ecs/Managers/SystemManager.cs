@@ -20,6 +20,7 @@ namespace Imperium.Ecs.Managers
         {
             base.Register(subject);
             subject.Ecs = Ecs;
+            subject.Start();
         }
 
         public virtual T GetSystem<T>()

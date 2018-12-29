@@ -42,6 +42,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Common\DtoHelper.cs" />
     <Compile Include="Common\Mathf.cs" />
     <Compile Include="Common\VectorHelper.cs" />
     <Compile Include="Common\RandomHelper.cs" />
@@ -52,11 +53,13 @@
     <Compile Include="Generation\Subgenerators\LandGenerator.cs" />
     <Compile Include="Generation\Subgenerators\MountainsGenerator.cs" />
     <Compile Include="Generation\Subgenerators\Pregenerator.cs" />
+    <Compile Include="Modification\PlayerModifier.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Prototypes\Building.cs" />
     <Compile Include="Prototypes\Landscape.cs" />
     <Compile Include="Prototypes\Squad.cs" />
     <Compile Include="Resources.cs" />
+    <Compile Include="Systems\Vision\ClientVision.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Imperium.CommonData\Imperium.CommonData.csproj">

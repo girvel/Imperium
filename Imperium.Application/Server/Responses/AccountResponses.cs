@@ -1,12 +1,14 @@
 ﻿using System.Linq;
-using Imperium.Application.Common;
 using Imperium.CommonData;
+using Imperium.Core.Common;
 using Imperium.Core.Systems.Owning;
 using Imperium.Core.Systems.Placing;
 using Imperium.Core.Systems.Upgrading;
+using Imperium.Core.Systems.Vision;
 using Imperium.Ecs.Managers;
 using Imperium.Game;
 using Imperium.Game.Prototypes;
+using Imperium.Game.Systems.Vision;
 using Imperium.Server;
 using Imperium.Server.Generation;
 using Imperium.Server.Generation.Attributes;
@@ -44,16 +46,9 @@ namespace Imperium.Application.Server.Responses
         
         
         [Response(Permission.User)]
-        public PlaceDto[,] GetArea(Connection<Player> connection)
+        public PlaceDto[,] GetVision(Connection<Player> connection)
         {
-            var area = GlobalData.SystemManager.GetSystem<Area>();
-            var result = new PlaceDto[area.Size.X, area.Size.Y];
-            foreach (var v in area.Size.Range())
-            {
-                result[v.X, v.Y] = area.GetPlaceDto(v);
-            }
-
-            return result;
+            return GlobalData.SystemManager.GetSystem<ClientVision>().GetCurrentVision(connection.Account.ExternalData);
         }
         
         

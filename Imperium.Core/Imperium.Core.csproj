@@ -57,7 +57,7 @@
     <Compile Include="Systems\Upgrading\Upgradable.cs" />
     <Compile Include="Systems\Upgrading\Upgrade.cs" />
     <Compile Include="Systems\Vision\Observer.cs" />
-    <Compile Include="Systems\Vision\Vision.cs" />
+    <Compile Include="Systems\Vision\AbstractVision.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Imperium.CommonData\Imperium.CommonData.csproj">
