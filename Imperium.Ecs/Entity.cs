@@ -50,7 +50,7 @@ namespace Imperium.Ecs
             component.Parent = null;
         }
         
-        public T GetComponent<T>()
+        public T GetComponent<T>() where T : Component
         {
             return Components.OfType<T>().FirstOrDefault();
         }

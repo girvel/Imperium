@@ -1,18 +1,11 @@
-﻿using System.Collections.Generic;
-using Imperium.Core.Common;
+﻿using Imperium.Core.Common;
 using Imperium.Core.Systems.Owning;
+using Imperium.Ecs;
 
 namespace Imperium.Core.Systems.Income
 {
-    public class IncomeSystem : Ecs.System
+    public class IncomeSystem : RegistrationSystem<Incomer>
     {
-        public List<Incomer> Subjects = new List<Incomer>();
-
-        public void Register(Incomer subject)
-        {
-            Subjects.Add(subject);
-        }
-
         public override void Update()
         {
             base.Update();

@@ -23,7 +23,7 @@ namespace Imperium.Ecs.Managers
             subject.Start();
         }
 
-        public virtual T GetSystem<T>()
+        public virtual T GetSystem<T>() where T : System
         {
             return Subjects.OfType<T>().First();
         }

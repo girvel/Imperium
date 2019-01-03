@@ -3,15 +3,8 @@ using Imperium.Ecs;
 
 namespace Imperium.Core.Systems.Income
 {
-    public class Incomer : Component
+    public class Incomer : RegisteredComponent<IncomeSystem, Incomer>
     {
         public IResources Income { get; set; }
-        
-        public override void Start()
-        {
-            base.Start();
-            
-            Ecs.SystemManager.GetSystem<IncomeSystem>().Register(this);
-        }
     }
 }
