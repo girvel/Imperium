@@ -21,7 +21,7 @@ namespace Imperium.Client
         protected T Request<T>(string type, NetData args)
         {
             var firstTime = true;
-            while (true)
+            for (int i = 0; i < 10; i++)
             {
                 try
                 {
@@ -40,6 +40,8 @@ namespace Imperium.Client
 
                 firstTime = false;
             }
+
+            throw new Exception();
         }
     }
 }

@@ -46,7 +46,7 @@ namespace Imperium.Application.Server.Responses
         
         
         [Response(Permission.User)]
-        public PlaceDto[,] GetVision(Connection<Player> connection)
+        public VisionDto GetVision(Connection<Player> connection)
         {
             return GlobalData.SystemManager.GetSystem<ClientVision>().GetCurrentVision(connection.Account.ExternalData);
         }

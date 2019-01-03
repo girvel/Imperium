@@ -16,6 +16,11 @@ namespace Province.Log
             Writers = writers.ToList();
         }
 
+        ~Log()
+        {
+            Writers.ForEach(w => w.Dispose());
+        }
+
         public virtual void Message(string text)
         {
             var str = $"{DateTime.Now:hh:mm:ss}\t {text}\n";

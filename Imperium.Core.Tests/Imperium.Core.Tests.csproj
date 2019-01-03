@@ -61,8 +61,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Systems\Owning\PlayerSystemTests.cs" />
+    <Compile Include="Systems\Owning\PlayerTests.cs" />
     <Compile Include="Systems\Placing\AreaSystemTests.cs" />
-    <Compile Include="Systems\Owning\PlayerComponentTests.cs" />
+    <Compile Include="Systems\Owning\OwnedTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Imperium.CommonData\Imperium.CommonData.csproj">

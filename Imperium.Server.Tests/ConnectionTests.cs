@@ -49,43 +49,5 @@ namespace Imperium.Server.Tests
                     server.Encoding.GetString(response).Replace("\0", ""));
             }
         }
-
-
-        
-        [Fact]
-        public void Start_WritesToLogWhenReceivedDataIsWrong()
-        {
-            // arrange
-            var logMock = new Mock<Log>();
-            logMock.Setup(l => l.Message(It.IsAny<string>()));
-
-            Socket clientSocket, connectionSocket;
-            NetHelper.Current.GetNewSocketPair(out connectionSocket, out clientSocket);
-            
-            using (connectionSocket)
-            using (clientSocket)
-            {
-                var server = new Server<object>
-                {
-                    Log = logMock.Object,
-                    ResponseManager = Mock.Of<ResponseManager<object>>(
-                        m => m.GetResponse(It.IsAny<string>(), It.IsAny<Connection<object>>()) == "")
-                };
-                var connection = new Connection<object>(connectionSocket, server);
-
-                // act
-                connection.StartThread();
-                clientSocket.Send(server.Encoding.GetBytes("fff"));
-                Thread.Sleep(100);
-
-                connection.Close();
-
-                // assert
-                logMock.Verify(
-                    l => l.Message(It.IsAny<string>()),
-                    Times.Exactly(2),
-                    "connection didn't write to log");
-            }
-        }
     }
 }

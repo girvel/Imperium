@@ -8,18 +8,18 @@ namespace Imperium.Game.Systems.Vision
 {
     public class ClientVision : AbstractVision
     {
-        public override PlaceDto[,] GetCurrentVision(Player player)
+        public override VisionDto GetCurrentVision(Player player)
         {
             var area = Ecs.SystemManager.GetSystem<Area>();
             var result = new PlaceDto[area.Size.X, area.Size.Y];
-            var vision = GetVisibility(player);
+            var visibility = GetVisibility(player);
             
             foreach (var v in area.Size.Range())
             {
-                result[v.X, v.Y] = vision[v.X, v.Y] ? area.GetPlaceDto(v) : new PlaceDto();
+                result[v.X, v.Y] = visibility[v.X, v.Y] ? area.GetPlaceDto(v) : null;
             }
 
-            return result;
+            return new VisionDto {Grid = result};
         }
     }
 }

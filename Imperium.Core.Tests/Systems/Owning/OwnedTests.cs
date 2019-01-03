@@ -5,7 +5,7 @@ using Xunit;
 
 namespace Imperium.Core.Tests.Systems.Owning
 {
-    public class PlayerComponentTests
+    public class OwnedTests
     {
         [Fact]
         public void Owner_Set_MovesToANewPlayerList()
@@ -32,8 +32,6 @@ namespace Imperium.Core.Tests.Systems.Owning
         public void Owner_Set_SafeForNullReferenceExceptions()
         {
             // arrange
-            var system = Mock.Of<PlayerSystem>();
-            
             // ReSharper disable once UseObjectOrCollectionInitializer
             var component = new Owned();
             
@@ -42,6 +40,28 @@ namespace Imperium.Core.Tests.Systems.Owning
             
             // assert
             Assert.True(true);
+        }
+
+        [Fact]
+        public void Owner_Set_UsesSafeMethodsToWorkWithOwnerSubjects()
+        {
+            // arrange
+            var newPlayerMock = new Mock<Player>();
+            
+            var system = Mock.Of<PlayerSystem>();
+            system.Players.Add(newPlayerMock.Object);
+
+            var ecs = Mock.Of<EcsManager>();
+            ecs.SystemManager = Mock.Of<SystemManager>(s => s.GetSystem<PlayerSystem>() == system);
+            
+            // ReSharper disable once UseObjectOrCollectionInitializer
+            var component = new Owned{Ecs = ecs};
+            
+            // act
+            component.Owner = newPlayerMock.Object;
+            
+            // assert
+            newPlayerMock.Verify(p => p.AddOwned(component));
         }
     }
 }

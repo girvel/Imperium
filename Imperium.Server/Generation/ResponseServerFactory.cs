@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Reflection;
@@ -28,6 +30,17 @@ namespace Imperium.Server.Generation
                 container.GlobalData = globalData;
             }
 
+            const string logDirectory = "log";
+            Directory.CreateDirectory(logDirectory);
+
+            var log = new Log(
+                Console.Out,
+                new StreamWriter(
+                    File.OpenWrite(
+                        Path.Combine(
+                            logDirectory,
+                            $"log {DateTime.Now:yy-MM-dd hh mm ss}.txt"))));
+            
             var responses
                 = containers
                     .SelectMany(c
@@ -37,7 +50,7 @@ namespace Imperium.Server.Generation
                             .Select(m => new KeyValuePair<string, ResponsePair<TAccountData>>(
                                 m.Name,
                                 new ResponsePair<TAccountData>(
-                                    MethodToDelegate(m, c),
+                                    MethodToDelegate(m, c, log),
                                     m.GetCustomAttributes(false).OfType<ResponseAttribute>().First().Groups))))
                     .ToDictionary(
                         p => p.Key,
@@ -77,15 +90,14 @@ namespace Imperium.Server.Generation
                     responses,
                     permissionResponses[0],
                     ex => (args, c) => exceptionResponses[0](ex, args, c)),
-                new Log(Console.Out));
+                log);
         }
         
         
         
         private static ResponseManager<TAccountData>.ResponseGenerator MethodToDelegate(
-            MethodInfo method, IRequestContainer<TGlobalData> container)
+            MethodInfo method, IRequestContainer<TGlobalData> container, Log log)
         {
-            //m.CreateDelegate(typeof(ResponseManager<TAccountData>.ResponseGenerator), c)
             return (connection, args) =>
             {
                 var methodArgs = new object[method.GetParameters().Length];
@@ -96,11 +108,47 @@ namespace Imperium.Server.Generation
                     methodArgs[i] = args[method.GetParameters()[i].Name];
                 }
 
+                var argsString = args.Aggregate("", (sum, p) => $"{sum}, {p.Key}: {ConvertToString(p.Value)}");
+                argsString = argsString == string.Empty ? string.Empty : argsString.Substring(2);
+                
+                log.Message($"{method.Name}({argsString})");
+
+                var result = method.Invoke(container, methodArgs);
+                
+                log.Message($"return {ConvertToString(result)}");
+
                 return new NetData
                 {
-                    ["result"] = method.Invoke(container, methodArgs),
+                    ["result"] = result,
                 };
             };
+        }
+
+        private static string ConvertToString(object obj)
+        {
+            {
+                var str = obj as string;
+                if (str != null) return str;
+            }
+            
+            {
+                var enumerable = obj as IEnumerable<object>;
+                if (enumerable != null) 
+                    return $"{{{enumerable.Aggregate("", (sum, o) => sum + ConvertToString(o) + ", ")}}}";
+            }
+
+            {
+                var enumerable = obj as IEnumerable;
+                if (enumerable != null) return ConvertToString(enumerable.Cast<object>());
+            }
+
+            if (obj is KeyValuePair<string, object>)
+            {
+                var pair = (KeyValuePair<string, object>) obj;
+                return $"{pair.Key}: {ConvertToString(pair.Value)}";
+            }
+
+            return obj.ToString();
         }
     }
 }

@@ -66,7 +66,7 @@ namespace Imperium.Server
                     try
                     {
                         var receivedData = Receive();
-                        _log.Message("<< " + receivedData);
+                        //_log.Message("<< " + receivedData);
 
                         _lastResponse
                             = receivedData == "@resend"
@@ -74,7 +74,7 @@ namespace Imperium.Server
                                 : Server.ResponseManager.GetResponse(receivedData, this);
                         
                         Send(_lastResponse);
-                        _log.Message(">> " + _lastResponse);
+                        //_log.Message(">> " + _lastResponse);
                     }
                     catch (SocketException)
                     {

@@ -63,6 +63,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Attributes\BasedOnAttributeTests.cs" />
     <Compile Include="ComponentTests.cs" />
     <Compile Include="EntityTests.cs" />
     <Compile Include="Managers\EntityManagerTests.cs" />

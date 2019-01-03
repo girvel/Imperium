@@ -6,6 +6,7 @@ using Imperium.Core.Systems.Owning;
 using Imperium.Core.Systems.Placing;
 using Imperium.Ecs.Managers;
 using Imperium.Game.Prototypes;
+using Imperium.Game.Systems.Vision;
 using Imperium.Server;
 using NetData = System.Collections.Generic.Dictionary<string, object>;
 
@@ -15,44 +16,16 @@ namespace Imperium.Application.Server.Synchronization
     {
         public static void Register(Server<Player> server, EcsManager gameData)
         {
-            gameData.EntityManager.OnEntityCreate += entity =>
+            gameData.SystemManager.GetSystem<ClientVision>().OnVisionChanged += (player, vision) =>
             {
-                var placer = entity.GetComponent<Placer>();
-
-                if (!(placer != null && entity ^ typeof(Building))) return;
-
-                var area = gameData.SystemManager.GetSystem<Area>();
-                
-                foreach (var player in server.Connections.Select(c => c.Account.ExternalData))
-                {
-                    server.NewsManager.AddNews(
-                        player, 
-                        "OnEntityCreate", 
-                        new NetData
-                        {
-                            ["dto"] = area.GetPlaceDto(placer.Position),
-                            ["position"] = placer.Position,
-                        });
-                }
-            };
-            
-            gameData.EntityManager.OnEntityDestroy += entity =>
-            {
-                var positionComponent = entity.GetComponent<Placer>();
-
-                if (positionComponent == null) return;
-                
-                foreach (var player in server.Connections.Select(c => c.Account.ExternalData))
-                {
-                    server.NewsManager.AddNews(
-                        player, 
-                        "OnEntityDestroy", 
-                        new NetData
-                        {
-                            ["name"] = entity.Name,
-                            ["position"] = positionComponent.Position,
-                        });
-                }
+                server.NewsManager.AddNews(
+                    player,
+                    "OnVisionChanged",
+                    new NetData
+                    {
+                        ["vision"] = vision,
+                    },
+                    unical: true);
             };
 
             gameData.SystemManager.GetSystem<PlayerSystem>().OnPlayerCreated += player =>

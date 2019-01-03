@@ -1,18 +1,65 @@
 ﻿using System;
 using System.Linq;
+using System.Runtime.InteropServices.ComTypes;
 using Imperium.CommonData;
 using Imperium.Core.Systems.Owning;
 using Imperium.Core.Systems.Placing;
+using Imperium.Ecs;
+using Imperium.Ecs.Attributes;
 using Province.Vector;
-
+ 
 namespace Imperium.Core.Systems.Vision
 {
+    [BasedOn(typeof(Area), typeof(PlayerSystem))]
     public abstract class AbstractVision : Ecs.System
     {
-        public event Action OnVisionChanged;
+        public event Action<Player, VisionDto> OnVisionChanged;
+
+
         
+        public override void Start()
+        {
+            base.Start();
+
+            void UpdatePlayer(Player player) => OnVisionChanged?.Invoke(player, GetCurrentVision(player));
+
+            void Update(Placer placer)
+            {
+                foreach (
+                    var player 
+                    in Ecs.SystemManager
+                        .GetSystem<PlayerSystem>().Players
+                        .Where(p => IsVisible(p, placer.Position)))
+                {
+                    UpdatePlayer(player);
+                }
+            }
+            
+            var area = Ecs.SystemManager.GetSystem<Area>();
+            area.OnRemove += Update;
+            area.OnPlace += Update;
+
+            Ecs.SystemManager.GetSystem<PlayerSystem>().OnPlayerCreated += p =>
+            {
+                p.OnOwnedAdded   += o => UpdatePlayer(p);
+                p.OnOwnedRemoved += o => UpdatePlayer(p);
+            };
+        }
+
+
         
-        
+        protected virtual bool IsVisible(Player player, Vector position)
+        {
+            return player.OwnedSubjects
+                .Select(s => new
+                {
+                    Observer = s.Parent.GetComponent<Observer>(),
+                    Placer = s.Parent.GetComponent<Placer>()
+                })
+                .Where(p => p.Observer != null && p.Placer != null)
+                .Any(p => (position - p.Placer.Position).Magnitude <= p.Observer.VisionRange);
+        }
+
         protected virtual bool[,] GetVisibility(Player player)
         {
             var size = Ecs.SystemManager.GetSystem<Area>().Size;
@@ -31,13 +78,13 @@ namespace Imperium.Core.Systems.Vision
                         Vector.Max(Vector.Zero, placer.Position - observer.VisionRange * Vector.One),
                         Vector.Min(size - Vector.One, placer.Position + observer.VisionRange * Vector.One)))
                 {
-                    result[position.X, position.Y] = (position - placer.Position).Magnitude <= observer.VisionRange;
+                    result[position.X, position.Y] |= (position - placer.Position).Magnitude <= observer.VisionRange;
                 }
             }
 
             return result;
         }
 
-        public abstract PlaceDto[,] GetCurrentVision(Player player);
+        public abstract VisionDto GetCurrentVision(Player player);
     }
 }

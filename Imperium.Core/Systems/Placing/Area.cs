@@ -15,6 +15,9 @@ namespace Imperium.Core.Systems.Placing
 
         public List<Placer> this[Vector p] => Grid[p.X, p.Y];
 
+
+        public event Action<Placer> OnRemove, OnPlace;
+
         
 
         public Area(Vector size)
@@ -48,11 +51,13 @@ namespace Imperium.Core.Systems.Placing
         public void Remove(Placer component)
         {
             this[component.Position].Remove(component);
+            OnRemove?.Invoke(component);
         }
 
         public void Register(Placer component)
         {
             this[component.Position].Add(component);
+            OnPlace?.Invoke(component);
         }
         
         

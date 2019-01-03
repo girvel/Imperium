@@ -11,11 +11,11 @@ namespace Imperium.Core.Systems.Owning
             get => _owner;
             set
             {
-                _owner?.OwnedSubjects.Remove(this);
+                _owner?.RemoveOwned(this);
 
                 _owner = value;
 
-                _owner?.OwnedSubjects.Add(this);
+                _owner?.AddOwned(this);
             }
         }
     }
