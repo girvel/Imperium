@@ -54,6 +54,7 @@
     <Compile Include="Systems\Owning\PlayerSystem.cs" />
     <Compile Include="Systems\Income\Incomer.cs" />
     <Compile Include="Systems\Income\IncomeSystem.cs" />
+    <Compile Include="Systems\Upgrading\PriceUpgrade.cs" />
     <Compile Include="Systems\Upgrading\Upgradable.cs" />
     <Compile Include="Systems\Upgrading\Upgrade.cs" />
     <Compile Include="Systems\Vision\Observer.cs" />

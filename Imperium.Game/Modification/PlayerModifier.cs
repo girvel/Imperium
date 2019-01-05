@@ -30,6 +30,7 @@ namespace Imperium.Game.Modification
                    || area.Slice<Building>()[position] < Building.Mountain);
 
             area.Slice<Squad>()[position] = Squad.Test;
+            area.Slice<Squad>()[position].GetComponent<Owned>().Owner = player;
         }
     }
 }
