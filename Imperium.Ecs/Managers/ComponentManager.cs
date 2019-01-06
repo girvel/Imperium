@@ -2,9 +2,10 @@
 {
     public class ComponentManager : Manager<Component>
     {
-        public virtual Component CreateClone(Component original)
+        public virtual Component Create(Component prototype)
         {
-            var clone = (Component) original.Clone();
+            var clone = (Component) prototype.Clone();
+            clone.Prototype = prototype;
             Register(clone);
             return clone;
         }

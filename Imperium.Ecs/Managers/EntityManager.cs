@@ -28,7 +28,7 @@ namespace Imperium.Ecs.Managers
                 foreach (var c in prototype.Components)
                 {
                     var previousComponent = previous?.Components.FirstOrDefault(pc => c.GetType() == pc.GetType());
-                    newEntity.AddComponent(Ecs.ComponentManager.CreateClone(previousComponent ?? c));
+                    newEntity.AddComponent(Ecs.ComponentManager.Create(previousComponent ?? c));
                 }
             }
 

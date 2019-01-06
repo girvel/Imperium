@@ -46,6 +46,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Systems\Landscape\Terrain.cs" />
     <Compile Include="Systems\Landscape\TerrainType.cs" />
+    <Compile Include="Systems\Movement\Movable.cs" />
+    <Compile Include="Systems\Movement\MovementManager.cs" />
+    <Compile Include="Systems\Movement\MovementTask.cs" />
     <Compile Include="Systems\Placing\Area.cs" />
     <Compile Include="Systems\Placing\AreaSlice.cs" />
     <Compile Include="Systems\Placing\Placer.cs" />

@@ -19,7 +19,7 @@ namespace Imperium.Core.Systems.Income
                     owner.Resources 
                         = owner.Resources.Added(
                             resourceBuilding.Income.Multiplied(
-                                Time.GameSecondToUpdateCoefficient(Ecs) / 3600 / 24));
+                                Time.DeltaTime(Ecs) / 3600 / 24));
                 }
             }
         }

@@ -4,11 +4,14 @@
         where TSystem : RegistrationSystem<TThis>
         where TThis : RegisteredComponent<TSystem, TThis>
     {
+        public TSystem System { get; private set; }
+        
         public override void Start()
         {
             base.Start();
-            
-            Ecs.SystemManager.GetSystem<TSystem>().Register((TThis) this);
+
+            System = Ecs.SystemManager.GetSystem<TSystem>();
+            System.Register((TThis) this);
         }
     }
 }

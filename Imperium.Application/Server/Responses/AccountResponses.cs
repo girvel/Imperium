@@ -1,6 +1,7 @@
 ﻿using System.Linq;
 using Imperium.CommonData;
 using Imperium.Core.Common;
+using Imperium.Core.Systems.Movement;
 using Imperium.Core.Systems.Owning;
 using Imperium.Core.Systems.Placing;
 using Imperium.Core.Systems.Upgrading;
@@ -89,6 +90,16 @@ namespace Imperium.Application.Server.Responses
         public bool AddResources(Connection<Player> connection)
         {
             connection.Account.ExternalData.Resources += new Resources {Wood = 100};
+            return true;
+        }
+        
+        
+        
+        [Response(Permission.User)]
+        public bool Move(Connection<Player> connection, Vector from, Vector to)
+        {
+            GlobalData.SystemManager.GetSystem<Area>().Slice<Squad>()[from].GetComponent<Movable>().Move(to);
+
             return true;
         }
     }

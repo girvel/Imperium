@@ -34,7 +34,7 @@ namespace Imperium.Ecs.Tests.Managers
 
             var componentManagerMock = new Mock<ComponentManager>();
             componentManagerMock
-                .Setup(c => c.CreateClone(It.IsAny<Component>()))
+                .Setup(c => c.Create(It.IsAny<Component>()))
                 .Returns<Component>(c => (Component) c.Clone());
 
             manager.Ecs.ComponentManager = componentManagerMock.Object;

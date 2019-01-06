@@ -11,6 +11,10 @@ namespace Imperium.Ecs
         
         
         
+        public Component Prototype { get; set; }
+        
+        
+        
         public virtual void Start()
         {
         }

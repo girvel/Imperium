@@ -1,4 +1,6 @@
-﻿using Imperium.Core.Systems.Owning;
+﻿using System;
+using Imperium.Core.Systems.Movement;
+using Imperium.Core.Systems.Owning;
 using Imperium.Core.Systems.Placing;
 using Imperium.Core.Systems.Vision;
 using Imperium.Ecs;
@@ -12,6 +14,7 @@ namespace Imperium.Game.Prototypes
                 = new Entity("Test")
                   | new Placer()
                   | new Owned()
-                  | new Observer{VisionRange = 3};
+                  | new Observer{VisionRange = 3}
+                  | new Movable{MovementDelay = TimeSpan.FromSeconds(3)};
     }
 }

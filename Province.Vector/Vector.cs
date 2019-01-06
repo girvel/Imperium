@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text.RegularExpressions;
 
 namespace Province.Vector
 {
@@ -117,5 +118,19 @@ namespace Province.Vector
             => new Vector(
                 Math.Min(first.X, second.X),
                 Math.Min(first.Y, second.Y));
+
+
+
+        public static bool TryParse(string source, out Vector result)
+        {
+            var reg = Regex.Match(source, @"^\{([-+]?\d+)[;,]\s*([-+]?\d+)\}$");
+
+            result 
+                = reg.Success 
+                    ? new Vector(int.Parse(reg.Groups[1].Value), int.Parse(reg.Groups[2].Value)) 
+                    : default(Vector);
+
+            return reg.Success;
+        }
     }
 }
