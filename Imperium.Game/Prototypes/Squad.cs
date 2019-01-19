@@ -1,5 +1,6 @@
 ﻿using System;
 using Imperium.Core.Systems.Movement;
+using Imperium.Core.Systems.Order;
 using Imperium.Core.Systems.Owning;
 using Imperium.Core.Systems.Placing;
 using Imperium.Core.Systems.Vision;
@@ -15,6 +16,7 @@ namespace Imperium.Game.Prototypes
                   | new Placer()
                   | new Owned()
                   | new Observer{VisionRange = 3}
+                  | new Executor()
                   | new Movable{MovementDelay = TimeSpan.FromSeconds(3)};
     }
 }

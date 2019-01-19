@@ -29,6 +29,10 @@ namespace Imperium.Ecs.Managers
 
 
 
+        public T GetSystem<T>() where T : System => SystemManager.GetSystem<T>();
+
+
+
         public static EcsManager CreateNew()
         {
             var result = new EcsManager

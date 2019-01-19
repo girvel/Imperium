@@ -4,12 +4,12 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{942FC477-CDFA-4C06-B01C-2B29C9B30B01}</ProjectGuid>
+    <ProjectGuid>{47C87D4A-69EC-4574-A745-24B05A72A4DA}</ProjectGuid>
     <ProjectTypeGuids>{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Imperium.Ecs</RootNamespace>
-    <AssemblyName>Imperium.Ecs</AssemblyName>
+    <RootNamespace>Province.ExtendedFramework</RootNamespace>
+    <AssemblyName>Province.ExtendedFramework</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -39,21 +39,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Attributes\RequirementsAttribute.cs" />
-    <Compile Include="Attributes\RequirementsException.cs" />
-    <Compile Include="Attributes\RequiresSystemsAttribute.cs" />
-    <Compile Include="Attributes\RequiresComponentsAttribute.cs" />
-    <Compile Include="Component.cs" />
-    <Compile Include="Entity.cs" />
-    <Compile Include="Managers\ComponentManager.cs" />
-    <Compile Include="Managers\EntityManager.cs" />
-    <Compile Include="Managers\EcsManager.cs" />
-    <Compile Include="Managers\Manager.cs" />
-    <Compile Include="Managers\SystemManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="RegisteredComponent.cs" />
-    <Compile Include="RegistrationSystem.cs" />
-    <Compile Include="System.cs" />
+    <Compile Include="TimeSpanHelper.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

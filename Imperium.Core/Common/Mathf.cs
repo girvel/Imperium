@@ -1,8 +1,7 @@
 ﻿using System;
 using System.Linq;
-using System.Runtime.Remoting;
 
-namespace Imperium.Game.Common
+namespace Imperium.Core.Common
 {
     public static class Mathf
     {

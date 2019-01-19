@@ -42,7 +42,7 @@ namespace Imperium.Ecs.Tests
             {
                 system.Start();
             }
-            catch (System.RequirementsException)
+            catch (RequirementsException)
             {
                 thrown = true;
             }
@@ -53,7 +53,7 @@ namespace Imperium.Ecs.Tests
 
 
 
-        [BasedOn(typeof(RequiredSystem1), typeof(RequiredSystem2))]
+        [RequiresSystems(typeof(RequiredSystem1), typeof(RequiredSystem2))]
         private class TestSystem : System
         {
             

@@ -7,8 +7,13 @@ namespace Imperium.Core.Systems.Placing
     {
         public Vector Position { get; set; }
 
-        
 
+
+        public void Move(Vector newPosition)
+        {
+            Ecs.GetSystem<Area>().Move(this, newPosition);
+        }
+        
         public override void Start()
         {
             base.Start();

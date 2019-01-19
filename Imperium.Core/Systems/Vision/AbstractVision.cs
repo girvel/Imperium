@@ -10,7 +10,7 @@ using Province.Vector;
  
 namespace Imperium.Core.Systems.Vision
 {
-    [BasedOn(typeof(Area), typeof(PlayerSystem))]
+    [RequiresSystems(typeof(Area), typeof(PlayerSystem))]
     public abstract class AbstractVision : Ecs.System
     {
         public event Action<Player, VisionDto> OnVisionChanged;

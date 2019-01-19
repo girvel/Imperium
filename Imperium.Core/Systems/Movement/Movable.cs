@@ -1,10 +1,13 @@
 ﻿using System;
+using Imperium.Core.Systems.Order;
 using Imperium.Ecs;
+using Imperium.Ecs.Attributes;
 using Province.Vector;
 
 namespace Imperium.Core.Systems.Movement
 {
-    public class Movable : RegisteredComponent<MovementManager, Movable>
+    [RequiresComponents(typeof(Executor))]
+    public class Movable : Component
     {
         public TimeSpan MovementDelay { get; set; }
 
@@ -14,7 +17,7 @@ namespace Imperium.Core.Systems.Movement
 
         public void Move(Vector to)
         {
-            System.AddTask(new MovementTask{Movable = this, To = to,});
+            Parent.GetComponent<Executor>().OrderQueue.Enqueue(new MovementOrder{Movable = this, To = to});
         }
     }
 }

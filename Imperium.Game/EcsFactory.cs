@@ -1,6 +1,7 @@
 ﻿using System;
 using Imperium.Core.Systems.Income;
 using Imperium.Core.Systems.Movement;
+using Imperium.Core.Systems.Order;
 using Imperium.Core.Systems.Owning;
 using Imperium.Core.Systems.Placing;
 using Imperium.Core.Systems.Vision;
@@ -25,7 +26,7 @@ namespace Imperium.Game
                 new PlayerSystem(Resources.Zero),
                 new IncomeSystem(),
                 new ClientVision(), 
-                new MovementManager(), 
+                new OrderManager(), 
             };
             
             foreach (var system in systems)

@@ -1,4 +1,5 @@
 ﻿using System;
+using Imperium.Ecs.Attributes;
 using Imperium.Ecs.Managers;
 
 namespace Imperium.Ecs
@@ -17,6 +18,7 @@ namespace Imperium.Ecs
         
         public virtual void Start()
         {
+            RequirementsAttribute.CheckRequirements(this);
         }
 
         public virtual void Destroy()
