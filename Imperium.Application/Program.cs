@@ -21,6 +21,9 @@ namespace Imperium.Application
         
         public static void Main(string[] consoleArgs)
         {
+            Console.Title = "Imperium";
+            Console.SetWindowSize(120, 40);
+            
             Ecs = new EcsFactory().Generate();
             
             Server = new ResponseServerFactory<Player, EcsManager>().Generate(Ecs, typeof(Program).Assembly);
@@ -32,7 +35,7 @@ namespace Imperium.Application
             Ecs.SystemManager.GetSystem<PlayerSystem>().Register(player);
             
             new PlayerModifier().Modify(Ecs.SystemManager.GetSystem<Area>(), player, new Random());
-
+            
             new Thread(Server.Start).Start();
             Ecs.Start();
         }

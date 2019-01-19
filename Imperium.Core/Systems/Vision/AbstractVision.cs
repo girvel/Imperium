@@ -76,7 +76,7 @@ namespace Imperium.Core.Systems.Vision
                     var position
                     in Vector.Range(
                         Vector.Max(Vector.Zero, placer.Position - observer.VisionRange * Vector.One),
-                        Vector.Min(size - Vector.One, placer.Position + observer.VisionRange * Vector.One)))
+                        Vector.Min(size, placer.Position + observer.VisionRange * Vector.One)))
                 {
                     result[position.X, position.Y] |= (position - placer.Position).Magnitude <= observer.VisionRange;
                 }

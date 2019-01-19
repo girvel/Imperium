@@ -47,7 +47,7 @@ namespace Imperium.Core.Systems.Movement
                 steps--;
             }
             
-            Placer.Move(newPosition);
+            if (newPosition != Placer.Position) Placer.Move(newPosition);
 
             return To == newPosition
                 ? maxTime - Movable.Prototype.MovementDelay.Multiplied(steps) - Movable.MovementDelay
