@@ -4,6 +4,8 @@ namespace Imperium.CommonData
 {
     public class VisionDto
     {
+        public bool[,] Visibility;
+        
         public PlaceDto[,] Grid;
 
         public override string ToString() =>

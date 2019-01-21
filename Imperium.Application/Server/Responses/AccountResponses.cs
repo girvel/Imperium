@@ -98,9 +98,10 @@ namespace Imperium.Application.Server.Responses
         [Response(Permission.User)]
         public bool Move(Connection<Player> connection, Vector from, Vector to)
         {
-            GlobalData.SystemManager.GetSystem<Area>().Slice<Squad>()[from].GetComponent<Movable>().Move(to);
+            var squad = GlobalData.SystemManager.GetSystem<Area>().Slice<Squad>()[from];
+            squad?.GetComponent<Movable>().Move(to);
 
-            return true;
+            return squad != null;
         }
     }
 }

@@ -19,7 +19,11 @@ namespace Imperium.Game.Systems.Vision
                 result[v.X, v.Y] = visibility[v.X, v.Y] ? area.GetPlaceDto(v) : null;
             }
 
-            return new VisionDto {Grid = result};
+            return new VisionDto
+            {
+                Visibility = visibility,
+                Grid = result,
+            };
         }
     }
 }
