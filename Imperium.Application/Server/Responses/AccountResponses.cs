@@ -4,6 +4,7 @@ using Imperium.Core.Common;
 using Imperium.Core.Systems.Movement;
 using Imperium.Core.Systems.Owning;
 using Imperium.Core.Systems.Placing;
+using Imperium.Core.Systems.Science;
 using Imperium.Core.Systems.Upgrading;
 using Imperium.Core.Systems.Vision;
 using Imperium.Ecs.Managers;
@@ -103,6 +104,25 @@ namespace Imperium.Application.Server.Responses
             return squad != null
                    && squad.GetComponent<Owned>().Owner == connection.Account.ExternalData
                    && squad.GetComponent<Movable>().Move(to);
+        }
+        
+        
+        
+        [Response]
+        public bool BeginResearch(Connection<Owner> connection, string name)
+        {
+            var holder = connection.Account.ExternalData.Parent.GetComponent<ResearchHolder>();
+            return holder.BeginResearch(
+                holder.ResearchedTechnologies
+                    .SelectMany(t => t.Children)
+                    .Concat(new[] {GlobalData.GetSystem<ResearchSystem>().RootResearch})
+                    .FirstOrDefault(t => t.Name == name));
+        }
+        
+        [Response]
+        public int GetTechnologiesCount(Connection<Owner> connection)
+        {
+            return connection.Account.ExternalData.Parent.GetComponent<ResearchHolder>().ResearchedTechnologies.Count;
         }
     }
 }

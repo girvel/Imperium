@@ -3,7 +3,7 @@ using Imperium.Core.Systems.Owning;
 using Imperium.Core.Systems.Placing;
 using Imperium.Ecs;
 
-namespace Imperium.Core.Systems.Upgrading
+namespace Imperium.Core.Systems.Upgrading.Conditions
 {
     public class EntityCondition : Condition
     {

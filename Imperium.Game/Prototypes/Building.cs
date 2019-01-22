@@ -1,7 +1,9 @@
 ﻿using Imperium.Core.Systems.Income;
 using Imperium.Core.Systems.Owning;
 using Imperium.Core.Systems.Placing;
+using Imperium.Core.Systems.Science;
 using Imperium.Core.Systems.Upgrading;
+using Imperium.Core.Systems.Upgrading.Conditions;
 using Imperium.Core.Systems.Vision;
 using Imperium.Ecs;
 
@@ -15,7 +17,8 @@ namespace Imperium.Game.Prototypes
                   | new Placer()
                   | new Incomer {Income = new Resources {Food = 3600}}
                   | new Owned()
-                  | new Observer(),
+                  | new Observer()
+                  | new Researcher(1),
 
             Sawmill
                 = new Entity("Sawmill")
@@ -32,7 +35,8 @@ namespace Imperium.Game.Prototypes
                           WoodenHouse,
                           new PriceCondition(new Resources {Wood = 100})
                           & new EntityCondition(Landscape.Plain)
-                          & new EntityCondition(Squad.Test))),
+                          & new EntityCondition(Squad.Test)
+                          & new ResearchCondition(Science.Test))),
 
             Field
                 = new Entity("Field")

@@ -1,4 +1,5 @@
 ﻿using Imperium.Core.Systems.Owning;
+using Imperium.Core.Systems.Science;
 using Imperium.Ecs;
 
 namespace Imperium.Game.Prototypes
@@ -12,6 +13,7 @@ namespace Imperium.Game.Prototypes
         public static Entity
             Player
                 = new Entity("<player>")
-                  | new Owner();
+                  | new Owner()
+                  | new ResearchHolder();
     }
 }

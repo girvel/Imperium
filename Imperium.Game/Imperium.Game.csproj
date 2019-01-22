@@ -57,6 +57,7 @@
     <Compile Include="Prototypes\Building.cs" />
     <Compile Include="Prototypes\Global.cs" />
     <Compile Include="Prototypes\Landscape.cs" />
+    <Compile Include="Prototypes\Research.cs" />
     <Compile Include="Prototypes\Squad.cs" />
     <Compile Include="Resources.cs" />
     <Compile Include="Systems\Vision\ClientVision.cs" />

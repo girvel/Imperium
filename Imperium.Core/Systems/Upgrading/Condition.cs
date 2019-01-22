@@ -1,5 +1,6 @@
 ﻿using System.Linq;
 using Imperium.Core.Systems.Owning;
+using Imperium.Core.Systems.Upgrading.Conditions;
 using Imperium.Ecs;
 
 namespace Imperium.Core.Systems.Upgrading

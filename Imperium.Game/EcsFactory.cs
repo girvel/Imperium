@@ -4,9 +4,11 @@ using Imperium.Core.Systems.Movement;
 using Imperium.Core.Systems.Order;
 using Imperium.Core.Systems.Owning;
 using Imperium.Core.Systems.Placing;
+using Imperium.Core.Systems.Science;
 using Imperium.Core.Systems.Vision;
 using Imperium.Ecs.Managers;
 using Imperium.Game.Generation;
+using Imperium.Game.Prototypes;
 using Imperium.Game.Systems.Vision;
 using Province.Vector;
 
@@ -27,6 +29,7 @@ namespace Imperium.Game
                 new IncomeSystem(),
                 new ClientVision(), 
                 new OrderManager(), 
+                new ResearchSystem(Science.Test), 
             };
             
             foreach (var system in systems)
