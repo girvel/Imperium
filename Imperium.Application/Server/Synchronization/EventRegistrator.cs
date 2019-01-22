@@ -14,7 +14,7 @@ namespace Imperium.Application.Server.Synchronization
 {
     public static class EventRegistrator
     {
-        public static void Register(Server<Player> server, EcsManager gameData)
+        public static void Register(Server<Owner> server, EcsManager gameData)
         {
             gameData.SystemManager.GetSystem<ClientVision>().OnVisionChanged += (player, vision) =>
             {
@@ -28,7 +28,7 @@ namespace Imperium.Application.Server.Synchronization
                     unical: true);
             };
 
-            gameData.SystemManager.GetSystem<PlayerSystem>().OnPlayerCreated += player =>
+            gameData.SystemManager.GetSystem<Ownership>().OnPlayerCreated += player =>
             {
                 player.OnResourcesChanged += resources =>
                 {

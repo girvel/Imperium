@@ -9,7 +9,7 @@ namespace Imperium.Game.Modification
 {
     public class PlayerModifier
     {
-        public void Modify(Area area, Player player, Random random)
+        public void Modify(Area area, Owner owner, Random random)
         {
             Vector position;
             do
@@ -20,7 +20,7 @@ namespace Imperium.Game.Modification
                    || area.Slice<Building>()[position] < Building.Mountain);
             
             area.Slice<Building>()[position] = Building.WoodenHouse;
-            area.Slice<Building>()[position].GetComponent<Owned>().Owner = player;
+            area.Slice<Building>()[position].GetComponent<Owned>().Owner = owner;
             
             do
             {
@@ -30,7 +30,7 @@ namespace Imperium.Game.Modification
                    || area.Slice<Building>()[position] < Building.Mountain);
 
             area.Slice<Squad>()[position] = Squad.Test;
-            area.Slice<Squad>()[position].GetComponent<Owned>().Owner = player;
+            area.Slice<Squad>()[position].GetComponent<Owned>().Owner = owner;
         }
     }
 }

@@ -1,33 +1,27 @@
-﻿using Imperium.Core.Common;
-using Imperium.Core.Systems.Owning;
+﻿using Imperium.Core.Systems.Owning;
 using Imperium.Ecs;
 
 namespace Imperium.Core.Systems.Upgrading
 {
-    public abstract class Upgrade
+    public class Upgrade
     {
         public Entity Result { get; set; }
+        public Condition Condition { get; }
 
-        protected Upgrade()
-        {
-        }
 
-        protected Upgrade(Entity result)
+        public Upgrade(Entity result, Condition condition)
         {
             Result = result;
+            Condition = condition;
         }
 
-        public bool TryUpgrade(Entity from, Player player)
+        public bool TryUpgrade(Entity from, Owner owner)
         {
-            var success = IsPossible(from, player);
+            var success = Condition.IsPossible(from, owner);
 
-            if (success) Apply(from, player);
+            if (success) Condition.Apply(from, owner);
 
             return success;
         }
-
-        public abstract bool IsPossible(Entity from, Player player);
-
-        public abstract void Apply(Entity from, Player player);
     }
 }

@@ -23,7 +23,7 @@ namespace Imperium.Game
             var systems = new Ecs.System[]
             {
                 area,
-                new PlayerSystem(Resources.Zero),
+                new Ownership(Resources.Zero),
                 new IncomeSystem(),
                 new ClientVision(), 
                 new OrderManager(), 

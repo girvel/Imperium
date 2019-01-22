@@ -58,7 +58,6 @@
     <Compile Include="Prototypes\Landscape.cs" />
     <Compile Include="Prototypes\Squad.cs" />
     <Compile Include="Resources.cs" />
-    <Compile Include="Systems\Upgrading\SliceUpgrade.cs" />
     <Compile Include="Systems\Vision\ClientVision.cs" />
   </ItemGroup>
   <ItemGroup>

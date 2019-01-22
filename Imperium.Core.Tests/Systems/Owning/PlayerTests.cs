@@ -12,7 +12,7 @@ namespace Imperium.Core.Tests.Systems.Owning
             // arrange
             var eventCalled = false;
             
-            var player = new Player();
+            var player = new Owner();
             player.OnOwnedAdded += o => eventCalled = true;
             
             var owned = Mock.Of<Owned>();
@@ -31,7 +31,7 @@ namespace Imperium.Core.Tests.Systems.Owning
             // arrange
             var eventCalled = false;
             
-            var player = new Player();
+            var player = new Owner();
             player.OnOwnedRemoved += o => eventCalled = true;
             
             var owned = Mock.Of<Owned>();

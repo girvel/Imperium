@@ -10,10 +10,10 @@ using Province.Vector;
  
 namespace Imperium.Core.Systems.Vision
 {
-    [RequiresSystems(typeof(Area), typeof(PlayerSystem))]
+    [RequiresSystems(typeof(Area), typeof(Ownership))]
     public abstract class AbstractVision : Ecs.System
     {
-        public event Action<Player, VisionDto> OnVisionChanged;
+        public event Action<Owner, VisionDto> OnVisionChanged;
 
 
         
@@ -21,14 +21,14 @@ namespace Imperium.Core.Systems.Vision
         {
             base.Start();
 
-            void UpdatePlayer(Player player) => OnVisionChanged?.Invoke(player, GetCurrentVision(player));
+            void UpdatePlayer(Owner player) => OnVisionChanged?.Invoke(player, GetCurrentVision(player));
 
             void Update(Placer placer)
             {
                 foreach (
                     var player 
                     in Ecs.SystemManager
-                        .GetSystem<PlayerSystem>().Players
+                        .GetSystem<Ownership>().Players
                         .Where(p => IsVisible(p, placer.Position)))
                 {
                     UpdatePlayer(player);
@@ -39,7 +39,7 @@ namespace Imperium.Core.Systems.Vision
             area.OnRemove += Update;
             area.OnPlace += Update;
 
-            Ecs.SystemManager.GetSystem<PlayerSystem>().OnPlayerCreated += p =>
+            Ecs.SystemManager.GetSystem<Ownership>().OnPlayerCreated += p =>
             {
                 p.OnOwnedAdded   += o => UpdatePlayer(p);
                 p.OnOwnedRemoved += o => UpdatePlayer(p);
@@ -48,9 +48,9 @@ namespace Imperium.Core.Systems.Vision
 
 
         
-        protected virtual bool IsVisible(Player player, Vector position)
+        protected virtual bool IsVisible(Owner owner, Vector position)
         {
-            return player.OwnedSubjects
+            return owner.OwnedSubjects
                 .Select(s => new
                 {
                     Observer = s.Parent.GetComponent<Observer>(),
@@ -60,12 +60,12 @@ namespace Imperium.Core.Systems.Vision
                 .Any(p => (position - p.Placer.Position).Magnitude <= p.Observer.VisionRange);
         }
 
-        protected virtual bool[,] GetVisibility(Player player)
+        protected virtual bool[,] GetVisibility(Owner owner)
         {
             var size = Ecs.SystemManager.GetSystem<Area>().Size;
             var result = new bool[size.X, size.Y];
             
-            foreach (var owned in player.OwnedSubjects)
+            foreach (var owned in owner.OwnedSubjects)
             {
                 var placer = owned.Parent.GetComponent<Placer>();
                 var observer = owned.Parent.GetComponent<Observer>();
@@ -85,6 +85,6 @@ namespace Imperium.Core.Systems.Vision
             return result;
         }
 
-        public abstract VisionDto GetCurrentVision(Player player);
+        public abstract VisionDto GetCurrentVision(Owner owner);
     }
 }

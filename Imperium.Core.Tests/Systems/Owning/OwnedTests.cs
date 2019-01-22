@@ -11,12 +11,12 @@ namespace Imperium.Core.Tests.Systems.Owning
         public void Owner_Set_MovesToANewPlayerList()
         {
             // arrange
-            var newPlayer = Mock.Of<Player>();
-            var system = Mock.Of<PlayerSystem>();
+            var newPlayer = Mock.Of<Owner>();
+            var system = Mock.Of<Ownership>();
             system.Players.Add(newPlayer);
 
             var ecs = Mock.Of<EcsManager>();
-            ecs.SystemManager = Mock.Of<SystemManager>(s => s.GetSystem<PlayerSystem>() == system);
+            ecs.SystemManager = Mock.Of<SystemManager>(s => s.GetSystem<Ownership>() == system);
             
             // ReSharper disable once UseObjectOrCollectionInitializer
             var component = new Owned{Ecs = ecs};
@@ -46,13 +46,13 @@ namespace Imperium.Core.Tests.Systems.Owning
         public void Owner_Set_UsesSafeMethodsToWorkWithOwnerSubjects()
         {
             // arrange
-            var newPlayerMock = new Mock<Player>();
+            var newPlayerMock = new Mock<Owner>();
             
-            var system = Mock.Of<PlayerSystem>();
+            var system = Mock.Of<Ownership>();
             system.Players.Add(newPlayerMock.Object);
 
             var ecs = Mock.Of<EcsManager>();
-            ecs.SystemManager = Mock.Of<SystemManager>(s => s.GetSystem<PlayerSystem>() == system);
+            ecs.SystemManager = Mock.Of<SystemManager>(s => s.GetSystem<Ownership>() == system);
             
             // ReSharper disable once UseObjectOrCollectionInitializer
             var component = new Owned{Ecs = ecs};

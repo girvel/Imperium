@@ -97,21 +97,21 @@ namespace Province.Vector
                     .SelectMany(y => Enumerable.Range(0, X).Select(x => new Vector(x, y)));
         }
 
-        public bool IsStrictlyInside(Vector maximal) => X <= maximal.X && Y <= maximal.Y;
+        public bool IsSoftlyInside(Vector maximal) => X <= maximal.X && Y <= maximal.Y;
         
-        public bool IsStrictlyInside(Vector minimal, Vector maximal) => IsStrictlyInside(maximal) && X >= minimal.X && Y >= minimal.Y;
+        public bool IsSoftlyInside(Vector minimal, Vector maximal) => IsSoftlyInside(maximal) && X >= minimal.X && Y >= minimal.Y;
 
         public bool IsInside(Vector maximal) => X < maximal.X && Y < maximal.Y;
         
-        public bool IsInside(Vector minimal, Vector maximal) => IsStrictlyInside(maximal) && X > minimal.X && Y > minimal.Y;
+        public bool IsInside(Vector minimal, Vector maximal) => IsSoftlyInside(maximal) && X > minimal.X && Y > minimal.Y;
 
 
 
         public static IEnumerable<Vector> Range(Vector from, Vector to) => (to - from).Range().Select(v => v + from);
 
-        public static Vector Max(Vector first, Vector second) => first.IsStrictlyInside(second) ? second : first;
+        public static Vector Max(Vector first, Vector second) => first.IsSoftlyInside(second) ? second : first;
 
-        public static Vector Min(Vector first, Vector second) => second.IsStrictlyInside(first) ? second : first;
+        public static Vector Min(Vector first, Vector second) => second.IsSoftlyInside(first) ? second : first;
         
         public static Vector PartialMax(Vector first, Vector second)
             => new Vector(

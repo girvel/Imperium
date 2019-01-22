@@ -14,7 +14,7 @@ namespace Imperium.Application.Server.Responses
         public EcsManager GlobalData { get; set; }
         
         [ExceptionResponse]
-        public NetData Exception(Exception ex, Connection<Player> connection, NetData arguments) 
+        public NetData Exception(Exception ex, Connection<Owner> connection, NetData arguments) 
             => new NetData
             {
                 ["error type"] = "request",
@@ -24,7 +24,7 @@ namespace Imperium.Application.Server.Responses
         
         
         [PermissionResponse]
-        public NetData PermissionException(Connection<Player> connection, NetData arguments) 
+        public NetData PermissionException(Connection<Owner> connection, NetData arguments) 
             => new NetData
             {
                 ["error type"] = "permission",

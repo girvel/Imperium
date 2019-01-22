@@ -4,7 +4,6 @@ using Imperium.Core.Systems.Placing;
 using Imperium.Core.Systems.Upgrading;
 using Imperium.Core.Systems.Vision;
 using Imperium.Ecs;
-using Imperium.Game.Systems.Upgrading;
 
 namespace Imperium.Game.Prototypes
 {
@@ -29,7 +28,11 @@ namespace Imperium.Game.Prototypes
                 = new Entity("None")
                   | new Placer()
                   | new Upgradable(
-                      new SliceUpgrade<Landscape>(WoodenHouse, new Resources {Wood = 100}, Landscape.Plain)),
+                      new Upgrade(
+                          WoodenHouse,
+                          new PriceCondition(new Resources {Wood = 100})
+                          & new EntityCondition(Landscape.Plain)
+                          & new EntityCondition(Squad.Test))),
 
             Field
                 = new Entity("Field")
@@ -39,9 +42,7 @@ namespace Imperium.Game.Prototypes
 
             Forest
                 = new Entity("Forest")
-                  | new Placer()
-                  | new Upgradable(
-                      new SliceUpgrade<Landscape>(Sawmill, new Resources {Wood = 100}, Landscape.Plain)),
+                  | new Placer(),
 
             Mountain
                 = new Entity("Mountain")

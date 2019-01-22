@@ -4,7 +4,7 @@ using Imperium.Core.Common;
 
 namespace Imperium.Core.Systems.Owning
 {
-    public class Player
+    public class Owner
     {
         public string Name { get; set; }
 

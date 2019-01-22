@@ -15,7 +15,7 @@ namespace Imperium.Application
     {
         public static EcsManager Ecs;
         
-        public static Server<Player> Server;
+        public static Server<Owner> Server;
         
         
         
@@ -26,13 +26,13 @@ namespace Imperium.Application
             
             Ecs = new EcsFactory().Generate();
             
-            Server = new ResponseServerFactory<Player, EcsManager>().Generate(Ecs, typeof(Program).Assembly);
+            Server = new ResponseServerFactory<Owner, EcsManager>().Generate(Ecs, typeof(Program).Assembly);
 
             EventRegistrator.Register(Server, Ecs);
 
-            var player = new Player();
-            Server.Accounts.Add(new Account<Player>("", "", new[] {Permission.User, Permission.Admin}, player));
-            Ecs.SystemManager.GetSystem<PlayerSystem>().Register(player);
+            var player = new Owner();
+            Server.Accounts.Add(new Account<Owner>("", "", new[] {Permission.User, Permission.Admin}, player));
+            Ecs.SystemManager.GetSystem<Ownership>().Register(player);
             
             new PlayerModifier().Modify(Ecs.SystemManager.GetSystem<Area>(), player, new Random());
             

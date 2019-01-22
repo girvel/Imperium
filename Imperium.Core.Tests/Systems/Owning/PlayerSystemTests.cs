@@ -16,11 +16,11 @@ namespace Imperium.Core.Tests.Systems.Owning
             var startingResources = Mock.Of<IResources>(r => r.Clone() == r);
             
 #pragma warning disable 618
-            var playerSystem = new PlayerSystem{PlayerStartingResources = startingResources};
+            var playerSystem = new Ownership{PlayerStartingResources = startingResources};
 #pragma warning restore 618
             playerSystem.OnPlayerCreated += p => eventCalled = true;
 
-            var player = Mock.Of<Player>();
+            var player = Mock.Of<Owner>();
             
             // act
             playerSystem.Register(player);

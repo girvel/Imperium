@@ -4,9 +4,9 @@ namespace Imperium.Core.Systems.Owning
 {
     public class Owned : Component
     {
-        private Player _owner;
+        private Owner _owner;
 
-        public Player Owner
+        public Owner Owner
         {
             get => _owner;
             set

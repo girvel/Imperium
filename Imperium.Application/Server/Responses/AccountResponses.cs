@@ -26,7 +26,7 @@ namespace Imperium.Application.Server.Responses
 
 
         [Response]
-        public bool Login(Connection<Player> connection, string login, string password)
+        public bool Login(Connection<Owner> connection, string login, string password)
         {
             var account = connection.Server.Accounts.FirstOrDefault(a => a.Login == login && a.Password == password);
 
@@ -47,7 +47,7 @@ namespace Imperium.Application.Server.Responses
         
         
         [Response(Permission.User)]
-        public VisionDto GetVision(Connection<Player> connection)
+        public VisionDto GetVision(Connection<Owner> connection)
         {
             return GlobalData.SystemManager.GetSystem<ClientVision>().GetCurrentVision(connection.Account.ExternalData);
         }
@@ -55,7 +55,7 @@ namespace Imperium.Application.Server.Responses
         
         
         [Response(Permission.User)]
-        public bool UpgradeBuilding(Connection<Player> connection, Vector position, string name)
+        public bool UpgradeBuilding(Connection<Owner> connection, Vector position, string name)
         {
             var component
                 = GlobalData
@@ -71,7 +71,7 @@ namespace Imperium.Application.Server.Responses
         
         
         [Response(Permission.User)]
-        public NetData[] GetNews(Connection<Player> connection)
+        public NetData[] GetNews(Connection<Owner> connection)
         {
             return connection.Server.NewsManager
                 .GetNews(connection.Account.ExternalData)
@@ -87,7 +87,7 @@ namespace Imperium.Application.Server.Responses
         
         
         [Response(Permission.User)]
-        public bool AddResources(Connection<Player> connection)
+        public bool AddResources(Connection<Owner> connection)
         {
             connection.Account.ExternalData.Resources += new Resources {Wood = 100};
             return true;
@@ -96,12 +96,13 @@ namespace Imperium.Application.Server.Responses
         
         
         [Response(Permission.User)]
-        public bool Move(Connection<Player> connection, Vector from, Vector to)
+        public bool Move(Connection<Owner> connection, Vector from, Vector to)
         {
             var squad = GlobalData.SystemManager.GetSystem<Area>().Slice<Squad>()[from];
-            squad?.GetComponent<Movable>().Move(to);
 
-            return squad != null;
+            return squad != null
+                   && squad.GetComponent<Owned>().Owner == connection.Account.ExternalData
+                   && squad.GetComponent<Movable>().Move(to);
         }
     }
 }

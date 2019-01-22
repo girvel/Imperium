@@ -16,7 +16,7 @@ namespace Imperium.Core.Systems.Upgrading
             Upgrades = upgrades;
         }
 
-        public bool Upgrade(Player owner, Upgrade upgrade = null)
+        public bool Upgrade(Owner owner, Upgrade upgrade = null)
         {
             upgrade = upgrade ?? Upgrades[0];
 

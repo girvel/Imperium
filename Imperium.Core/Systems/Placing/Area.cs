@@ -23,13 +23,10 @@ namespace Imperium.Core.Systems.Placing
         public Area(Vector size)
         {
             Size = size;
-            Grid = new List<Placer>[size.X, size.Y];
-            for (var x = 0; x < size.X; x++)
+            Grid = size.CreateArray<List<Placer>>();
+            foreach (var position in Size.Range())
             {
-                for (var y = 0; y < size.Y; y++)
-                {
-                    Grid[x, y] = new List<Placer>();
-                }
+                Grid.SetAt(position, new List<Placer>());
             }
         }
 
