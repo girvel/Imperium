@@ -28,7 +28,7 @@ namespace Imperium.Core.Systems.Vision
                 foreach (
                     var player 
                     in Ecs.SystemManager
-                        .GetSystem<Ownership>().Players
+                        .GetSystem<Ownership>().Subjects
                         .Where(p => IsVisible(p, placer.Position)))
                 {
                     UpdatePlayer(player);

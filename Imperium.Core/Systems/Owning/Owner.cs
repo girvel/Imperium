@@ -1,13 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using Imperium.Core.Common;
+using Imperium.Ecs;
 
 namespace Imperium.Core.Systems.Owning
 {
-    public class Owner
+    public class Owner : RegisteredComponent<Ownership, Owner>
     {
-        public string Name { get; set; }
-
         public IResources Resources
         {
             get => _resources;

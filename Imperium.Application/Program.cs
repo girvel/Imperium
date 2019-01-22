@@ -3,9 +3,11 @@ using System.Threading;
 using Imperium.Application.Server.Synchronization;
 using Imperium.Core.Systems.Owning;
 using Imperium.Core.Systems.Placing;
+using Imperium.Ecs;
 using Imperium.Ecs.Managers;
 using Imperium.Game;
 using Imperium.Game.Modification;
+using Imperium.Game.Prototypes;
 using Imperium.Server;
 using Imperium.Server.Generation;
 
@@ -30,7 +32,7 @@ namespace Imperium.Application
 
             EventRegistrator.Register(Server, Ecs);
 
-            var player = new Owner();
+            var player = Ecs.EntityManager.Create(Global.Player).GetComponent<Owner>();
             Server.Accounts.Add(new Account<Owner>("", "", new[] {Permission.User, Permission.Admin}, player));
             Ecs.SystemManager.GetSystem<Ownership>().Register(player);
             

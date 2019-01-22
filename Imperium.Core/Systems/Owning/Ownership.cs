@@ -1,13 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using Imperium.Core.Common;
+using Imperium.Ecs;
 
 namespace Imperium.Core.Systems.Owning
 {
-    public class Ownership : Ecs.System
+    public class Ownership : RegistrationSystem<Owner>
     {
-        public List<Owner> Players { get; set; } = new List<Owner>();
-        
         public IResources PlayerStartingResources { get; set; }
 
 
@@ -24,9 +23,10 @@ namespace Imperium.Core.Systems.Owning
 
 
 
-        public void Register(Owner owner)
+        public override void Register(Owner owner)
         {
-            Players.Add(owner);
+            base.Register(owner);
+            
             owner.Resources = (IResources) PlayerStartingResources.Clone();
             OnPlayerCreated?.Invoke(owner);
         }

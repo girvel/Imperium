@@ -26,7 +26,7 @@ namespace Imperium.Core.Tests.Systems.Owning
             playerSystem.Register(player);
             
             // assert
-            Assert.True(playerSystem.Players.Contains(player));
+            Assert.True(playerSystem.Subjectss.Contains(player));
             Assert.Equal(startingResources, player.Resources);
             Assert.True(eventCalled);
         }
