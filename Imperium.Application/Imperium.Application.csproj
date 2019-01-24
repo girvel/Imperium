@@ -45,8 +45,10 @@
     <Compile Include="Permission.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Server\Responses\AccountResponses.cs" />
+    <Compile Include="Server\Responses\BasicResponses.cs" />
+    <Compile Include="Server\Responses\DebugResponses.cs" />
     <Compile Include="Server\Responses\ExceptionResponses.cs" />
+    <Compile Include="Server\Responses\SystemResponses.cs" />
     <Compile Include="Server\Synchronization\EventRegistrator.cs" />
   </ItemGroup>
   <ItemGroup>
