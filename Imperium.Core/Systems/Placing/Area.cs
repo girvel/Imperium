@@ -59,13 +59,15 @@ namespace Imperium.Core.Systems.Placing
         
         
 
-        public AreaSlice Slice<T>()
-            => new AreaSlice(
+        public ContainerSlice ContainerSlice<T>()
+            => new ContainerSlice(
                 this,
                 typeof(T)
                     .GetFields(BindingFlags.Static | BindingFlags.Public)
                     .Select(f => f.GetValue(null))
                     .Cast<Entity>()
                     .ToArray());
+        
+        public ComponentSlice<T> ComponentSlice<T>() where T : Component => new ComponentSlice<T>(this);
     }
 }

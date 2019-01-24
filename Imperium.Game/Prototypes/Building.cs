@@ -1,4 +1,5 @@
-﻿using Imperium.Core.Systems.Income;
+﻿using Imperium.Core.Systems.Fight;
+using Imperium.Core.Systems.Income;
 using Imperium.Core.Systems.Owning;
 using Imperium.Core.Systems.Placing;
 using Imperium.Core.Systems.Science;
@@ -18,7 +19,8 @@ namespace Imperium.Game.Prototypes
                   | new Incomer {Income = new Resources {Food = 3600}}
                   | new Owned()
                   | new Observer()
-                  | new Researcher(1),
+                  | new Researcher(1)
+                  | new Destructible(20),
 
             Sawmill
                 = new Entity("Sawmill")

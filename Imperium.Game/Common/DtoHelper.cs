@@ -11,9 +11,9 @@ namespace Imperium.Application.Common
         {
             return new PlaceDto
             {
-                BuildingName = area.Slice<Building>()[position].Name,
-                TerrainName = area.Slice<Landscape>()[position].Name,
-                SquadName = area.Slice<Squad>()[position]?.Name ?? "",
+                BuildingName = area.ContainerSlice<Building>()[position].Name,
+                TerrainName = area.ContainerSlice<Landscape>()[position].Name,
+                SquadName = area.ContainerSlice<Squad>()[position]?.Name ?? "",
                 Temperature = area.GetTemperature(position),
             };
         }

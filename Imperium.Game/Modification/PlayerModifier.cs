@@ -16,21 +16,21 @@ namespace Imperium.Game.Modification
             {
                 position = random.NextPosition(area.Size);
             }
-            while (area.Slice<Landscape>()[position] < Landscape.Water 
-                   || area.Slice<Building>()[position] < Building.Mountain);
+            while (area.ContainerSlice<Landscape>()[position] < Landscape.Water 
+                   || area.ContainerSlice<Building>()[position] < Building.Mountain);
             
-            area.Slice<Building>()[position] = Building.WoodenHouse;
-            area.Slice<Building>()[position].GetComponent<Owned>().Owner = owner;
+            area.ContainerSlice<Building>()[position] = Building.WoodenHouse;
+            area.ContainerSlice<Building>()[position].GetComponent<Owned>().Owner = owner;
             
             do
             {
                 position = random.NextPosition(area.Size);
             }
-            while (area.Slice<Landscape>()[position] < Landscape.Water 
-                   || area.Slice<Building>()[position] < Building.Mountain);
+            while (area.ContainerSlice<Landscape>()[position] < Landscape.Water 
+                   || area.ContainerSlice<Building>()[position] < Building.Mountain);
 
-            area.Slice<Squad>()[position] = Squad.Test;
-            area.Slice<Squad>()[position].GetComponent<Owned>().Owner = owner;
+            area.ContainerSlice<Squad>()[position] = Squad.Test;
+            area.ContainerSlice<Squad>()[position].GetComponent<Owned>().Owner = owner;
         }
     }
 }

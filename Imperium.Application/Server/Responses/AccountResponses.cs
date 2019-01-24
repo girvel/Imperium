@@ -1,6 +1,7 @@
 ﻿using System.Linq;
 using Imperium.CommonData;
 using Imperium.Core.Common;
+using Imperium.Core.Systems.Fight;
 using Imperium.Core.Systems.Movement;
 using Imperium.Core.Systems.Owning;
 using Imperium.Core.Systems.Placing;
@@ -99,7 +100,7 @@ namespace Imperium.Application.Server.Responses
         [Response(Permission.User)]
         public bool Move(Connection<Owner> connection, Vector from, Vector to)
         {
-            var squad = GlobalData.SystemManager.GetSystem<Area>().Slice<Squad>()[from];
+            var squad = GlobalData.SystemManager.GetSystem<Area>().ContainerSlice<Squad>()[from];
 
             return squad != null
                    && squad.GetComponent<Owned>().Owner == connection.Account.ExternalData
@@ -108,7 +109,7 @@ namespace Imperium.Application.Server.Responses
         
         
         
-        [Response]
+        [Response(Permission.User)]
         public bool BeginResearch(Connection<Owner> connection, string name)
         {
             var holder = connection.Account.ExternalData.Parent.GetComponent<ResearchHolder>();
@@ -119,10 +120,21 @@ namespace Imperium.Application.Server.Responses
                     .FirstOrDefault(t => t.Name == name));
         }
         
-        [Response]
+        
+        
+        [Response(Permission.User)]
         public int GetTechnologiesCount(Connection<Owner> connection)
         {
             return connection.Account.ExternalData.Parent.GetComponent<ResearchHolder>().ResearchedTechnologies.Count;
+        }
+        
+        
+        
+        [Response(Permission.User)]
+        public bool Attack(Connection<Owner> connection, Vector from, Vector to)
+        {
+            var area = GlobalData.GetSystem<Area>();
+            return area.ComponentSlice<Fighter>()[from]?.Attack(area.ComponentSlice<Destructible>()[to]) ?? false;
         }
     }
 }

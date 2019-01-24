@@ -16,7 +16,7 @@ namespace Imperium.Game.Generation.Subgenerators
         
         public void Generate(Area area, Random random)
         {
-            var landscapeSlice = area.Slice<Landscape>();
+            var landscapeSlice = area.ContainerSlice<Landscape>();
             
             var maximalLandNumber = LandFraction * area.Size.X * area.Size.Y;
             var counter = 0;

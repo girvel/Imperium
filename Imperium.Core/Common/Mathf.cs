@@ -5,7 +5,7 @@ namespace Imperium.Core.Common
 {
     public static class Mathf
     {
-        public static T Max<T>(params T[] items) where T : struct, IComparable<T>
+        public static T Max<T>(params T[] items) where T : IComparable<T>
         {
             while (items.Length > 1)
             {
@@ -14,7 +14,7 @@ namespace Imperium.Core.Common
             return items[0];
         }
 
-        public static T Min<T>(params T[] items) where T : struct, IComparable<T>
+        public static T Min<T>(params T[] items) where T : IComparable<T>
         {
             while (items.Length > 1)
             {

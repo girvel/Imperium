@@ -18,5 +18,12 @@ namespace Imperium.Core.Systems.Owning
                 _owner?.AddOwned(this);
             }
         }
+
+        public override void Destroy()
+        {
+            base.Destroy();
+
+            _owner = null;
+        }
     }
 }

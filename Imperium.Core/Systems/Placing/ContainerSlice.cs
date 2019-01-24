@@ -4,7 +4,7 @@ using Province.Vector;
 
 namespace Imperium.Core.Systems.Placing
 {
-    public class AreaSlice
+    public class ContainerSlice
     {
         public Entity this[Vector position]
         {
@@ -19,7 +19,7 @@ namespace Imperium.Core.Systems.Placing
         public readonly Area Area;
         private readonly Entity[] _buildings;
 
-        public AreaSlice(Area area, Entity[] buildings)
+        public ContainerSlice(Area area, Entity[] buildings)
         {
             Area = area;
             _buildings = buildings;

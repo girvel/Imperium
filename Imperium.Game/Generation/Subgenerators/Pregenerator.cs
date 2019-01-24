@@ -11,8 +11,8 @@ namespace Imperium.Game.Generation.Subgenerators
         {
             foreach (var position in area.Size.Range())
             {
-                area.Slice<Landscape>()[position] = Landscape.Water;
-                area.Slice<Building>()[position] = Building.None;
+                area.ContainerSlice<Landscape>()[position] = Landscape.Water;
+                area.ContainerSlice<Building>()[position] = Building.None;
             }
         }
     }

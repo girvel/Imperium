@@ -17,14 +17,14 @@ namespace Imperium.Game.Generation.Subgenerators
         {
             foreach (var vector in area.Size.Range())
             {
-                if (area.Slice<Landscape>()[vector] < Landscape.Plain)
+                if (area.ContainerSlice<Landscape>()[vector] < Landscape.Plain)
                 {
                     random.Chance(
                         MaximalChance * (1 - 2 / (MaximalTemperature - MinimalTemperature) *
                                          Math.Abs(area.GetTemperature(vector) + MinimalTemperature)),
                         () =>
                         {
-                            area.Slice<Building>()[vector] = Building.Forest;
+                            area.ContainerSlice<Building>()[vector] = Building.Forest;
                         });
                 }
             }

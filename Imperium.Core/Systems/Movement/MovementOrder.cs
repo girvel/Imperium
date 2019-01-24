@@ -1,5 +1,5 @@
 ﻿using System;
-using Imperium.Core.Systems.Order;
+using Imperium.Core.Systems.Execution;
 using Imperium.Core.Systems.Placing;
 using Imperium.Ecs;
 using Province.ExtendedFramework;
@@ -7,19 +7,22 @@ using Province.Vector;
 
 namespace Imperium.Core.Systems.Movement
 {
-    public class MovementOrder : IOrder
+    public class MovementOrder : Order
     {
-        public Movable Movable { get; set; }
+        public Movable Movable => Subject.GetComponent<Movable>();
+
+        public Placer Placer => Subject.GetComponent<Placer>();
         
         public Vector To { get; set; }
+        
+        
+        
+        public MovementOrder(Vector to)
+        {
+            To = to;
+        }
 
-        public Entity Entity => Movable.Parent;
-
-        public Placer Placer => Entity.GetComponent<Placer>();
-        
-        
-        
-        public TimeSpan Update(TimeSpan maxTime)
+        public override TimeSpan Update(TimeSpan maxTime)
         {
             var steps = maxTime.Divided(Movable.Prototype.MovementDelay);
             

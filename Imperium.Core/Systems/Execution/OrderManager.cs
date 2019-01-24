@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Linq;
 
-namespace Imperium.Core.Systems.Order
+namespace Imperium.Core.Systems.Execution
 {
     public class OrderManager : Ecs.RegistrationSystem<Executor>
     {

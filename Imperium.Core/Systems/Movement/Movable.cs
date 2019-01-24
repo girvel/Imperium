@@ -1,5 +1,5 @@
 ﻿using System;
-using Imperium.Core.Systems.Order;
+using Imperium.Core.Systems.Execution;
 using Imperium.Core.Systems.Placing;
 using Imperium.Ecs;
 using Imperium.Ecs.Attributes;
@@ -22,7 +22,7 @@ namespace Imperium.Core.Systems.Movement
 
             if (isPossible)
             {
-                Parent.GetComponent<Executor>().OrderQueue.Enqueue(new MovementOrder{Movable = this, To = to});
+                Parent.GetComponent<Executor>().AddOrder(new MovementOrder(to));
             }
 
             return isPossible;
