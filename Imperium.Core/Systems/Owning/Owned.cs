@@ -23,7 +23,7 @@ namespace Imperium.Core.Systems.Owning
         {
             base.Destroy();
 
-            _owner = null;
+            Owner = null;
         }
     }
 }
