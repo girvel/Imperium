@@ -35,6 +35,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Imperium.Game.Tests", "Impe
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Province.ExtendedFramework", "Province.ExtendedFramework\Province.ExtendedFramework.csproj", "{47C87D4A-69EC-4574-A745-24B05A72A4DA}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Province.ToString", "Province.ToString\Province.ToString.csproj", "{012284CF-17CA-4D52-BBC5-50804BC0F36C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Province.ToString.Tests", "Province.ToString.Tests\Province.ToString.Tests.csproj", "{D176D7C4-C86A-4804-B19E-D1320F06B9BD}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -105,6 +109,14 @@ Global
 		{47C87D4A-69EC-4574-A745-24B05A72A4DA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{47C87D4A-69EC-4574-A745-24B05A72A4DA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{47C87D4A-69EC-4574-A745-24B05A72A4DA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{012284CF-17CA-4D52-BBC5-50804BC0F36C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{012284CF-17CA-4D52-BBC5-50804BC0F36C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{012284CF-17CA-4D52-BBC5-50804BC0F36C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{012284CF-17CA-4D52-BBC5-50804BC0F36C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D176D7C4-C86A-4804-B19E-D1320F06B9BD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D176D7C4-C86A-4804-B19E-D1320F06B9BD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D176D7C4-C86A-4804-B19E-D1320F06B9BD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D176D7C4-C86A-4804-B19E-D1320F06B9BD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
