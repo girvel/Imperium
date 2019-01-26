@@ -1,4 +1,5 @@
-﻿using Imperium.Ecs.Managers;
+﻿using Imperium.Ecs.Attributes;
+using Imperium.Ecs.Managers;
 using Moq;
 using Xunit;
 
@@ -61,6 +62,40 @@ namespace Imperium.Ecs.Tests
             
             // assert
             Assert.Null(result);
+        }
+
+        [Fact]
+        public void OperatorOr_ChecksComponentRequirements()
+        {
+            // arrange
+            var entity = new Entity();
+            var component = new TestedComponent();
+
+            var exceptionThrown = false;
+            
+            // act
+            try
+            {
+                entity |= component;
+            }
+            catch (RequirementsException e)
+            {
+                exceptionThrown = true;
+            }
+            
+            // assert
+            Assert.True(exceptionThrown);
+        }
+
+        private class RequiredComponent : Component
+        {
+            
+        }
+
+        [RequiresComponents(typeof(RequiredComponent))]
+        private class TestedComponent : Component
+        {
+            
         }
 
         private class TestComponent : Component

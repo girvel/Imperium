@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
+using Imperium.Ecs.Attributes;
 using Imperium.Ecs.Managers;
 
 namespace Imperium.Ecs
@@ -70,6 +71,8 @@ namespace Imperium.Ecs
         public static Entity operator |(Entity e, Component component)
         {
             e.Components.Add(component);
+            component.Parent = e;
+            RequirementsAttribute.CheckRequirements(component);
             return e;
         }
 

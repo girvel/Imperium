@@ -63,7 +63,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Attributes\RequirementsAttributeTests.cs" />
+    <Compile Include="Attributes\RequiresSystemsAttributeTests.cs" />
     <Compile Include="ComponentTests.cs" />
     <Compile Include="EntityTests.cs" />
     <Compile Include="Managers\EntityManagerTests.cs" />

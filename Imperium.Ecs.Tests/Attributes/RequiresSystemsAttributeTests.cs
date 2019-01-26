@@ -7,7 +7,7 @@ using Xunit;
 
 namespace Imperium.Ecs.Tests.Attributes
 {
-    public class RequirementsAttributeTests
+    public class RequiresSystemsAttributeTests
     {
         [Fact]
         public void CheckRequirements_ThrowsRequirementsExceptionWhenThereAreSomeOutstandingRequirements()

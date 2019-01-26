@@ -23,7 +23,8 @@ namespace Imperium.Ecs.Attributes
         {
             var attribute 
                 = o.GetType()
-                    .GetCustomAttributes(typeof(RequiresSystemsAttribute), true)
+                    .GetCustomAttributes(true)
+                    .Where(a => a is RequirementsAttribute)
                     .FirstOrDefault() as RequirementsAttribute;
 
             if (attribute != null)
