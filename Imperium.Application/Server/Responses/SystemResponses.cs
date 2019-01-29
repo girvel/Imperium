@@ -28,13 +28,15 @@ namespace Imperium.Application.Server.Responses
         {
             var component
                 = GlobalData
-                    .SystemManager.GetSystem<Area>()[position]
+                    .GetSystem<Area>()[position]
                     .Select(c => c.Parent.GetComponent<Upgradable>())
                     .FirstOrDefault(c => c != null);
 
             var upgrade = component?.Upgrades.FirstOrDefault(u => u.Result.Name == name);
             
-            return upgrade != null && component.Upgrade(connection.Account.ExternalData, upgrade);
+            return upgrade != null 
+                   && GlobalData.GetSystem<ClientVision>().IsVisible(connection.Account.ExternalData, position) 
+                   && component.Upgrade(connection.Account.ExternalData, upgrade);
         }
 
         
@@ -76,7 +78,8 @@ namespace Imperium.Application.Server.Responses
         public bool Attack(Connection<Owner> connection, Vector from, Vector to)
         {
             var area = GlobalData.GetSystem<Area>();
-            return area.ComponentSlice<Fighter>()[from]?.Attack(area.ComponentSlice<Destructible>()[to]) ?? false;
+            return GlobalData.GetSystem<ClientVision>().IsVisible(connection.Account.ExternalData, to) 
+                   && (area.ComponentSlice<Fighter>()[from]?.Attack(area.ComponentSlice<Destructible>()[to]) ?? false);
         }
     }
 }

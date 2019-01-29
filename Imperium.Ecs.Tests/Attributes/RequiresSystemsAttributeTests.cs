@@ -15,8 +15,7 @@ namespace Imperium.Ecs.Tests.Attributes
             // arrange
             var system = new TestSystem
             {
-                Ecs = Mock.Of<EcsManager>(
-                    ecs => ecs.SystemManager == Mock.Of<SystemManager>(m => m.Subjects == new List<System>()))
+                Ecs = Mock.Of<EcsManager>(ecs => ecs.SystemManager == Mock.Of<SystemManager>())
             };
             var exceptionThrown = false;
 

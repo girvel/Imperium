@@ -48,7 +48,7 @@ namespace Imperium.Core.Systems.Vision
 
 
         
-        protected virtual bool IsVisible(Owner owner, Vector position)
+        public virtual bool IsVisible(Owner owner, Vector position)
         {
             return owner.OwnedSubjects
                 .Select(s => new
