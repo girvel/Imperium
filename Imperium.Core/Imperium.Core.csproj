@@ -48,6 +48,8 @@
     <Compile Include="Common\ResourcesHelper.cs" />
     <Compile Include="Common\Time.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Systems\Ai\AiSystem.cs" />
+    <Compile Include="Systems\Ai\AutoAttack.cs" />
     <Compile Include="Systems\Fight\AttackOrder.cs" />
     <Compile Include="Systems\Fight\Destructible.cs" />
     <Compile Include="Systems\Fight\Fighter.cs" />
