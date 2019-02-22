@@ -1,4 +1,5 @@
-﻿using Imperium.Ecs.Managers;
+﻿using System.Collections.Generic;
+using Imperium.Ecs.Managers;
 using Moq;
 using Xunit;
 
@@ -9,11 +10,15 @@ namespace Imperium.Ecs.Tests.Managers
         [Fact]
         public void CreateNew_ShouldCreateNewEntityWithEcsReferenceAndAddItToList()
         {
+            var isEventCalled = false;
+            
             // arrange
             var manager = new EntityManager
             {
                 Ecs = Mock.Of<EcsManager>(),
             };
+            
+            manager.OnEntityCreate += e => isEventCalled = true;
             
             // act
             var entity = manager.Create();
@@ -21,6 +26,7 @@ namespace Imperium.Ecs.Tests.Managers
             // assert
             Assert.Equal(manager.Ecs, entity.Ecs);
             Assert.True(manager.Entities.Contains(entity));
+            Assert.True(isEventCalled, "Create event should be called");
         }
 
         [Fact]
@@ -33,9 +39,6 @@ namespace Imperium.Ecs.Tests.Managers
             };
 
             var componentManagerMock = new Mock<ComponentManager>();
-            componentManagerMock
-                .Setup(c => c.Create(It.IsAny<Component>()))
-                .Returns<Component>(c => (Component) c.Clone());
 
             manager.Ecs.ComponentManager = componentManagerMock.Object;
             
@@ -56,6 +59,35 @@ namespace Imperium.Ecs.Tests.Managers
             Assert.True(manager.Entities.Contains(copy));
             Assert.False(copy.Components.Contains(component.Object));
             component.Verify(c => c.Clone(), Times.Once);
+        }
+
+        [Fact]
+        public void Destroy_UnregistersComponentsAndRemovesEntity()
+        {
+            var isEventCalled = false;
+            
+            // arrange
+            var componentManager = new Mock<ComponentManager>();
+            var ecs = Mock.Of<EcsManager>(e => e.ComponentManager == componentManager.Object);
+
+            var component = Mock.Of<Component>();
+            var entity = Mock.Of<Entity>(e => e.Components == new List<Component>{component} && e.Ecs == ecs);
+            
+            var manager = new EntityManager
+            {
+                Ecs = ecs,
+                Entities = {entity},
+            };
+            
+            manager.OnEntityDestroy += e => isEventCalled = true;
+            
+            // act
+            manager.Destroy(entity);
+            
+            // assert
+            componentManager.Verify(cm => cm.Unregister(component), Times.Once);
+            Assert.False(manager.Entities.Contains(entity));
+            Assert.True(isEventCalled, "Destroy event should be called");
         }
     }
 }

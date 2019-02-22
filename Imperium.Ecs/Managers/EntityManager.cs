@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using Province.ToString;
 
 namespace Imperium.Ecs.Managers
 {
@@ -28,7 +29,7 @@ namespace Imperium.Ecs.Managers
                 foreach (var c in prototype.Components)
                 {
                     var previousComponent = previous?.Components.FirstOrDefault(pc => c.GetType() == pc.GetType());
-                    newEntity.AddComponent(Ecs.ComponentManager.Create(previousComponent ?? c));
+                    newEntity.AddComponent((previousComponent ?? c).Clone());
                 }
             }
 
@@ -39,8 +40,6 @@ namespace Imperium.Ecs.Managers
 
             return newEntity;
         }
-
-
 
         public void Destroy(Entity target)
         {

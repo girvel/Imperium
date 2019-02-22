@@ -25,3 +25,5 @@ E:\projects\Imperium\Imperium.Ecs.Tests\bin\Debug\xunit.execution.desktop.xml
 E:\projects\Imperium\Imperium.Ecs.Tests\obj\Debug\Imperium.Ecs.Tests.csprojResolveAssemblyReference.cache
 E:\projects\Imperium\Imperium.Ecs.Tests\obj\Debug\Imperium.Ecs.Tests.dll
 E:\projects\Imperium\Imperium.Ecs.Tests\obj\Debug\Imperium.Ecs.Tests.pdb
+E:\projects\Imperium\Imperium.Ecs.Tests\bin\Debug\Province.ToString.dll
+E:\projects\Imperium\Imperium.Ecs.Tests\bin\Debug\Province.ToString.pdb

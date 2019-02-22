@@ -9,7 +9,7 @@ namespace Imperium.Ecs.Tests
     public class ComponentTests
     {
         [Fact]
-        public void Clone_ReturnsCloneOfComponent()
+        public void Clone_ReturnsCloneOfComponentAndSetsPrototype()
         {
             // arrange
             var component = new Component
@@ -21,14 +21,16 @@ namespace Imperium.Ecs.Tests
             var clone = (Component) component.Clone();
             
             // assert
-            Assert.Equal(component.Ecs, clone.Ecs);
+            Assert.Equal(clone.Ecs, component.Ecs);
+            Assert.Equal(component, clone.Prototype);
+            Assert.NotEqual(component, clone);
         }
 
         [Fact]
         public void Start_ChecksRequirements()
         {
             // arrange
-            var component = new TestedComponent
+            var component = new TestingComponent
             {
                 Parent = Mock.Of<Entity>(),
             };
@@ -55,7 +57,7 @@ namespace Imperium.Ecs.Tests
         }
 
         [RequiresComponents(typeof(RequiredComponent))]
-        private class TestedComponent : Component
+        private class TestingComponent : Component
         {
             
         }

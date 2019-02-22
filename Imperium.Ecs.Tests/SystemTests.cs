@@ -25,8 +25,6 @@ namespace Imperium.Ecs.Tests
             Assert.True(true);
         }
         
-        
-        
         [Fact]
         public void Start_ThrowsAnExceptionWhenThereAreOutstandingRequirements()
         {

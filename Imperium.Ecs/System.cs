@@ -3,6 +3,7 @@ using System.Linq;
 using System.Runtime.Serialization;
 using Imperium.Ecs.Attributes;
 using Imperium.Ecs.Managers;
+using Province.ToString;
 
 namespace Imperium.Ecs
 {
@@ -24,6 +25,6 @@ namespace Imperium.Ecs
 
         
 
-        public override string ToString() => $"[{GetType().Name}]";
+        public override string ToString() => this.ToRepresentativeString();
     }
 }

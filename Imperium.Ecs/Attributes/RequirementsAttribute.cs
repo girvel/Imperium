@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Linq;
+using Province.ToString;
 
 namespace Imperium.Ecs.Attributes
 {
     public abstract class RequirementsAttribute : Attribute
     {
+        [Representative]
         public Type[] Requirements { get; set; }
 
         protected RequirementsAttribute()
@@ -24,8 +26,8 @@ namespace Imperium.Ecs.Attributes
             var attribute 
                 = o.GetType()
                     .GetCustomAttributes(true)
-                    .Where(a => a is RequirementsAttribute)
-                    .FirstOrDefault() as RequirementsAttribute;
+                    .OfType<RequirementsAttribute>()
+                    .FirstOrDefault();
 
             if (attribute != null)
             {
@@ -44,5 +46,9 @@ namespace Imperium.Ecs.Attributes
         }
 
         protected abstract Type[] _getCheckingTypes(object o);
+        
+        
+        
+        public override string ToString() => this.ToRepresentativeString();
     }
 }

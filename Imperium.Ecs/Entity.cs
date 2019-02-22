@@ -3,6 +3,7 @@ using System.Linq;
 using System.Reflection;
 using Imperium.Ecs.Attributes;
 using Imperium.Ecs.Managers;
+using Province.ToString;
 
 namespace Imperium.Ecs
 {
@@ -10,6 +11,7 @@ namespace Imperium.Ecs
     {
         public string Name { get; set; }
 
+        [Representative]
         public List<Component> Components { get; set; } = new List<Component>();
 
 
@@ -38,8 +40,6 @@ namespace Imperium.Ecs
             
             Components.Add(component);
             Ecs.ComponentManager.Register(component);
-            
-            component.Start();
         }
         
         public void RemoveComponent(Component component)
@@ -56,9 +56,7 @@ namespace Imperium.Ecs
             return Components.OfType<T>().FirstOrDefault();
         }
         
-        public override string ToString()
-            => $"[Entity \"{Name}\": " +
-               $"{{{Components.Aggregate("", (sum, c) => sum + ", " + c.ToString()).Substring(2)}}}]";
+        public override string ToString() => this.ToRepresentativeString();
 
 
 

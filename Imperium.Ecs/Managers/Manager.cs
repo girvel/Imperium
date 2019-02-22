@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using Province.ToString;
 
 namespace Imperium.Ecs.Managers
 {
@@ -17,5 +18,7 @@ namespace Imperium.Ecs.Managers
         {
             Subjects.Remove(subject);
         }
+        
+        public override string ToString() => this.ToRepresentativeString();
     }
 }

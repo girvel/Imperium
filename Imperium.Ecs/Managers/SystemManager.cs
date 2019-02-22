@@ -1,4 +1,6 @@
-﻿using System.Linq;
+﻿using System.Collections.Generic;
+using System.Linq;
+using Province.ToString;
 
 namespace Imperium.Ecs.Managers
 {
@@ -27,5 +29,10 @@ namespace Imperium.Ecs.Managers
         {
             return Subjects.OfType<T>().First();
         }
+
+
+
+        [Representative]
+        private List<System> Systems => Subjects;
     }
 }

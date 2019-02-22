@@ -1,4 +1,6 @@
-﻿using Imperium.Ecs.Attributes;
+﻿using System.Collections.Generic;
+using System.Security.Cryptography.X509Certificates;
+using Imperium.Ecs.Attributes;
 using Imperium.Ecs.Managers;
 using Moq;
 using Xunit;
@@ -8,7 +10,7 @@ namespace Imperium.Ecs.Tests
     public class EntityTests
     {
         [Fact]
-        public void AddComponent_AddsComponentToListsAndGivesHimReferencesAndStartIt()
+        public void AddComponent_AddsComponentToListsAndGivesHimReferencesAndRegistersIt()
         {
             // arrange
             var component = new Mock<Component>();
@@ -28,10 +30,35 @@ namespace Imperium.Ecs.Tests
             Assert.True(entity.Components.Contains(component.Object));
             
             componentManager.Verify(c => c.Register(component.Object), Times.Once);
-            component.Verify(c => c.Start());
             
             Assert.Equal(entity.Ecs, component.Object.Ecs);
             Assert.Equal(entity, component.Object.Parent);
+        }
+
+        [Fact]
+        public void RemoveComponent_RemovesComponentAndUnregistersIt()
+        {
+            // arrange
+            var component = new Mock<Component>();
+            
+            var componentManager = new Mock<ComponentManager>();
+                
+            var ecs = new Mock<EcsManager>();
+            ecs.SetupGet(e => e.ComponentManager).Returns(componentManager.Object);
+            
+            var entity = new Entity
+            {
+                Ecs = ecs.Object,
+                Components = {component.Object},
+            };
+            
+            // act
+            entity.RemoveComponent(component.Object);
+            
+            // assert
+            componentManager.Verify(cm => cm.Unregister(component.Object), Times.Once);
+            
+            Assert.False(entity.Components.Contains(component.Object));
         }
 
         [Fact]
@@ -87,6 +114,34 @@ namespace Imperium.Ecs.Tests
             Assert.True(exceptionThrown);
         }
 
+        [Fact]
+        public void OperatorMore_ChecksIsTheEntityCloneOfPrototype()
+        {
+            // arrange
+            var prototype = new Entity();
+            var entityClone = new Entity {Prototype = prototype};
+            var justEntity = new Entity();
+            
+            // assert
+            Assert.True(entityClone < prototype);
+            Assert.False(justEntity < prototype);
+        }
+
+        [Fact]
+        public void OperatorLess_IsReversedMoreOperator()
+        {
+            // arrange
+            var prototype = new Entity();
+            var entityClone = new Entity {Prototype = prototype};
+            var justEntity = new Entity();
+            
+            // assert
+            Assert.True(prototype > entityClone);
+            Assert.False(prototype > justEntity);
+        }
+
+        
+        
         private class RequiredComponent : Component
         {
             

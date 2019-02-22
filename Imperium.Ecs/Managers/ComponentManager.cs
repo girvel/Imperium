@@ -2,12 +2,11 @@
 {
     public class ComponentManager : Manager<Component>
     {
-        public virtual Component Create(Component prototype)
+        public override void Register(Component subject)
         {
-            var clone = (Component) prototype.Clone();
-            clone.Prototype = prototype;
-            Register(clone);
-            return clone;
+            base.Register(subject);
+
+            subject.Start();
         }
 
         public override void Unregister(Component subject)

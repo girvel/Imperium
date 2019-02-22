@@ -55,6 +55,12 @@
     <Compile Include="RegistrationSystem.cs" />
     <Compile Include="System.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Province.ToString\Province.ToString.csproj">
+      <Project>{012284CF-17CA-4D52-BBC5-50804BC0F36C}</Project>
+      <Name>Province.ToString</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
