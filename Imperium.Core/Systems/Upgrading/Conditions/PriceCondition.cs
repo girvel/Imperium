@@ -6,11 +6,11 @@ namespace Imperium.Core.Systems.Upgrading.Conditions
 {
     public class PriceCondition : Condition
     {
-        public IResources Price { get; }
+        public InternalResources Price { get; }
 
         
 
-        public PriceCondition(IResources price)
+        public PriceCondition(InternalResources price)
         {
             Price = price;
         }
@@ -24,7 +24,7 @@ namespace Imperium.Core.Systems.Upgrading.Conditions
 
         public override void Apply(Entity @from, Owner owner)
         {
-            owner.Resources = owner.Resources.Substracted(Price);
+            owner.Resources -= Price;
         }
     }
 }

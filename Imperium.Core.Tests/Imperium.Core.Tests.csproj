@@ -60,6 +60,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Common\ResourcesHelperTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Systems\Owning\PlayerSystemTests.cs" />
     <Compile Include="Systems\Owning\PlayerTests.cs" />

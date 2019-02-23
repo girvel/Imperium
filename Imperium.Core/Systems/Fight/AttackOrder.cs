@@ -15,7 +15,7 @@ namespace Imperium.Core.Systems.Fight
 
         public override TimeSpan Update(TimeSpan maxTime)
         {
-            var seconds = Mathf.Min(Target.HealthPoints / Subject.GetComponent<Fighter>().Dps, maxTime.TotalSeconds);
+            var seconds = Math.Min(Target.HealthPoints / Subject.GetComponent<Fighter>().Dps, maxTime.TotalSeconds);
 
             Target.Damage((float) (seconds * Subject.GetComponent<Fighter>().Dps));
             return TimeSpan.FromSeconds(seconds);

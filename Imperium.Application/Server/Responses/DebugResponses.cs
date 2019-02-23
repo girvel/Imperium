@@ -1,4 +1,5 @@
-﻿using Imperium.Core.Systems.Owning;
+﻿using Imperium.Core.Common;
+using Imperium.Core.Systems.Owning;
 using Imperium.Core.Systems.Science;
 using Imperium.Ecs.Managers;
 using Imperium.Game;
@@ -18,7 +19,7 @@ namespace Imperium.Application.Server.Responses
         [Response(Permission.User)]
         public bool AddResources(Connection<Owner> connection)
         {
-            connection.Account.ExternalData.Resources += new Resources {Wood = 100};
+            connection.Account.ExternalData.Resources += (InternalResources) new Resources {Wood = 100};
             return true;
         }
         

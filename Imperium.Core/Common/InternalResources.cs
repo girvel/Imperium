@@ -17,9 +17,16 @@
         }
 
         public int ResourceTypesNumber => ResourcesArray.Length;
-        
-        
-        
+
+
+
+        public InternalResources(params float[] resourceArray)
+        {
+            _resourceArray = resourceArray;
+        }
+
+
+
         public bool Enough(IResources price)
         {
             return this.Enough<InternalResources>((InternalResources) (price ?? new InternalResources()));

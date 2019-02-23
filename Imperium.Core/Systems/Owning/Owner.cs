@@ -7,7 +7,7 @@ namespace Imperium.Core.Systems.Owning
 {
     public class Owner : RegisteredComponent<Ownership, Owner>
     {
-        public IResources Resources
+        public InternalResources Resources
         {
             get => _resources;
             set
@@ -23,7 +23,7 @@ namespace Imperium.Core.Systems.Owning
         
         public event Action<IResources> OnResourcesChanged;
         public event Action<Owned> OnOwnedAdded, OnOwnedRemoved;
-        private IResources _resources;
+        private InternalResources _resources;
 
 
 

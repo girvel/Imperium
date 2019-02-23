@@ -7,7 +7,7 @@ namespace Imperium.Core.Systems.Owning
 {
     public class Ownership : RegistrationSystem<Owner>
     {
-        public IResources PlayerStartingResources { get; set; }
+        public InternalResources PlayerStartingResources { get; set; }
 
 
 
@@ -16,7 +16,7 @@ namespace Imperium.Core.Systems.Owning
         {
         }
 
-        public Ownership(IResources playerStartingResources)
+        public Ownership(InternalResources playerStartingResources)
         {
             PlayerStartingResources = playerStartingResources;
         }
@@ -27,7 +27,7 @@ namespace Imperium.Core.Systems.Owning
         {
             base.Register(owner);
             
-            owner.Resources = (IResources) PlayerStartingResources.Clone();
+            owner.Resources = (InternalResources) PlayerStartingResources.Clone();
             OnPlayerCreated?.Invoke(owner);
         }
 

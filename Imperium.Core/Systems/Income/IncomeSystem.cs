@@ -16,10 +16,7 @@ namespace Imperium.Core.Systems.Income
 
                 if (owner != null)
                 {
-                    owner.Resources 
-                        = owner.Resources.Added(
-                            resourceBuilding.Income.Multiplied(
-                                Time.DeltaTime(Ecs) / 3600 / 24));
+                    owner.Resources += resourceBuilding.Income * (float) Ecs.UpdateDelay.TotalSeconds;
                 }
             }
         }

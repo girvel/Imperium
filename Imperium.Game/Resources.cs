@@ -130,26 +130,6 @@ namespace Imperium.Game
 
 
 
-        public static Resources operator +(IResources r1, Resources r2) => (Resources) r1 + r2;
-
-        public static Resources operator +(Resources r1, IResources r2) => r2 + r1;
-
-        public static Resources operator -(IResources r1, Resources r2) => (Resources) r1 - r2;
-
-        public static Resources operator -(Resources r1, IResources r2) => r2 - r1;
-        
-        
-
-        public static bool operator ==(IResources r1, Resources r2) => (Resources) r1 == r2;
-
-        public static bool operator ==(Resources r1, IResources r2) => r2 == r1;
-
-        public static bool operator !=(IResources r1, Resources r2) => (Resources) r1 != r2;
-
-        public static bool operator !=(Resources r1, IResources r2) => r2 != r1;
-
-
-
         public static implicit operator InternalResources(Resources r) 
             => new InternalResources{ResourcesArray = (float[]) r.ResourcesArray.Clone()};
 
