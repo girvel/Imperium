@@ -98,12 +98,18 @@ namespace Province.Vector
         }
 
         public bool IsSoftlyInside(Vector maximal) => X <= maximal.X && Y <= maximal.Y;
-        
-        public bool IsSoftlyInside(Vector minimal, Vector maximal) => IsSoftlyInside(maximal) && X >= minimal.X && Y >= minimal.Y;
 
-        public bool IsInside(Vector maximal) => X < maximal.X && Y < maximal.Y;
+        public bool IsSoftlyOutside(Vector minimal) => X >= minimal.X && Y >= minimal.Y;
         
-        public bool IsInside(Vector minimal, Vector maximal) => IsSoftlyInside(maximal) && X > minimal.X && Y > minimal.Y;
+        public bool IsSoftlyInside(Vector minimal, Vector maximal) => IsSoftlyInside(maximal) && IsSoftlyOutside(minimal);
+
+        
+        
+        public bool IsInside(Vector maximal) => X < maximal.X && Y < maximal.Y;
+
+        public bool IsOutside(Vector minimal) => X > minimal.X && Y > minimal.Y;
+        
+        public bool IsInside(Vector minimal, Vector maximal) => IsSoftlyInside(maximal) && IsOutside(minimal);
 
 
 

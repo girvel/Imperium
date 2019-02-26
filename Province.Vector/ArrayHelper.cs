@@ -15,5 +15,13 @@
         public static Vector Size<T>(this T[,] arr) => new Vector(arr.GetLength(0), arr.GetLength(1));
 
         public static T[,] CreateArray<T>(this Vector v) => new T[v.X, v.Y];
+
+
+
+        public static RoundPart<T> Round<T>(this T[,] arr, Vector center, double radius)
+            => new RoundPart<T>(arr, center, radius);
+        
+        public static RectanglePart<T> Rectangle<T>(this T[,] arr, Vector begin, Vector end)
+            => new RectanglePart<T>(arr, begin, end);
     }
 }

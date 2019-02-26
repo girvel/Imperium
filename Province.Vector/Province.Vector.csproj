@@ -41,6 +41,8 @@
   <ItemGroup>
     <Compile Include="ArrayHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RectanglePart.cs" />
+    <Compile Include="RoundPart.cs" />
     <Compile Include="Vector.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
