@@ -16,6 +16,18 @@
 
         public static T[,] CreateArray<T>(this Vector v) => new T[v.X, v.Y];
 
+	    public static T[,] CreateArray<T>(this Vector v, Func<Vector, T> selector)
+	    {
+	        var array = v.CreateArray<T>();
+	        
+	        foreach (var vector in v.Range())
+	        {
+	            array.SetAt(vector, selector(vector));
+	        }
+	        
+	        return array;
+	    }
+
 
 
         public static RoundPart<T> Round<T>(this T[,] arr, Vector center, double radius)

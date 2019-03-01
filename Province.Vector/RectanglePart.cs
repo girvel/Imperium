@@ -1,25 +1,52 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
+using static System.Diagnostics.Debug;
 
 namespace Province.Vector
 {
     public class RectanglePart<T> : IEnumerable<T>
     {
         private readonly T[,] _internalArray;
-        
+
         public Vector Begin { get; }
-        
+
         public Vector End { get; }
-        
-        
-        
+
+
+
         public RectanglePart(T[,] internalArray, Vector begin, Vector end)
         {
             _internalArray = internalArray;
             Begin = begin;
-            End = end;
+            End = end; 
+        }
+
+
+
+        public T FindNearest(
+            Predicate<T> match,
+            Func<int, int, double> calculateDistance = null)
+        {
+            if (calculateDistance == null)
+            {
+                calculateDistance = (dx, dy) => Math.Max(dx, dy);
+            }
+
+            var size = End - Begin;
+
+            Assert(
+                size.X != size.Y || size.X % 1 == 0,
+                "Area should be square and its size should be odd");
+
+            var maxDistance = (size.X + 1) / 2;
+            
+            for (var d = 0; d <= maxDistance; d++)
+            {
+                
+            }
+
+            return default(T);
         }
 
 
