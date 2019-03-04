@@ -1,3 +1,6 @@
+using System.Linq;
+using Xunit;
+
 namespace Province.Vector.Tests
 {
     public class RoundPartTests
@@ -16,7 +19,7 @@ namespace Province.Vector.Tests
                 {51, 52, 53, 54, 55, 56},
             };
             
-            var round = new RoundPart(basicArray, new Vector(2, 1), 2.3);
+            var round = new RoundPart<int>(basicArray, new Vector(2, 1), 2.3);
             
             // act
             var collection = round.ToArray();

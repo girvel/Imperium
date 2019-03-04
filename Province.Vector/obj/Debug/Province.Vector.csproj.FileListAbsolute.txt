@@ -1,0 +1,2 @@
+/home/nik/Документы/Imperium/Province.Vector/obj/Debug/Province.Vector.csprojAssemblyReference.cache
+/home/nik/Документы/Imperium/Province.Vector/obj/Debug/Province.Vector.csproj.CoreCompileInputs.cache

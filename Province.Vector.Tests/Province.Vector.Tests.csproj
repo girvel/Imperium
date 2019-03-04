@@ -51,7 +51,10 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ArrayHelperTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RectanglePartTests.cs" />
+    <Compile Include="RoundPartTests.cs" />
     <Compile Include="VectorTests.cs" />
   </ItemGroup>
   <ItemGroup>

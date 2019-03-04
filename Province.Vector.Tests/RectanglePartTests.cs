@@ -1,3 +1,6 @@
+using System.Linq;
+using Xunit;
+
 namespace Province.Vector.Tests
 {
     public class RectanglePartTests
@@ -16,10 +19,11 @@ namespace Province.Vector.Tests
                 {51, 52, 53, 54, 55, 56},
             };
             
-            var rectangle = new RectanglePart(basicArray, new Vector(0, 1), new Vector(3, 3));
+            var rectangle = new RectanglePart<int>(
+                basicArray, new Vector(0, 1), new Vector(3, 3));
             
             // act
-            var collection = round.ToArray();
+            var collection = rectangle.ToArray();
             
             // assert
             var expectation = new[] {02, 03, 04, 12, 13, 14, 22, 23, 24, 32, 33, 34};
