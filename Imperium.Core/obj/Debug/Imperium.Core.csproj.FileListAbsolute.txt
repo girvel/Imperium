@@ -10,8 +10,6 @@ E:\projects\Imperium\Imperium.Core\bin\Debug\Imperium.CommonData.pdb
 E:\projects\Imperium\Imperium.Core\bin\Debug\Province.Vector.dll
 E:\projects\Imperium\Imperium.Core\bin\Debug\Province.Vector.pdb
 E:\projects\Imperium\Imperium.Core\bin\Debug\Province.ExtendedFramework.dll
-E:\projects\Imperium\Imperium.Core\bin\Debug\System.ValueTuple.dll
 E:\projects\Imperium\Imperium.Core\bin\Debug\Province.ExtendedFramework.pdb
-E:\projects\Imperium\Imperium.Core\bin\Debug\System.ValueTuple.xml
 E:\projects\Imperium\Imperium.Core\bin\Debug\Province.ToString.dll
 E:\projects\Imperium\Imperium.Core\bin\Debug\Province.ToString.pdb

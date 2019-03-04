@@ -78,6 +78,24 @@
     <Compile Include="Systems\Vision\AbstractVision.cs" />
     <Compile Include="Systems\Vision\Observer.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Imperium.CommonData\Imperium.CommonData.csproj">
+      <Project>{A0504B8A-ECBB-4F93-AD2E-48DC7BCEF77A}</Project>
+      <Name>Imperium.CommonData</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Imperium.Ecs\Imperium.Ecs.csproj">
+      <Project>{942FC477-CDFA-4C06-B01C-2B29C9B30B01}</Project>
+      <Name>Imperium.Ecs</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Province.ExtendedFramework\Province.ExtendedFramework.csproj">
+      <Project>{47C87D4A-69EC-4574-A745-24B05A72A4DA}</Project>
+      <Name>Province.ExtendedFramework</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Province.Vector\Province.Vector.csproj">
+      <Project>{60eb862e-9925-4184-b7fe-355d79da8fe9}</Project>
+      <Name>Province.Vector</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

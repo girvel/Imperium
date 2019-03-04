@@ -5,3 +5,4 @@ E:\projects\Imperium\Imperium.Client\obj\Debug\Imperium.Client.dll
 E:\projects\Imperium\Imperium.Client\obj\Debug\Imperium.Client.pdb
 E:\projects\Imperium\Imperium.Client\bin\Debug\Newtonsoft.Json.dll
 E:\projects\Imperium\Imperium.Client\bin\Debug\Newtonsoft.Json.xml
+E:\projects\Imperium\Imperium.Client\bin\Debug\Newtonsoft.Json.pdb
