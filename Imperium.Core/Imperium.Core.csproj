@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{521ED1BE-B540-4D2C-8DA9-87EC22CF9F91}</ProjectGuid>
+    <ProjectGuid>{4E2FCAAC-93F2-4421-BA14-E7C59BCA8F8D}</ProjectGuid>
     <ProjectTypeGuids>{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
@@ -36,9 +36,6 @@
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data" />
-    <Reference Include="System.ValueTuple, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51">
-      <HintPath>..\packages\System.ValueTuple.4.5.0\lib\netstandard1.0\System.ValueTuple.dll</HintPath>
-    </Reference>
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
@@ -48,59 +45,38 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Systems\Ai\AiSystem.cs" />
     <Compile Include="Systems\Ai\AutoAttack.cs" />
+    <Compile Include="Systems\Execution\Executor.cs" />
+    <Compile Include="Systems\Execution\Order.cs" />
+    <Compile Include="Systems\Execution\OrderManager.cs" />
     <Compile Include="Systems\Fight\AttackOrder.cs" />
     <Compile Include="Systems\Fight\Destructible.cs" />
     <Compile Include="Systems\Fight\Fighter.cs" />
+    <Compile Include="Systems\Income\Incomer.cs" />
+    <Compile Include="Systems\Income\IncomeSystem.cs" />
     <Compile Include="Systems\Landscape\Terrain.cs" />
     <Compile Include="Systems\Landscape\TerrainType.cs" />
     <Compile Include="Systems\Movement\Movable.cs" />
     <Compile Include="Systems\Movement\MovementOrder.cs" />
-    <Compile Include="Systems\Execution\Executor.cs" />
-    <Compile Include="Systems\Execution\Order.cs" />
-    <Compile Include="Systems\Execution\OrderManager.cs" />
-    <Compile Include="Systems\Placing\Area.cs" />
-    <Compile Include="Systems\Placing\ContainerSlice.cs" />
-    <Compile Include="Systems\Placing\ComponentSlice.cs" />
-    <Compile Include="Systems\Placing\Placer.cs" />
     <Compile Include="Systems\Owning\Owned.cs" />
     <Compile Include="Systems\Owning\Owner.cs" />
     <Compile Include="Systems\Owning\Ownership.cs" />
-    <Compile Include="Systems\Income\Incomer.cs" />
-    <Compile Include="Systems\Income\IncomeSystem.cs" />
+    <Compile Include="Systems\Placing\Area.cs" />
+    <Compile Include="Systems\Placing\ComponentSlice.cs" />
+    <Compile Include="Systems\Placing\ContainerSlice.cs" />
+    <Compile Include="Systems\Placing\Placer.cs" />
     <Compile Include="Systems\Science\Research.cs" />
     <Compile Include="Systems\Science\Researcher.cs" />
     <Compile Include="Systems\Science\ResearchHolder.cs" />
     <Compile Include="Systems\Science\ResearchSystem.cs" />
-    <Compile Include="Systems\Upgrading\Conditions\AndCondition.cs" />
     <Compile Include="Systems\Upgrading\Condition.cs" />
+    <Compile Include="Systems\Upgrading\Conditions\AndCondition.cs" />
     <Compile Include="Systems\Upgrading\Conditions\EntityCondition.cs" />
     <Compile Include="Systems\Upgrading\Conditions\PriceCondition.cs" />
     <Compile Include="Systems\Upgrading\Conditions\ResearchCondition.cs" />
     <Compile Include="Systems\Upgrading\Upgradable.cs" />
     <Compile Include="Systems\Upgrading\Upgrade.cs" />
-    <Compile Include="Systems\Vision\Observer.cs" />
     <Compile Include="Systems\Vision\AbstractVision.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Imperium.CommonData\Imperium.CommonData.csproj">
-      <Project>{A0504B8A-ECBB-4F93-AD2E-48DC7BCEF77A}</Project>
-      <Name>Imperium.CommonData</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Imperium.Ecs\Imperium.Ecs.csproj">
-      <Project>{942FC477-CDFA-4C06-B01C-2B29C9B30B01}</Project>
-      <Name>Imperium.Ecs</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Province.ExtendedFramework\Province.ExtendedFramework.csproj">
-      <Project>{47C87D4A-69EC-4574-A745-24B05A72A4DA}</Project>
-      <Name>Province.ExtendedFramework</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Province.Vector\Province.Vector.csproj">
-      <Project>{60EB862E-9925-4184-B7FE-355D79DA8FE9}</Project>
-      <Name>Province.Vector</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="packages.config" />
+    <Compile Include="Systems\Vision\Observer.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
