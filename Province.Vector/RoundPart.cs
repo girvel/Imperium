@@ -21,20 +21,31 @@ namespace Province.Vector
 
             Size = (int) radius * Vector.One;
         }
+        
+        /*public T FindNearest(Predicate<T> selector)
+        {
+            var distance = double.MaxValue;
+            var result = default(T);
+            
+            for (var d = 0; d <= Size; d++)
+            {
+                for (var x = -d; x <= d; x++)
+            }
+        }*/
 
-        IEnumerator<T> IEnumerable<T>.GetEnumerator()
+        public IEnumerator<T> GetEnumerator()
         {
             var minY = Math.Max(0, (Center - Size).Y);
             var maxY = Math.Min((Center + Size).Y + 1, _internalArray.GetLength(1));
 
-            for (var y = minY; y < maxY; y++)
+            for (var y = minY; y <= maxY; y++)
             {
                 var q = (int) Math.Sqrt(Math.Pow(Size.X, 2) - Math.Pow(y - Center.Y, 2));
                 
                 var minX = Math.Max(0, Center.X - q);
                 var maxX = Math.Min(Center.X + q, _internalArray.GetLength(0));
                 
-                for (var x = minX; x < maxX; x++) yield return _internalArray[x, y];
+                for (var x = minX; x <= maxX; x++) yield return _internalArray[x, y];
             }
         }
 

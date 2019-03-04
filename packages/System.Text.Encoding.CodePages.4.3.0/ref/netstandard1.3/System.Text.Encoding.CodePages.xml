@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <doc>
   <assembly>
@@ -12,4 +13,20 @@
       <returns>An encoding provider that allows access to encodings not supported in .NET Framework 4.6 RC. </returns>
     </member>
   </members>
+=======
+﻿<?xml version="1.0" encoding="utf-8"?>
+<doc>
+  <assembly>
+    <name>System.Text.Encoding.CodePages</name>
+  </assembly>
+  <members>
+    <member name="T:System.Text.CodePagesEncodingProvider">
+      <summary>Provides access to an encoding provider for code pages supported in the desktop .NET Framework but not in .NET Framework 4.6 RC. </summary>
+    </member>
+    <member name="P:System.Text.CodePagesEncodingProvider.Instance">
+      <summary>Gets an encoding provider for code pages supported in the desktop .NET Framework but not in the current .NET Framework platform. </summary>
+      <returns>An encoding provider that allows access to encodings not supported in .NET Framework 4.6 RC. </returns>
+    </member>
+  </members>
+>>>>>>> 02800a93571bac458b2a73669ccd47b3d20bb45d
 </doc>

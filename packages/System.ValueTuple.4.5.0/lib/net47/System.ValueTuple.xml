@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <?xml version="1.0"?>
 <doc>
     <assembly>
@@ -6,3 +7,13 @@
     <members>
     </members>
 </doc>
+=======
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>System.ValueTuple</name>
+    </assembly>
+    <members>
+    </members>
+</doc>
+>>>>>>> 02800a93571bac458b2a73669ccd47b3d20bb45d
