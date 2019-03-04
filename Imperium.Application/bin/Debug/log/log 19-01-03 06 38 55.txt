@@ -1,0 +1,72 @@
+06:38:56	 Server started
+06:39:05	 Accepted connection from 0.0.0.0.0.0.0.0.0.0.255.255.192.168.0.100:61880
+06:39:06	 Login(login: , password: )
+06:39:06	 return True
+06:39:06	 GetVision()
+06:39:06	 return [VisionDto | Visibles: 79]
+06:39:07	 AddResources()
+06:39:07	 return True
+06:39:09	 GetNews()
+06:39:09	 return {{type: OnResourcesChanged, info: {value: {100, 0,001539243, 0, 0, 0, 0, }, }, }, }
+06:39:10	 GetNews()
+06:39:10	 return {{type: OnResourcesChanged, info: {value: {100, 0,001657646, 0, 0, 0, 0, }, }, }, }
+06:39:11	 GetNews()
+06:39:11	 return {{type: OnResourcesChanged, info: {value: {100, 0,001768411, 0, 0, 0, 0, }, }, }, }
+06:39:12	 GetNews()
+06:39:12	 return {{type: OnResourcesChanged, info: {value: {100, 0,001886815, 0, 0, 0, 0, }, }, }, }
+06:39:13	 GetNews()
+06:39:13	 return {{type: OnResourcesChanged, info: {value: {100, 0,002001397, 0, 0, 0, 0, }, }, }, }
+06:39:14	 GetNews()
+06:39:14	 return {{type: OnResourcesChanged, info: {value: {100, 0,002112159, 0, 0, 0, 0, }, }, }, }
+06:39:15	 GetNews()
+06:39:15	 return {{type: OnResourcesChanged, info: {value: {100, 0,002226739, 0, 0, 0, 0, }, }, }, }
+06:39:16	 UpgradeBuilding(position: {31; 37}, name: Wooden house)
+06:39:37	 return True
+06:39:41	 GetNews()
+06:39:41	 return {{type: OnVisionChanged, info: {vision: [VisionDto | Visibles: 79], }, }, {type: OnResourcesChanged, info: {value: {0, 0,003242687, 0, 0, 0, 0, }, }, }, }
+06:39:44	 GetNews()
+06:39:44	 return {{type: OnResourcesChanged, info: {value: {0, 0,003800313, 0, 0, 0, 0, }, }, }, }
+06:39:45	 GetNews()
+06:39:45	 return {{type: OnResourcesChanged, info: {value: {0, 0,004021836, 0, 0, 0, 0, }, }, }, }
+06:39:46	 GetNews()
+06:39:46	 return {{type: OnResourcesChanged, info: {value: {0, 0,004258635, 0, 0, 0, 0, }, }, }, }
+06:39:47	 GetNews()
+06:39:47	 return {{type: OnResourcesChanged, info: {value: {0, 0,004480158, 0, 0, 0, 0, }, }, }, }
+06:39:48	 GetNews()
+06:39:48	 return {{type: OnResourcesChanged, info: {value: {0, 0,004716958, 0, 0, 0, 0, }, }, }, }
+06:39:49	 GetNews()
+06:39:49	 return {{type: OnResourcesChanged, info: {value: {0, 0,00493848, 0, 0, 0, 0, }, }, }, }
+06:39:50	 GetNews()
+06:39:50	 return {{type: OnResourcesChanged, info: {value: {0, 0,00517528, 0, 0, 0, 0, }, }, }, }
+06:39:51	 GetNews()
+06:39:51	 return {{type: OnResourcesChanged, info: {value: {0, 0,005404442, 0, 0, 0, 0, }, }, }, }
+06:39:52	 GetNews()
+06:39:52	 return {{type: OnResourcesChanged, info: {value: {0, 0,005633603, 0, 0, 0, 0, }, }, }, }
+06:39:53	 GetNews()
+06:39:53	 return {{type: OnResourcesChanged, info: {value: {0, 0,005862764, 0, 0, 0, 0, }, }, }, }
+06:39:54	 GetNews()
+06:39:54	 return {{type: OnResourcesChanged, info: {value: {0, 0,006091925, 0, 0, 0, 0, }, }, }, }
+06:39:55	 GetNews()
+06:39:55	 return {{type: OnResourcesChanged, info: {value: {0, 0,006321087, 0, 0, 0, 0, }, }, }, }
+06:39:56	 GetNews()
+06:39:56	 return {{type: OnResourcesChanged, info: {value: {0, 0,006550248, 0, 0, 0, 0, }, }, }, }
+06:39:57	 GetNews()
+06:39:57	 return {{type: OnResourcesChanged, info: {value: {0, 0,006787048, 0, 0, 0, 0, }, }, }, }
+06:40:34	 GetNews()
+06:40:34	 return {{type: OnResourcesChanged, info: {value: {0, 0,01540351, 0, 0, 0, 0, }, }, }, }
+06:40:35	 GetNews()
+06:40:35	 return {{type: OnResourcesChanged, info: {value: {0, 0,01562503, 0, 0, 0, 0, }, }, }, }
+06:40:36	 GetNews()
+06:40:36	 return {{type: OnResourcesChanged, info: {value: {0, 0,01586189, 0, 0, 0, 0, }, }, }, }
+06:40:37	 GetNews()
+06:40:37	 return {{type: OnResourcesChanged, info: {value: {0, 0,01609111, 0, 0, 0, 0, }, }, }, }
+06:40:37	 UpgradeBuilding(position: {28; 33}, name: Wooden house)
+06:40:37	 return False
+06:40:38	 GetNews()
+06:40:38	 return {{type: OnResourcesChanged, info: {value: {0, 0,01632033, 0, 0, 0, 0, }, }, }, }
+06:40:39	 GetNews()
+06:40:39	 return {{type: OnResourcesChanged, info: {value: {0, 0,01654954, 0, 0, 0, 0, }, }, }, }
+06:40:40	 GetNews()
+06:40:40	 return {{type: OnResourcesChanged, info: {value: {0, 0,01677876, 0, 0, 0, 0, }, }, }, }
+06:40:41	 Closed connection to 0.0.0.0.0.0.0.0.0.0.255.255.192.168.0.100:61880
+06:40:42	 Accepted connection f

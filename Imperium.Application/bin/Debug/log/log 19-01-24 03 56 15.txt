@@ -1,0 +1,76 @@
+03:56:15	 Server started
+03:56:18	 Accepted connection from 0.0.0.0.0.0.0.0.0.0.255.255.192.168.0.100:51848
+03:56:19	 Login(login: , password: )
+03:56:19	 return True
+03:56:19	 GetVision()
+03:56:19	 return [VisionDto | Visibles: 106]
+03:56:19	 AddResources()
+03:56:19	 return True
+03:56:21	 GetNews()
+03:56:21	 return {{type: OnResourcesChanged, info: {value: {100, 90,5851, 0, 0, 0, 0, }, }, }, }
+03:56:22	 GetNews()
+03:56:22	 return {{type: OnResourcesChanged, info: {value: {100, 105,4352, 0, 0, 0, 0, }, }, }, }
+03:56:23	 GetNews()
+03:56:23	 return {{type: OnResourcesChanged, info: {value: {100, 120,2853, 0, 0, 0, 0, }, }, }, }
+03:56:24	 GetNews()
+03:56:24	 return {{type: OnResourcesChanged, info: {value: {100, 135,1352, 0, 0, 0, 0, }, }, }, }
+03:56:25	 GetNews()
+03:56:25	 return {{type: OnResourcesChanged, info: {value: {100, 149,9851, 0, 0, 0, 0, }, }, }, }
+03:56:26	 GetNews()
+03:56:26	 return {{type: OnResourcesChanged, info: {value: {100, 164,8349, 0, 0, 0, 0, }, }, }, }
+03:56:27	 GetNews()
+03:56:27	 return {{type: OnResourcesChanged, info: {value: {100, 179,6848, 0, 0, 0, 0, }, }, }, }
+03:56:28	 GetNews()
+03:56:28	 return {{type: OnResourcesChanged, info: {value: {100, 194,5347, 0, 0, 0, 0, }, }, }, }
+03:56:29	 GetNews()
+03:56:29	 return {{type: OnResourcesChanged, info: {value: {100, 209,3845, 0, 0, 0, 0, }, }, }, }
+03:56:30	 GetNews()
+03:56:30	 return {{type: OnResourcesChanged, info: {value: {100, 224,2344, 0, 0, 0, 0, }, }, }, }
+03:56:31	 GetNews()
+03:56:31	 return {{type: OnResourcesChanged, info: {value: {100, 239,0842, 0, 0, 0, 0, }, }, }, }
+03:56:32	 GetNews()
+03:56:32	 return {{type: OnResourcesChanged, info: {value: {100, 253,9341, 0, 0, 0, 0, }, }, }, }
+03:56:33	 GetNews()
+03:56:33	 return {{type: OnResourcesChanged, info: {value: {100, 268,7839, 0, 0, 0, 0, }, }, }, }
+03:56:34	 GetNews()
+03:56:34	 return {{type: OnResourcesChanged, info: {value: {100, 283,6338, 0, 0, 0, 0, }, }, }, }
+03:56:35	 GetNews()
+03:56:35	 return {{type: OnResourcesChanged, info: {value: {100, 298,4836, 0, 0, 0, 0, }, }, }, }
+03:56:36	 GetNews()
+03:56:36	 return {{type: OnResourcesChanged, info: {value: {100, 313,3335, 0, 0, 0, 0, }, }, }, }
+03:56:36	 Attack(from: {23; 16}, to: {23; 16})
+03:56:36	 return True
+03:56:37	 GetNews()
+03:56:37	 return {{type: OnResourcesChanged, info: {value: {100, 328,1833, 0, 0, 0, 0, }, }, }, }
+03:56:38	 GetNews()
+03:56:38	 return {{type: OnVisionChanged, info: {vision: [VisionDto | Visibles: 106], }, }, {type: OnResourcesChanged, info: {value: {100, 343,0332, 0, 0, 0, 0, }, }, }, }
+03:56:39	 GetNews()
+03:56:39	 return {{type: OnResourcesChanged, info: {value: {100, 357,8831, 0, 0, 0, 0, }, }, }, }
+03:56:40	 GetNews()
+03:56:40	 return {{type: OnResourcesChanged, info: {value: {100, 372,7329, 0, 0, 0, 0, }, }, }, }
+03:56:41	 GetNews()
+03:56:41	 return {{type: OnResourcesChanged, info: {value: {100, 387,5828, 0, 0, 0, 0, }, }, }, }
+03:56:42	 GetNews()
+03:56:42	 return {{type: OnResourcesChanged, info: {value: {100, 402,4326, 0, 0, 0, 0, }, }, }, }
+03:56:43	 GetNews()
+03:56:43	 return {{type: OnResourcesChanged, info: {value: {100, 417,2825, 0, 0, 0, 0, }, }, }, }
+03:56:44	 Closed connection to 0.0.0.0.0.0.0.0.0.0.255.255.192.168.0.100:51848
+03:56:46	 Accepted connection from 0.0.0.0.0.0.0.0.0.0.255.255.192.168.0.100:51858
+03:56:46	 Login(login: , password: )
+03:56:46	 return True
+03:56:46	 GetVision()
+03:56:46	 return [VisionDto | Visibles: 106]
+03:56:46	 AddResources()
+03:56:46	 return True
+03:56:48	 GetNews()
+03:56:48	 return {{type: OnResourcesChanged, info: {value: {200, 494,5017, 0, 0, 0, 0, }, }, }, }
+03:56:49	 GetNews()
+03:56:49	 return {{type: OnResourcesChanged, info: {value: {200, 509,3516, 0, 0, 0, 0, }, }, }, }
+03:56:50	 GetNews()
+03:56:50	 return {{type: OnResourcesChanged, info: {value: {200, 524,2014, 0, 0, 0, 0, }, }, }, }
+03:56:51	 GetNews()
+03:56:51	 return {{type: OnResourcesChanged, info: {value: {200, 539,0513, 0, 0, 0, 0, }, }, }, }
+03:56:52	 GetNews()
+03:56:52	 return {{type: OnResourcesChanged, info: {value: {200, 553,9011, 0, 0, 0, 0, }, }, }, }
+03:56:53	 GetNews()
+03:56:53	 retu

@@ -1,0 +1,5 @@
+E:\projects\Imperium\Province.ExtendedFramework\bin\Debug\Province.ExtendedFramework.dll
+E:\projects\Imperium\Province.ExtendedFramework\bin\Debug\Province.ExtendedFramework.pdb
+E:\projects\Imperium\Province.ExtendedFramework\obj\Debug\Province.ExtendedFramework.csprojResolveAssemblyReference.cache
+E:\projects\Imperium\Province.ExtendedFramework\obj\Debug\Province.ExtendedFramework.dll
+E:\projects\Imperium\Province.ExtendedFramework\obj\Debug\Province.ExtendedFramework.pdb

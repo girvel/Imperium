@@ -1,0 +1,5 @@
+E:\projects\Imperium\Province.Log\bin\Debug\Province.Log.dll
+E:\projects\Imperium\Province.Log\bin\Debug\Province.Log.pdb
+E:\projects\Imperium\Province.Log\obj\Debug\Province.Log.dll
+E:\projects\Imperium\Province.Log\obj\Debug\Province.Log.pdb
+E:\projects\Imperium\Province.Log\obj\Debug\Province.Log.csprojResolveAssemblyReference.cache

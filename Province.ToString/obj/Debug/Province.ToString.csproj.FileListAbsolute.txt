@@ -1,0 +1,5 @@
+E:\projects\Imperium\Province.ToString\bin\Debug\Province.ToString.dll
+E:\projects\Imperium\Province.ToString\bin\Debug\Province.ToString.pdb
+E:\projects\Imperium\Province.ToString\obj\Debug\Province.ToString.csprojResolveAssemblyReference.cache
+E:\projects\Imperium\Province.ToString\obj\Debug\Province.ToString.dll
+E:\projects\Imperium\Province.ToString\obj\Debug\Province.ToString.pdb

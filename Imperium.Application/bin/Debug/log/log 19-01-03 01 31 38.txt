@@ -1,0 +1,80 @@
+01:31:38	 Server started
+01:31:42	 Accepted connection from 0.0.0.0.0.0.0.0.0.0.255.255.192.168.0.100:64753
+01:31:43	 Login(login: , password: )
+01:31:43	 return True
+01:31:43	 GetVision()
+01:31:43	 return Imperium.CommonData.PlaceDto[,]
+01:31:43	 AddResources()
+01:31:43	 return True
+01:31:45	 GetNews()
+01:31:45	 return System.Collections.Generic.Dictionary`2[System.String,System.Object][]
+01:32:44	 GetNews()
+01:32:44	 return System.Collections.Generic.Dictionary`2[System.String,System.Object][]
+01:32:45	 GetNews()
+01:32:45	 return System.Collections.Generic.Dictionary`2[System.String,System.Object][]
+01:32:46	 GetNews()
+01:32:46	 return System.Collections.Generic.Dictionary`2[System.String,System.Object][]
+01:32:47	 GetNews()
+01:32:47	 return System.Collections.Generic.Dictionary`2[System.String,System.Object][]
+01:32:48	 GetNews()
+01:32:48	 return System.Collections.Generic.Dictionary`2[System.String,System.Object][]
+01:32:49	 GetNews()
+01:32:49	 return System.Collections.Generic.Dictionary`2[System.String,System.Object][]
+01:32:57	 GetNews()
+01:32:57	 return System.Collections.Generic.Dictionary`2[System.String,System.Object][]
+01:33:12	 GetNews()
+01:33:12	 return System.Collections.Generic.Dictionary`2[System.String,System.Object][]
+01:33:13	 GetNews()
+01:33:13	 return System.Collections.Generic.Dictionary`2[System.String,System.Object][]
+01:33:14	 GetNews()
+01:33:14	 return System.Collections.Generic.Dictionary`2[System.String,System.Object][]
+01:33:15	 GetNews()
+01:33:15	 return System.Collections.Generic.Dictionary`2[System.String,System.Object][]
+01:33:16	 GetNews()
+01:33:16	 return System.Collections.Generic.Dictionary`2[System.String,System.Object][]
+01:33:23	 GetNews()
+01:33:23	 return System.Collections.Generic.Dictionary`2[System.String,System.Object][]
+01:33:24	 GetNews()
+01:33:24	 return System.Collections.Generic.Dictionary`2[System.String,System.Object][]
+01:33:25	 GetNews()
+01:33:25	 return System.Collections.Generic.Dictionary`2[System.String,System.Object][]
+01:33:25	 GetNews()
+01:33:25	 return System.Collections.Generic.Dictionary`2[System.String,System.Object][]
+01:33:26	 GetNews()
+01:33:26	 return System.Collections.Generic.Dictionary`2[System.String,System.Object][]
+01:33:27	 GetNews()
+01:33:27	 return System.Collections.Generic.Dictionary`2[System.String,System.Object][]
+01:33:28	 GetNews()
+01:33:28	 return System.Collections.Generic.Dictionary`2[System.String,System.Object][]
+01:33:29	 GetNews()
+01:33:29	 return System.Collections.Generic.Dictionary`2[System.String,System.Object][]
+01:33:30	 GetNews()
+01:33:30	 return System.Collections.Generic.Dictionary`2[System.String,System.Object][]
+01:33:31	 GetNews()
+01:33:31	 return System.Collections.Generic.Dictionary`2[System.String,System.Object][]
+01:33:32	 GetNews()
+01:33:32	 return System.Collections.Generic.Dictionary`2[System.String,System.Object][]
+01:33:33	 GetNews()
+01:33:33	 return System.Collections.Generic.Dictionary`2[System.String,System.Object][]
+01:33:34	 GetNews()
+01:33:34	 return System.Collections.Generic.Dictionary`2[System.String,System.Object][]
+01:33:35	 GetNews()
+01:33:35	 return System.Collections.Generic.Dictionary`2[System.String,System.Object][]
+01:33:36	 GetNews()
+01:33:36	 return System.Collections.Generic.Dictionary`2[System.String,System.Object][]
+01:33:37	 GetNews()
+01:33:37	 return System.Collections.Generic.Dictionary`2[System.String,System.Object][]
+01:33:38	 GetNews()
+01:33:38	 return System.Collections.Generic.Dictionary`2[System.String,System.Object][]
+01:33:39	 GetNews()
+01:33:39	 return System.Collections.Generic.Dictionary`2[System.String,System.Object][]
+01:33:40	 GetNews()
+01:33:40	 return System.Collections.Generic.Dictionary`2[System.String,System.Object][]
+01:33:41	 GetNews()
+01:33:41	 return System.Collections.Generic.Dictionary`2[System.String,System.Object][]
+01:33:42	 GetNews()
+01:33:42	 return System.Collections.Generic.Dictionary`2[System.String,System.Object][]
+01:33:43	 GetNews()
+01:33:43	 return System.Collections.Generic.Dictionary`2[System.String,System.Object][]
+01:33:44	 GetNews()
+01:33:44	 r

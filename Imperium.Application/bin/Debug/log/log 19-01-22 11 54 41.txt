@@ -1,0 +1,74 @@
+11:54:41	 Server started
+11:54:52	 Accepted connection from 0.0.0.0.0.0.0.0.0.0.255.255.192.168.0.100:55022
+11:54:53	 Login(login: , password: )
+11:54:53	 return True
+11:54:53	 GetVision()
+11:54:53	 return [VisionDto | Visibles: 106]
+11:54:54	 AddResources()
+11:54:54	 return True
+11:54:56	 GetNews()
+11:54:56	 return {{type: OnResourcesChanged, info: {value: {100, 214,3345, 0, 0, 0, 0, }, }, }, }
+11:54:57	 GetNews()
+11:54:57	 return {{type: OnResourcesChanged, info: {value: {100, 229,1843, 0, 0, 0, 0, }, }, }, }
+11:54:58	 GetNews()
+11:54:58	 return {{type: OnResourcesChanged, info: {value: {100, 244,0342, 0, 0, 0, 0, }, }, }, }
+11:54:59	 GetNews()
+11:54:59	 return {{type: OnResourcesChanged, info: {value: {100, 259,874, 0, 0, 0, 0, }, }, }, }
+11:55:00	 GetNews()
+11:55:00	 return {{type: OnResourcesChanged, info: {value: {100, 274,7239, 0, 0, 0, 0, }, }, }, }
+11:55:01	 GetNews()
+11:55:01	 return {{type: OnResourcesChanged, info: {value: {100, 290,0687, 0, 0, 0, 0, }, }, }, }
+11:55:02	 GetNews()
+11:55:02	 return {{type: OnResourcesChanged, info: {value: {100, 304,9186, 0, 0, 0, 0, }, }, }, }
+11:55:03	 GetNews()
+11:55:03	 return {{type: OnResourcesChanged, info: {value: {100, 320,2634, 0, 0, 0, 0, }, }, }, }
+11:55:04	 GetNews()
+11:55:04	 return {{type: OnResourcesChanged, info: {value: {100, 335,6083, 0, 0, 0, 0, }, }, }, }
+11:55:05	 GetNews()
+11:55:05	 return {{type: OnResourcesChanged, info: {value: {100, 350,4581, 0, 0, 0, 0, }, }, }, }
+11:55:06	 GetNews()
+11:55:06	 return {{type: OnResourcesChanged, info: {value: {100, 365,803, 0, 0, 0, 0, }, }, }, }
+11:55:07	 GetNews()
+11:55:07	 return {{type: OnResourcesChanged, info: {value: {100, 381,1478, 0, 0, 0, 0, }, }, }, }
+11:55:08	 GetNews()
+11:55:08	 return {{type: OnResourcesChanged, info: {value: {100, 395,9977, 0, 0, 0, 0, }, }, }, }
+11:55:09	 GetNews()
+11:55:09	 return {{type: OnResourcesChanged, info: {value: {100, 411,3425, 0, 0, 0, 0, }, }, }, }
+11:55:10	 GetNews()
+11:55:10	 return {{type: OnResourcesChanged, info: {value: {100, 426,6874, 0, 0, 0, 0, }, }, }, }
+11:55:11	 GetNews()
+11:55:11	 return {{type: OnResourcesChanged, info: {value: {100, 441,5372, 0, 0, 0, 0, }, }, }, }
+11:55:11	 Move(from: {12; 23}, to: {11; 22})
+11:55:11	 return True
+11:55:12	 GetNews()
+11:55:12	 return {{type: OnResourcesChanged, info: {value: {100, 456,3871, 0, 0, 0, 0, }, }, }, }
+11:55:13	 GetNews()
+11:55:13	 return {{type: OnResourcesChanged, info: {value: {100, 471,2369, 0, 0, 0, 0, }, }, }, }
+11:55:14	 GetNews()
+11:55:14	 return {{type: OnResourcesChanged, info: {value: {100, 486,5818, 0, 0, 0, 0, }, }, }, }
+11:55:15	 GetNews()
+11:55:15	 return {{type: OnVisionChanged, info: {vision: [VisionDto | Visibles: 106], }, }, {type: OnResourcesChanged, info: {value: {100, 501,4316, 0, 0, 0, 0, }, }, }, }
+11:55:16	 GetNews()
+11:55:16	 return {{type: OnResourcesChanged, info: {value: {100, 516,7765, 0, 0, 0, 0, }, }, }, }
+11:55:17	 GetNews()
+11:55:17	 return {{type: OnResourcesChanged, info: {value: {100, 531,6263, 0, 0, 0, 0, }, }, }, }
+11:55:18	 GetNews()
+11:55:18	 return {{type: OnResourcesChanged, info: {value: {100, 547,4662, 0, 0, 0, 0, }, }, }, }
+11:55:19	 GetNews()
+11:55:19	 return {{type: OnResourcesChanged, info: {value: {100, 562,316, 0, 0, 0, 0, }, }, }, }
+11:55:20	 GetNews()
+11:55:20	 return {{type: OnResourcesChanged, info: {value: {100, 577,1659, 0, 0, 0, 0, }, }, }, }
+11:55:21	 GetNews()
+11:55:21	 return {{type: OnResourcesChanged, info: {value: {100, 592,5107, 0, 0, 0, 0, }, }, }, }
+11:55:22	 GetNews()
+11:55:22	 return {{type: OnResourcesChanged, info: {value: {100, 607,8556, 0, 0, 0, 0, }, }, }, }
+11:55:23	 GetNews()
+11:55:23	 return {{type: OnResourcesChanged, info: {value: {100, 622,7054, 0, 0, 0, 0, }, }, }, }
+11:55:24	 GetNews()
+11:55:24	 return {{type: OnResourcesChanged, info: {value: {100, 638,0503, 0, 0, 0, 0, }, }, }, }
+11:55:25	 GetNews()
+11:55:25	 return {{type: OnResourcesChanged, info: {value: {100, 653,3951, 0, 0, 0, 0, }, }, }, }
+11:55:26	 GetNews()
+11:55:26	 return {{type: OnResourcesChanged, info: {value: {100, 667,75, 0, 0, 0, 0, }, }, }, }
+11:55:27	 GetNews()
+1
