@@ -19,7 +19,6 @@ namespace Imperium.Game.Prototypes
                   | new Incomer {Income = new Resources {Food = 3600}}
                   | new Owned()
                   | new Observer()
-                  | new Researcher(1)
                   | new Destructible(20),
 
             Sawmill
@@ -33,12 +32,7 @@ namespace Imperium.Game.Prototypes
                 = new Entity("None")
                   | new Placer()
                   | new Upgradable(
-                      new Upgrade(
-                          WoodenHouse,
-                          new PriceCondition(new Resources {Wood = 100})
-                          & new EntityCondition(Landscape.Plain)
-                          & new EntityCondition(Squad.Test)
-                          & new ResearchCondition(Science.Test))),
+                      new Upgrade(WoodenHouse)),
 
             Field
                 = new Entity("Field")

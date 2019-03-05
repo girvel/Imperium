@@ -9,10 +9,10 @@ namespace Imperium.Core.Systems.Upgrading
         public Condition Condition { get; }
 
 
-        public Upgrade(Entity result, Condition condition)
+        public Upgrade(Entity result, Condition condition = null)
         {
             Result = result;
-            Condition = condition;
+            Condition = condition ?? new NoCondition();
         }
 
         public bool TryUpgrade(Entity from, Owner owner)
@@ -22,6 +22,17 @@ namespace Imperium.Core.Systems.Upgrading
             if (success) Condition.Apply(from, owner);
 
             return success;
+        }
+        
+        private class NoCondition : Condition
+        {
+            public override bool IsPossible(Entity @from, Owner owner) => true;
+
+            public override void Apply(Entity @from, Owner owner)
+            {
+            }
+
+            public override string ToString() => true.ToString();
         }
     }
 }

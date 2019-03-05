@@ -16,13 +16,23 @@ namespace Imperium.Ecs.Managers
         public bool Enabled = false;
 
         public TimeSpan UpdateDelay = TimeSpan.FromSeconds(1.0 / 30);
+
+        private long _updateCounter = 0, _updateTotalTicks = 0;
         
         public void Start()
         {
             Enabled = true;
             while (Enabled)
             {
+                var now = DateTime.Now;
+                
                 SystemManager.Update();
+                
+                _updateCounter++;
+                _updateTotalTicks += (DateTime.Now - now).Ticks;
+                if (_updateCounter % 100 == 0) 
+                    Console.WriteLine($"median update time is {_updateTotalTicks / _updateCounter} ticks");
+                
                 Thread.Sleep(UpdateDelay);
             }
         }

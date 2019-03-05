@@ -12,36 +12,42 @@ namespace Imperium.Server
 
         internal void BeginNewsRegistration(T t)
         {
-            _registeredNews[t] = new List<News>();
+            lock (_registeredNews) _registeredNews[t] = new List<News>();
         }
 
         internal void EndNewsRegistration(T t)
         {
-            _registeredNews.Remove(t);
+            lock (_registeredNews) _registeredNews.Remove(t);
         }
 
 
 
         public void AddNews(T t, string type, Dictionary<string, dynamic> info, bool unical = false)
         {
-            if (_registeredNews.ContainsKey(t))
+            lock (_registeredNews)
             {
-                if (unical)
+                if (_registeredNews.ContainsKey(t))
                 {
-                    _registeredNews[t].RemoveAll(n => n.Type == type);
-                }
+                    if (unical)
+                    {
+                        _registeredNews[t].RemoveAll(n => n.Type == type);
+                    }
                 
-                _registeredNews[t].Add(new News {Type = type, Info = info,});
+                    _registeredNews[t].Add(new News {Type = type, Info = info,});
+                }
             }
         }
 
         public News[] GetNews(T t)
         {
-            if (_registeredNews.ContainsKey(t))
+            lock (_registeredNews)
             {
-                var result = _registeredNews[t].ToArray();
-                _registeredNews[t].Clear();
-                return result;
+                if (_registeredNews.ContainsKey(t))
+                {
+                    var result = _registeredNews[t].ToArray();
+                    _registeredNews[t].Clear();
+                    return result;
+                }
             }
 
             throw new InvalidOperationException();

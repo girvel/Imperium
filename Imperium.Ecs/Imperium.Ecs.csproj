@@ -50,6 +50,7 @@
     <Compile Include="Managers\EcsManager.cs" />
     <Compile Include="Managers\Manager.cs" />
     <Compile Include="Managers\SystemManager.cs" />
+    <Compile Include="ParallelRegistrationSystem.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RegisteredComponent.cs" />
     <Compile Include="RegistrationSystem.cs" />

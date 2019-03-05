@@ -4,20 +4,15 @@ using Imperium.Ecs;
 
 namespace Imperium.Core.Systems.Income
 {
-    public class IncomeSystem : RegistrationSystem<Incomer>
+    public class IncomeSystem : ParallelRegistrationSystem<Incomer>
     {
-        public override void Update()
+        public override void UpdateSubject(Incomer resourceBuilding)
         {
-            base.Update();
+            var owner = resourceBuilding.Parent.GetComponent<Owned>()?.Owner;
 
-            foreach (var resourceBuilding in Subjects)
+            if (owner != null)
             {
-                var owner = resourceBuilding.Parent.GetComponent<Owned>()?.Owner;
-
-                if (owner != null)
-                {
-                    owner.Resources += resourceBuilding.Income * (float) Ecs.UpdateDelay.TotalSeconds;
-                }
+                owner.Resources += resourceBuilding.Income * (float) Ecs.UpdateDelay.TotalSeconds;
             }
         }
     }

@@ -1,27 +1,23 @@
 ﻿using System;
 using System.Linq;
+using Imperium.Ecs;
 
 namespace Imperium.Core.Systems.Execution
 {
-    public class OrderManager : Ecs.RegistrationSystem<Executor>
+    public class OrderManager : ParallelRegistrationSystem<Executor>
     {
-        public override void Update()
+        public override void UpdateSubject(Executor executor)
         {
-            base.Update();
+            var time = Ecs.UpdateDelay;
 
-            foreach (var executor in Subjects)
+            while (executor.OrderQueue.Any())
             {
-                var time = Ecs.UpdateDelay;
+                var result = executor.OrderQueue.Peek().Update(time);
+                time -= result;
 
-                while (executor.OrderQueue.Any())
-                {
-                    var result = executor.OrderQueue.Peek().Update(time);
-                    time -= result;
-
-                    if (time <= TimeSpan.Zero) break;
-                    
-                    executor.OrderQueue.Dequeue();
-                }
+                if (time <= TimeSpan.Zero) break;
+                
+                executor.OrderQueue.Dequeue();
             }
         }
     }
