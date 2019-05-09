@@ -10,6 +10,8 @@ namespace Imperium.Ecs.Managers
         public EntityManager EntityManager { get; set; }
         
         public SystemManager SystemManager { get; set; }
+        
+        public PrototypeManager PrototypeManager { get; set; }
 
 
 
@@ -41,6 +43,8 @@ namespace Imperium.Ecs.Managers
 
         public T GetSystem<T>() where T : System => SystemManager.GetSystem<T>();
 
+        public T GetContainer<T>() where T : PrototypeContainer => PrototypeManager.GetContainer<T>();
+
 
 
         public static EcsManager CreateNew()
@@ -52,6 +56,7 @@ namespace Imperium.Ecs.Managers
             
             result.SystemManager = new SystemManager {Ecs = result};
             result.EntityManager = new EntityManager {Ecs = result};
+            result.PrototypeManager = new PrototypeManager {Ecs = result};
 
             return result;
         }

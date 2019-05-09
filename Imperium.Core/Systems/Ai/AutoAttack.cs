@@ -9,7 +9,7 @@ using Imperium.Ecs.Attributes;
 namespace Imperium.Core.Systems.Ai
 {
     [RequiresComponents(typeof(Executor), typeof(Fighter), typeof(Observer))]
-    public class AutoAttack : Component
+    public class AutoAttack : RegisteredComponent<AutoAttack>
     {
         
     }

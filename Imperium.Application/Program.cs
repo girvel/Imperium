@@ -32,11 +32,11 @@ namespace Imperium.Application
 
             EventRegistrator.Register(Server, Ecs);
 
-            var player = Ecs.EntityManager.Create(Global.Player).GetComponent<Owner>();
+            var player = Ecs.EntityManager.Create(Ecs.GetContainer<Global>().Player).GetComponent<Owner>();
             Server.Accounts.Add(new Account<Owner>("", "", new[] {Permission.User, Permission.Admin}, player));
             Ecs.SystemManager.GetSystem<Ownership>().Register(player);
             
-            new PlayerModifier().Modify(Ecs.SystemManager.GetSystem<Area>(), player, new Random());
+            new PlayerModifier().Modify(Ecs.SystemManager.GetSystem<Area>(), Ecs, player, new Random());
             
             new Thread(Server.Start).Start();
             Ecs.Start();

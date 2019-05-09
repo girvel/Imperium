@@ -14,8 +14,10 @@ namespace Imperium.Game.Generation.Subgenerators
     {
         public float LandFraction = 0.4f, SeasideBorder = 0.6f;
         
-        public void Generate(Area area, Random random)
+        public void Generate(Area area, EcsManager ecs, Random random)
         {
+            var landscape = ecs.GetContainer<Landscape>();
+            
             var landscapeSlice = area.ContainerSlice<Landscape>();
             
             var maximalLandNumber = LandFraction * area.Size.X * area.Size.Y;
@@ -30,22 +32,20 @@ namespace Imperium.Game.Generation.Subgenerators
                 foreach (var vector in (sizeVector * 2 + Vector.One).Range().Select(v => v - sizeVector))
                 {
                     var part = (vector.Magnitude - SeasideBorder * radius) / (radius * (1 - SeasideBorder));
-                    random.Chance(
-                        0.5 * (Math.Abs(part - 1) - Math.Abs(part) + 1),
-                        () =>
-                        {
-                            var newPosition
-                                = Vector.Clamp(
-                                    vector + sourcePosition, 
-                                    Vector.Zero,
-                                    area.Size - Vector.One);
+                    if (random.Chance(0.5 * (Math.Abs(part - 1) - Math.Abs(part) + 1)))
+                    {
+                        var newPosition
+                            = Vector.Clamp(
+                                vector + sourcePosition,
+                                Vector.Zero,
+                                area.Size - Vector.One);
 
-                            if (landscapeSlice[newPosition] < Landscape.Water)
-                            {
-                                counter++;
-                                landscapeSlice[newPosition] = Landscape.Plain;
-                            }
-                        });
+                        if (landscapeSlice[newPosition] < landscape.Water)
+                        {
+                            counter++;
+                            landscapeSlice[newPosition] = landscape.Plain;
+                        }
+                    }
                 }
             }
         }

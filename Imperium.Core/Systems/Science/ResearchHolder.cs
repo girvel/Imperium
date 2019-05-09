@@ -1,14 +1,17 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using Imperium.Core.Systems.Owning;
+using Imperium.Core.Systems.Production;
 using Imperium.Ecs;
 using Imperium.Ecs.Attributes;
 
 namespace Imperium.Core.Systems.Science
 {
     [RequiresComponents(typeof(Owner))]
-    public class ResearchHolder : RegisteredComponent<ResearchSystem, ResearchHolder>
+    public class ResearchHolder : RegisteredComponent<ResearchHolder>
     {
+        public new ResearchSystem System => (ResearchSystem) base.System;
+        
         public List<Research> ResearchedTechnologies { get; } = new List<Research>();
         
         public Research CurrentResearch { get; internal set; }
@@ -23,6 +26,28 @@ namespace Imperium.Core.Systems.Science
                 .Where(r => r != null);
 
 
+        public override void Update()
+        {
+            base.Update();
+            
+            if (CurrentResearch == null)
+            {
+                return;
+            }
+            
+            foreach (var researcher in Researchers)
+            {
+                CurrentSciencePoints 
+                    += researcher.SciencePointsPerSecond * Ecs.UpdateDelay.TotalSeconds;
+            }
+
+            if (CurrentSciencePoints >= CurrentResearch.RequiredSciencePoints)
+            {
+                ResearchedTechnologies.Add(CurrentResearch);
+                CurrentResearch = null;
+                CurrentSciencePoints = 0;
+            }
+        }
 
         public bool BeginResearch(Research research)
         {

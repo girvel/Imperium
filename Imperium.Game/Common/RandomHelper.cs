@@ -5,9 +5,9 @@ namespace Imperium.Game.Common
 {
     public static class RandomHelper
     {
-        public static void Chance(this Random r, double chance, Action a)
+        public static bool Chance(this Random r, double chance)
         {
-            if (r.NextDouble() < chance) a();
+            return r.NextDouble() < chance;
         }
 
         public static Vector NextPosition(this Random r, Vector size)

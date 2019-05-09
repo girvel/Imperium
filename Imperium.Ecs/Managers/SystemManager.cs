@@ -27,8 +27,10 @@ namespace Imperium.Ecs.Managers
 
         public virtual T GetSystem<T>() where T : System
         {
-            return Subjects.OfType<T>().First();
+            return GetSystems<T>().First();
         }
+
+        public virtual IEnumerable<T> GetSystems<T>() where T : System => Subjects.OfType<T>();
 
 
 

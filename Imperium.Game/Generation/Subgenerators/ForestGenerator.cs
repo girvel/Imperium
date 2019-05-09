@@ -13,19 +13,19 @@ namespace Imperium.Game.Generation.Subgenerators
     {
         public float MinimalTemperature = -7, MaximalTemperature = 30, MaximalChance = 1, MinimalHumidity = 0.1f;
         
-        public void Generate(Area area, Random random)
+        public void Generate(Area area, EcsManager ecs, Random random)
         {
+            var landscape = ecs.GetContainer<Landscape>();
+            var building = ecs.GetContainer<Building>();
+            
             foreach (var vector in area.Size.Range())
             {
-                if (area.ContainerSlice<Landscape>()[vector] < Landscape.Plain)
-                {
-                    random.Chance(
+                if (area.ContainerSlice<Landscape>()[vector] < landscape.Plain
+                    && random.Chance(
                         MaximalChance * (1 - 2 / (MaximalTemperature - MinimalTemperature) *
-                                         Math.Abs(area.GetTemperature(vector) + MinimalTemperature)),
-                        () =>
-                        {
-                            area.ContainerSlice<Building>()[vector] = Building.Forest;
-                        });
+                                         Math.Abs(area.GetTemperature(vector) + MinimalTemperature))))
+                {
+                    area.ContainerSlice<Building>()[vector] = building.Forest;
                 }
             }
         }

@@ -36,7 +36,7 @@ namespace Imperium.Game.Generation
         {
             foreach (var generator in Subgenerators)
             {
-                generator.Generate(area, random);
+                generator.Generate(area, ecs, random);
             }
         }
     }

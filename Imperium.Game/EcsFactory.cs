@@ -4,8 +4,10 @@ using Imperium.Core.Systems.Income;
 using Imperium.Core.Systems.Movement;
 using Imperium.Core.Systems.Owning;
 using Imperium.Core.Systems.Placing;
+using Imperium.Core.Systems.Production;
 using Imperium.Core.Systems.Science;
 using Imperium.Core.Systems.Vision;
+using Imperium.Ecs;
 using Imperium.Ecs.Managers;
 using Imperium.Game.Generation;
 using Imperium.Game.Prototypes;
@@ -20,6 +22,31 @@ namespace Imperium.Game
         {
             var ecs = EcsManager.CreateNew();
             
+            GeneratePrototypes(ecs);
+            GenerateSystems(ecs);
+
+            return ecs;
+        }
+
+        private static void GeneratePrototypes(EcsManager ecs)
+        {
+            var containers = new PrototypeContainer[]
+            {
+                new Squad(),
+                new Global(),
+                new Science(),
+                new Landscape(),
+                new Building(), 
+            };
+
+            foreach (var prototypeContainer in containers)
+            {
+                ecs.PrototypeManager.Register(prototypeContainer);
+            }
+        }
+
+        private static void GenerateSystems(EcsManager ecs)
+        {
             var area = new Area(new Vector(40, 40));
 
             var systems = new Ecs.System[]
@@ -29,7 +56,8 @@ namespace Imperium.Game
                 new IncomeSystem(),
                 new ClientVision(), 
                 new OrderManager(), 
-                new ResearchSystem(Science.Test), 
+                new ResearchSystem(ecs.GetContainer<Science>().Test), 
+                new ProductionManager(), 
             };
             
             foreach (var system in systems)
@@ -38,8 +66,6 @@ namespace Imperium.Game
             }
             
             new AreaBasicGenerator().Generate(area, ecs, new Random());
-
-            return ecs;
         }
     }
 }

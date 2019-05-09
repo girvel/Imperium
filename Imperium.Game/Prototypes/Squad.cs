@@ -7,12 +7,17 @@ using Imperium.Core.Systems.Owning;
 using Imperium.Core.Systems.Placing;
 using Imperium.Core.Systems.Vision;
 using Imperium.Ecs;
+using Imperium.Ecs.Managers;
 
 namespace Imperium.Game.Prototypes
 {
-    public class Squad
+    public class Squad : PrototypeContainer
     {
-        public static readonly Entity
+        public Entity
+            Test;
+
+        protected override void InitializePrototypes(EcsManager ecs)
+        {
             Test
                 = new Entity("Test")
                   | new Placer()
@@ -22,5 +27,6 @@ namespace Imperium.Game.Prototypes
                   | new Movable {MovementDelay = TimeSpan.FromSeconds(3)}
                   | new Fighter(10)
                   | new Destructible(10);
+        }
     }
 }

@@ -64,6 +64,8 @@
     <Compile Include="Systems\Placing\ComponentSlice.cs" />
     <Compile Include="Systems\Placing\ContainerSlice.cs" />
     <Compile Include="Systems\Placing\Placer.cs" />
+    <Compile Include="Systems\Production\ProductionManager.cs" />
+    <Compile Include="Systems\Production\Productor.cs" />
     <Compile Include="Systems\Science\Research.cs" />
     <Compile Include="Systems\Science\Researcher.cs" />
     <Compile Include="Systems\Science\ResearchHolder.cs" />

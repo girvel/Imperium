@@ -33,3 +33,5 @@ E:\projects\Imperium\Imperium.Core.Tests\bin\Debug\Province.ExtendedFramework.dl
 E:\projects\Imperium\Imperium.Core.Tests\bin\Debug\Province.ExtendedFramework.pdb
 E:\projects\Imperium\Imperium.Core.Tests\bin\Debug\Province.ToString.dll
 E:\projects\Imperium\Imperium.Core.Tests\bin\Debug\Province.ToString.pdb
+E:\projects\Imperium\Imperium.Core.Tests\bin\Debug\System.ValueTuple.dll
+E:\projects\Imperium\Imperium.Core.Tests\bin\Debug\System.ValueTuple.xml

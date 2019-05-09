@@ -25,3 +25,5 @@ E:\projects\Imperium\Imperium.Application\bin\Debug\Province.ExtendedFramework.d
 E:\projects\Imperium\Imperium.Application\bin\Debug\Province.ExtendedFramework.pdb
 E:\projects\Imperium\Imperium.Application\bin\Debug\Province.ToString.dll
 E:\projects\Imperium\Imperium.Application\bin\Debug\Province.ToString.pdb
+E:\projects\Imperium\Imperium.Application\bin\Debug\System.ValueTuple.dll
+E:\projects\Imperium\Imperium.Application\bin\Debug\System.ValueTuple.xml

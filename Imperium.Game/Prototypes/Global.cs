@@ -1,19 +1,21 @@
 ﻿using Imperium.Core.Systems.Owning;
 using Imperium.Core.Systems.Science;
 using Imperium.Ecs;
+using Imperium.Ecs.Managers;
 
 namespace Imperium.Game.Prototypes
 {
-    public class Global
+    public class Global : PrototypeContainer
     {
-        private Global()
-        {
-        }
+        public Entity
+            Player;
 
-        public static Entity
+        protected override void InitializePrototypes(EcsManager ecs)
+        {
             Player
                 = new Entity("<player>")
                   | new Owner()
                   | new ResearchHolder();
+        }
     }
 }

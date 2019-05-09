@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Linq;
 using Imperium.Core.Systems.Placing;
+using Imperium.Ecs.Managers;
 using Imperium.Game.Common;
 using Imperium.Game.Prototypes;
 using Province.Vector;
@@ -17,7 +18,7 @@ namespace Imperium.Game.Generation.Subgenerators
         
         
         
-        public void Generate(Area area, Random random)
+        public void Generate(Area area, EcsManager ecs, Random random)
         {
             var ridges 
                 = Enumerable
@@ -36,12 +37,15 @@ namespace Imperium.Game.Generation.Subgenerators
 
             foreach (var ridge in ridges)
             {
-                GenerateRidge(ridge, area, random);
+                GenerateRidge(ridge, area, ecs, random);
             }
         }
 
-        protected virtual void GenerateRidge(Ridge ridge, Area area, Random random)
+        protected virtual void GenerateRidge(Ridge ridge, Area area, EcsManager ecs, Random random)
         {
+            var landscape = ecs.GetContainer<Landscape>();
+            var building = ecs.GetContainer<Building>();
+            
             var delta = ridge.To - ridge.From;
 
             for (var px = Math.Max(0, Math.Min(ridge.From.X, ridge.To.X) - ridge.Width);
@@ -58,13 +62,12 @@ namespace Imperium.Game.Generation.Subgenerators
                 var x = internalPosition[0, 0];
                 var y = internalPosition[1, 0] * delta.Magnitude / ridge.Width * 2;
 
-                random.Chance(
-                    2 * (1 - Math.Sqrt(x * x + y * y)),
-                    () =>
-                    {
-                        area.ContainerSlice<Landscape>()[position] = Landscape.Plain;
-                        area.ContainerSlice<Building>()[position] = Building.Mountain;
-                    });
+                if (random.Chance(
+                    2 * (1 - Math.Sqrt(x * x + y * y))))
+                {
+                    area.ContainerSlice<Landscape>()[position] = landscape.Plain;
+                    area.ContainerSlice<Building>()[position] = building.Mountain;
+                }
             }
         }
 

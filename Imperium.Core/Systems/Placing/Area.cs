@@ -60,13 +60,10 @@ namespace Imperium.Core.Systems.Placing
         
 
         public ContainerSlice ContainerSlice<T>()
+            where T : PrototypeContainer
             => new ContainerSlice(
                 this,
-                typeof(T)
-                    .GetFields(BindingFlags.Static | BindingFlags.Public)
-                    .Select(f => f.GetValue(null))
-                    .Cast<Entity>()
-                    .ToArray());
+                Ecs.GetContainer<T>().Subjects.ToArray());
         
         public ComponentSlice<T> ComponentSlice<T>() where T : Component => new ComponentSlice<T>(this);
     }

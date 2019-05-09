@@ -94,13 +94,11 @@ namespace Imperium.Ecs
         /// Checks does the container contain a prototype of entity
         /// </summary>
         /// <param name="e">Entity</param>
-        /// <param name="prototypesContainer">Container of prototypes</param>
+        /// <param name="container">Container of prototypes</param>
         /// <returns>True, if there is a prototype of e in container, else false</returns>
-        public static bool operator ^(Entity e, IReflect prototypesContainer)
-            => prototypesContainer
-                .GetFields(BindingFlags.Static | BindingFlags.Public)
-                .Select(f => f.GetValue(null))
-                .OfType<Entity>()
+        public static bool operator ^(Entity e, PrototypeContainer container)
+            => container
+                .Subjects
                 .Any(p => e < p);
     }
 }

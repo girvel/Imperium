@@ -51,3 +51,6 @@ E:\projects\Imperium\Imperium.Escape\bin\Debug\MathNet.Numerics.dll
 E:\projects\Imperium\Imperium.Escape\bin\Debug\MathNet.Numerics.xml
 E:\projects\Imperium\Imperium.Escape\bin\Debug\Province.ExtendedFramework.dll
 E:\projects\Imperium\Imperium.Escape\bin\Debug\Province.ExtendedFramework.pdb
+E:\projects\Imperium\Imperium.Escape\bin\Debug\Province.ToString.dll
+E:\projects\Imperium\Imperium.Escape\bin\Debug\Newtonsoft.Json.pdb
+E:\projects\Imperium\Imperium.Escape\bin\Debug\Province.ToString.pdb

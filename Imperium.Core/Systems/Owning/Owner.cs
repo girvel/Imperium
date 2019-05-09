@@ -5,7 +5,7 @@ using Imperium.Ecs;
 
 namespace Imperium.Core.Systems.Owning
 {
-    public class Owner : RegisteredComponent<Ownership, Owner>
+    public class Owner : RegisteredComponent<Owner>
     {
         public InternalResources Resources
         {
