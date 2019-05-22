@@ -7,25 +7,30 @@ using Province.Vector;
 
 namespace Imperium.Core.Systems.Movement
 {
-    [RequiresComponents(typeof(Executor))]
-    public class Movable : Component
+    [RequiresComponents(typeof(Placer))]
+    public class Movable : RegisteredComponent<Movable>
     {
-        public TimeSpan MovementDelay { get; set; }
+        protected Placer Placer;
+        
+        public TimeSpan Duration { get; set; }
 
-        public new Movable Prototype => (Movable) base.Prototype;
+        public bool Active => CurrentTarget != Placer.Position;
+
+        public Vector CurrentTarget { get; set; }
 
 
-
-        public bool Move(Vector to)
+        public override void Start()
         {
-            var isPossible = to.IsInside(Ecs.GetSystem<Area>().Size);
+            base.Start();
 
-            if (isPossible)
-            {
-                Parent.GetComponent<Executor>().AddOrder(new MovementOrder(to));
-            }
+            Placer = Parent.GetComponent<Placer>();
+        }
 
-            return isPossible;
+        public override void Update()
+        {
+            base.Update();
+            
+            
         }
     }
 }

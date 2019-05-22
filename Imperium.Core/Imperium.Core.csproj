@@ -55,6 +55,7 @@
     <Compile Include="Systems\Income\IncomeSystem.cs" />
     <Compile Include="Systems\Landscape\Terrain.cs" />
     <Compile Include="Systems\Landscape\TerrainType.cs" />
+    <Compile Include="Systems\Movement\Motion.cs" />
     <Compile Include="Systems\Movement\Movable.cs" />
     <Compile Include="Systems\Movement\MovementOrder.cs" />
     <Compile Include="Systems\Owning\Owned.cs" />

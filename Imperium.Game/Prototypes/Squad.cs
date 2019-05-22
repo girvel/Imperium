@@ -24,7 +24,7 @@ namespace Imperium.Game.Prototypes
                   | new Owned()
                   | new Observer {VisionRange = 3}
                   | new Executor()
-                  | new Movable {MovementDelay = TimeSpan.FromSeconds(3)}
+                  | new Movable {Duration = TimeSpan.FromSeconds(3)}
                   | new Fighter(10)
                   | new Destructible(10);
         }

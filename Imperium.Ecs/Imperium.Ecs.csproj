@@ -60,6 +60,7 @@
     <Compile Include="RegisteredComponent.cs" />
     <Compile Include="RegistrationSystem.cs" />
     <Compile Include="System.cs" />
+    <Compile Include="Systems\TimeManagement\Time.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Province.ToString\Province.ToString.csproj">
